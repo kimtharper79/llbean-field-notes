@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View 5 — Rare / Limited Edition System | Field Notes by L.L.Bean</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/wireframe.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="view-nav">
+    <a href="index.html" class="view-nav-brand">Field Notes — L.L.Bean</a>
+    <div class="view-nav-links">
+      <a href="view-1-vending-machine.html" class="view-nav-link">01 Machine</a>
+      <a href="view-2-print-design.html" class="view-nav-link">02 Print</a>
+      <a href="view-3-activation-flow.html" class="view-nav-link">03 Activation</a>
+      <a href="view-4-gallery.html" class="view-nav-link">04 Gallery</a>
+      <a href="view-5-rare-edition.html" class="view-nav-link active">05 Rare</a>
+    </div>
+    <span class="view-nav-keys"><kbd>←</kbd> <kbd>→</kbd> navigate</span>
+  </nav>
+
+  <!-- ===== BOARD ===== -->
+  <main class="board">
+
+    <!-- Header -->
+    <header class="board-header">
+      <span class="board-number">05 / 05</span>
+      <h1 class="board-title">Rare / Limited Edition System</h1>
+      <p class="board-subtitle">The reward for dedication — rare prints, animated digital cards, set completion bonuses, and community milestones that transform individual collecting into collective experience</p>
+    </header>
+
+    <!-- Color Palette Reference -->
+    <section class="palette-strip">
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-ochre"></span> Ochre #CC7722 — gold/rare treatment
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-rust"></span> Rust — event badge / urgency
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-forest"></span> Forest — completion / success
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-gray"></span> Warm Gray — standard edition reference
+      </div>
+    </section>
+
+    <!-- ===== QUAD GRID: 4 SYSTEMS ===== -->
+    <section>
+      <h2 class="section-label">Four Interlocking Reward Systems</h2>
+
+      <div class="quad-grid">
+
+        <!-- ===== PANEL A: POP-UP EVENT MACHINE ===== -->
+        <div class="quad-panel">
+          <h3 class="panel-label">A. Pop-Up Event Machine</h3>
+
+          <div style="display:flex; gap:var(--space-6); align-items:flex-start;">
+            <!-- Mini machine -->
+            <div style="position:relative; flex-shrink:0;">
+              <div class="machine-mini">
+                <div class="machine-header" style="padding:var(--space-2);">
+                  <span class="machine-wordmark" style="font-size:8px;">L.L.Bean</span>
+                  <span class="machine-headline" style="font-size:var(--text-xs);">FIELD NOTES</span>
+                </div>
+                <div class="machine-location-badge" style="font-size:8px;padding:2px 6px;margin:var(--space-2) auto;">EVENT EDITION</div>
+                <div class="machine-display-window" style="margin:0 var(--space-2);height:70px;">
+                  <div class="wf-image" style="width:100%;height:100%;border:none;">
+                    <span class="wf-image-label" style="font-size:7px;">Rare Print</span>
+                  </div>
+                </div>
+                <div style="text-align:center;padding:var(--space-2);">
+                  <span class="machine-pay-label" style="font-size:8px;">TAP TO PAY</span>
+                </div>
+                <div class="machine-dispense-slot" style="margin:auto var(--space-2) var(--space-2);">
+                  <div class="machine-slot-opening" style="width:80px;height:8px;"></div>
+                </div>
+              </div>
+              <div class="event-badge">★ RARE</div>
+              <div class="rare-star">★</div>
+            </div>
+
+            <!-- Annotations -->
+            <div style="flex:1;">
+              <div class="anno-callout-static">
+                <span class="anno-num">1</span>
+                <strong>Event-Only Machine</strong>
+                Identical hardware to standard machines, but with
+                "EVENT EDITION" badge and gold/ochre colorway accent.
+                Deployed only at L.L.Bean pop-up events.
+                Creates "you had to be there" exclusivity.
+              </div>
+              <div class="anno-callout-static">
+                <span class="anno-num">2</span>
+                <strong>Scarcity: 10 per event</strong>
+                Only 10 prints dispensed per pop-up event.
+                Real-time counter on touchscreen: "7 of 10 remaining."
+                Once gone, machine displays "SOLD OUT — next event TBA."
+                Price: $5 (slight premium signals rarity).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PANEL B: RARE DIGITAL CARD ===== -->
+        <div class="quad-panel">
+          <h3 class="panel-label">B. Animated Rare Digital Card</h3>
+
+          <div style="display:flex; gap:var(--space-6); align-items:flex-start;">
+            <!-- Rare card in phone -->
+            <div class="phone-frame phone-mini" style="flex-shrink:0;">
+              <div class="phone-screen">
+                <div class="screen-status-bar" style="padding-top:calc(var(--phone-notch-h) + 2px);">
+                  <span style="font-size:7px;">9:41</span>
+                  <span style="font-size:7px;">●●●</span>
+                </div>
+                <div class="rare-card">
+                  <div class="rare-card-border" style="position:relative;">
+                    <div class="wf-anim-zone" style="width:80px;height:110px;display:flex;align-items:center;justify-content:center;">
+                      <span class="wf-image-label" style="font-size:7px;">Animated<br>Scene</span>
+                    </div>
+                    <!-- Sparkle dots -->
+                    <div class="rare-card-sparkles">
+                      <div class="sparkle"></div>
+                      <div class="sparkle"></div>
+                      <div class="sparkle"></div>
+                      <div class="sparkle"></div>
+                      <div class="sparkle"></div>
+                    </div>
+                  </div>
+                  <div class="rare-card-meta">
+                    <span class="rare-label">★ RARE ★</span>
+                    <span>SUMMIT SUNRISE</span>
+                    <span>01 / 10</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Annotations -->
+            <div style="flex:1;">
+              <div class="anno-callout-static">
+                <span class="anno-num">3</span>
+                <strong>Gold Treatment</strong>
+                Ochre (#CC7722) border with shimmer animation.
+                Background: animated parallax photo layers.
+                Sparkle particle effects surround the card.
+                Visually distinct from standard cards in gallery.
+              </div>
+              <div class="anno-callout-static">
+                <span class="anno-num">4</span>
+                <strong>Exclusive Content</strong>
+                Rare cards unlock extended documentary footage
+                (2–3 min vs standard 45 sec).
+                Behind-the-scenes interview with the person
+                in the photograph. Story goes deeper.
+              </div>
+              <div class="wf-sound-indicator">
+                Unique reveal chime (rare-only)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PANEL C: COMPLETE SET UNLOCK ===== -->
+        <div class="quad-panel">
+          <h3 class="panel-label">C. Complete Set Unlock</h3>
+
+          <div class="unlock-mechanic">
+            <!-- 7 card slots -->
+            <div class="set-slots">
+              <div class="set-slot filled">✓</div>
+              <div class="set-slot filled">✓</div>
+              <div class="set-slot filled">✓</div>
+              <div class="set-slot filled">✓</div>
+              <div class="set-slot filled">✓</div>
+              <div class="set-slot filled">✓</div>
+              <div class="set-slot filled">✓</div>
+            </div>
+
+            <div class="flow-arrow-v"></div>
+
+            <div class="unlock-reward">
+              <div class="unlock-badge">✦ SET COMPLETE ✦</div>
+              <div class="wf-image unlock-bonus">
+                <span class="wf-image-label" style="font-size:8px;">Bonus<br>Content</span>
+              </div>
+              <p>Exclusive behind-the-scenes mini-documentary (5 min)
+                + L.L.Bean digital "Urban Explorer" badge
+                + Invitation to next pop-up event</p>
+            </div>
+          </div>
+
+          <div class="anno-callout-static" style="margin-top:var(--space-4);">
+            <span class="anno-num">5</span>
+            <strong>Set Completion Reward</strong>
+            Collect all 7 standard locations → unlock bonus content.
+            The 5-minute mini-documentary tells the full three-act story.
+            Digital badge appears in gallery profile.
+            Event invitation creates a real-world connection point.
+            <em>Completion is the bridge from content to community.</em>
+          </div>
+        </div>
+
+        <!-- ===== PANEL D: COMMUNITY MILESTONE ===== -->
+        <div class="quad-panel">
+          <h3 class="panel-label">D. Community Milestone</h3>
+
+          <div class="milestone-tracker">
+            <!-- Progress bar to 500 -->
+            <div style="width:100%;">
+              <div class="milestone-bar">
+                <div class="milestone-fill" style="width:72%;"></div>
+                <div class="milestone-marker" style="left:100%;">500</div>
+              </div>
+            </div>
+            <p style="margin-top:var(--space-4);">360 of 500 prints activated city-wide</p>
+
+            <div class="flow-arrow-v"></div>
+
+            <div class="collaborative-card wf-anim-zone">
+              <span class="wf-image-label" style="font-size:8px;">Community<br>Card</span>
+              <p>Unlocked for ALL participants when milestone is reached</p>
+            </div>
+          </div>
+
+          <div class="anno-callout-static" style="margin-top:var(--space-4);">
+            <span class="anno-num">6</span>
+            <strong>Community Unlock: 500 Prints</strong>
+            When 500 total prints are activated across all collectors,
+            a special "Community Card" appears in everyone's gallery.
+            Collaborative artwork: composite of all 7 locations.
+            Creates collective investment — "we did this together."
+            Real-time counter visible in gallery community bar.
+            <em>Individual collecting → community achievement.</em>
+          </div>
+          <div class="anno-callout-static">
+            <span class="anno-num">7</span>
+            <strong>Citywide Visibility</strong>
+            Progress visible to all participants in real time.
+            Gallery community bar shows: "360 of 500 — we're almost there."
+            Social sharing of milestone progress drives organic growth.
+            Creates urgency and collective anticipation.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="section-divider"></div>
+
+    <!-- ===== GAMIFICATION LOGIC FLOW ===== -->
+    <section class="logic-flow">
+      <h3>Gamification Logic — How the Four Systems Connect</h3>
+      <div class="logic-flow-diagram">
+        <div class="logic-node">Buy Print<br>at Machine</div>
+        <div class="flow-arrow"><span class="flow-arrow-label">scan QR</span></div>
+        <div class="logic-node">Activate<br>Digital Card</div>
+        <div class="flow-arrow"><span class="flow-arrow-label">added to</span></div>
+        <div class="logic-node">Personal<br>Gallery</div>
+        <div class="flow-arrow"><span class="flow-arrow-label">count +1</span></div>
+        <div class="logic-node">Progress<br>Updated</div>
+        <div class="flow-arrow"><span class="flow-arrow-label">check</span></div>
+        <div class="logic-node highlight">All 7?<br>→ Bonus!</div>
+      </div>
+
+      <div style="margin-top: var(--space-4);">
+        <div class="logic-flow-diagram">
+          <div class="logic-node branch">Rare Print?<br>(event only)</div>
+          <div class="flow-arrow"><span class="flow-arrow-label">scan</span></div>
+          <div class="logic-node" style="border-color:var(--brand-ochre);color:var(--brand-ochre);">Gold Animated<br>Card Unlock</div>
+          <div class="flow-arrow"><span class="flow-arrow-label">global +1</span></div>
+          <div class="logic-node branch">Total = 500?<br>→ Community!</div>
+          <div class="flow-arrow"><span class="flow-arrow-label">unlock</span></div>
+          <div class="logic-node highlight">Community<br>Card for All</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="section-divider"></div>
+
+    <!-- ===== SCARCITY BREAKDOWN ===== -->
+    <section class="board-specs">
+      <h2>Edition & Scarcity Breakdown</h2>
+      <table class="spec-table">
+        <tr><td>Standard Prints</td><td>50 per location × 7 locations = 350 total standard prints</td></tr>
+        <tr><td>Rare Prints</td><td>10 per pop-up event (limited events throughout campaign)</td></tr>
+        <tr><td>Digital Cards</td><td>1:1 with physical prints — each QR activates exactly one digital card</td></tr>
+        <tr><td>Rare Digital</td><td>Gold animated treatment, extended content, unique reveal sound</td></tr>
+        <tr><td>Set Completion</td><td>All 7 standard locations → bonus documentary + badge + event invite</td></tr>
+        <tr><td>Community Goal</td><td>500 total activations citywide → collaborative community card for all</td></tr>
+        <tr><td>Total Possible</td><td>350 standard + ~50 rare = ~400 physical prints in ecosystem</td></tr>
+      </table>
+    </section>
+
+    <!-- ===== CAMPAIGN PILLARS ===== -->
+    <section style="margin-top: var(--space-8);">
+      <h2 class="section-label">Campaign Pillar Alignment</h2>
+      <div class="pillar-grid">
+        <div class="pillar-box">
+          <h3>Storytelling</h3>
+          <p>The rare system adds stakes to the narrative. Pop-up events become story climaxes. Set completion reveals the full story. The community milestone transforms 500 individual stories into one collective narrative.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Innovative Technology</h3>
+          <p>Real-time edition counters. Animated digital card rendering with parallax and particles. Citywide progress tracking via lightweight API. Community milestone triggers server-side unlock for all participants simultaneously.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Brand Content Integration</h3>
+          <p>L.L.Bean is the patron of the community — funding the infrastructure that makes collective achievement possible. The brand earns loyalty through shared experience, not product promotion.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GEN Z RESONANCE ===== -->
+    <section style="margin-top: var(--space-6);">
+      <div class="anno-callout-static" style="max-width:700px;">
+        <strong>Why Dual Collectibility Resonates With Gen Z</strong>
+        Physical-to-digital mirrors Pokémon TCG + Pokémon GO coexistence.
+        Edition numbering (01/50) echoes NFT culture without blockchain barriers.
+        Community milestones mirror Discord/gaming achievement systems.
+        Event exclusivity drives "you had to be there" social capital.
+        Completion mechanics leverage badge/streak psychology (Duolingo, Snapchat).
+        The physical print is the flex. The digital card is the proof.
+        Together they create an artifact ecosystem — not a purchase, but a story.
+      </div>
+    </section>
+
+    <!-- ===== PRESENTATION FRAMING ===== -->
+    <section style="margin-top: var(--space-8); padding:var(--space-6); background:var(--wire-fill); border-radius:var(--radius-lg); border:var(--stroke-thin) solid var(--wire-stroke-light);">
+      <p style="font-family:var(--font-display); font-size:var(--text-md); color:var(--wire-stroke); line-height:var(--leading-loose); text-align:center; max-width:700px; margin:0 auto; font-style:italic;">
+        "Field Notes lives at the intersection of documentary photography and collectible culture.
+        The physical print is an artifact of place. The digital collectible is proof of presence.
+        Together they transform urban exploration into a personal archive — and a community record."
+      </p>
+      <p style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--wire-stroke-light); text-align:center; margin-top:var(--space-4); letter-spacing:var(--tracking-wider);">
+        L.L.BEAN DOESN'T SELL OUTDOOR GEAR HERE.<br>
+        L.L.BEAN CURATES THE MOMENTS WORTH COLLECTING.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ===== NAVIGATION JS ===== -->
+  <script>
+    const views = [
+      'view-1-vending-machine.html',
+      'view-2-print-design.html',
+      'view-3-activation-flow.html',
+      'view-4-gallery.html',
+      'view-5-rare-edition.html'
+    ];
+    const current = views.findIndex(v => location.pathname.endsWith(v));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && current < views.length - 1) location.href = views[current + 1];
+      if (e.key === 'ArrowLeft' && current > 0) location.href = views[current - 1];
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1058 @@
+/* ============================================================
+   VIEW-SPECIFIC STYLES
+   Organized by view number. Each section contains styles
+   unique to that wireframe board.
+   ============================================================ */
+
+/* -----------------------------------------------------------
+   VIEW 1: VENDING MACHINE EXTERIOR
+   ----------------------------------------------------------- */
+
+.machine-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  padding: var(--space-8) 0;
+}
+
+.machine-body {
+  width: var(--machine-width);
+  height: var(--machine-height);
+  border: var(--stroke-thick) solid var(--wire-stroke);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--wire-white);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.machine-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  border-bottom: var(--stroke-base) solid var(--wire-stroke-light);
+  background: var(--wire-fill);
+}
+
+.machine-wordmark {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.machine-headline {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--wire-stroke);
+  letter-spacing: var(--tracking-wider);
+}
+
+.machine-location-badge {
+  align-self: center;
+  margin: var(--space-3) 0;
+  padding: var(--space-1) var(--space-4);
+  border: var(--stroke-base) solid var(--wire-stroke);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wider);
+  color: var(--wire-stroke);
+  background: var(--wire-fill-alt);
+}
+
+.machine-display-window {
+  margin: 0 var(--space-6);
+  height: 160px;
+  border: var(--stroke-medium) solid var(--wire-stroke);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.machine-display-window .wf-image {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.machine-screen-area {
+  margin: var(--space-4) var(--space-6);
+  height: 120px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.machine-screen-area .wf-image {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.machine-pay-terminal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  margin: var(--space-3) var(--space-6);
+  padding: var(--space-3);
+  border: var(--stroke-base) dashed var(--wire-stroke-light);
+  border-radius: var(--radius-md);
+}
+
+.machine-nfc-icon {
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  color: var(--wire-stroke);
+  letter-spacing: -2px;
+}
+
+.machine-pay-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.machine-dispense-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin: auto var(--space-6) var(--space-4);
+  padding-top: var(--space-3);
+}
+
+.machine-slot-opening {
+  width: 140px;
+  height: 12px;
+  background: var(--wire-stroke);
+  border-radius: var(--radius-full);
+}
+
+.machine-slot-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.machine-footer {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-2);
+  border-top: var(--stroke-thin) solid var(--wire-stroke-light);
+}
+
+.machine-power-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  border: var(--stroke-thin) solid var(--wire-stroke-light);
+  background: var(--wire-fill);
+}
+
+/* -----------------------------------------------------------
+   VIEW 2: PRINT DESIGN
+   ----------------------------------------------------------- */
+
+.print-pair {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-12);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+.print-card-large {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.print-face {
+  width: 280px;
+  height: 420px;
+  border: var(--stroke-medium) solid var(--wire-stroke);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--wire-white);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.print-face-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  text-align: center;
+  margin-bottom: var(--space-2);
+}
+
+/* Front face */
+.print-front .print-photo {
+  flex: 1;
+  border: none;
+  border-bottom: var(--stroke-thin) solid var(--wire-stroke-light);
+}
+
+.print-front .print-info {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+}
+
+.print-location {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--wire-stroke);
+  letter-spacing: var(--tracking-wider);
+}
+
+.print-edition {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+}
+
+/* Back face */
+.print-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  height: 100%;
+}
+
+.print-back .wf-qr {
+  width: 100px;
+  height: 100px;
+}
+
+.print-caption {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--wire-stroke);
+  text-align: center;
+  font-style: italic;
+  line-height: var(--leading-loose);
+}
+
+.print-brand-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: auto;
+}
+
+.print-brand-mark span:first-child {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wider);
+  color: var(--wire-stroke);
+  text-transform: uppercase;
+}
+
+.print-brand-mark span:last-child {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+  letter-spacing: var(--tracking-wide);
+}
+
+.print-scan-instruction {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+  text-align: center;
+  margin-top: var(--space-2);
+}
+
+/* 7-card collection grid */
+.collection-grid-section {
+  margin-top: var(--space-8);
+}
+
+.print-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-4);
+}
+
+.print-card-small {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.print-thumb {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: var(--radius-sm);
+}
+
+.print-card-name {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--wire-stroke);
+  text-align: center;
+}
+
+.print-card-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+}
+
+/* -----------------------------------------------------------
+   VIEW 3: ACTIVATION FLOW
+   ----------------------------------------------------------- */
+
+/* Camera viewfinder area */
+.screen-camera {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-reticle {
+  width: 120px;
+  height: 120px;
+  border: var(--stroke-medium) solid var(--wire-stroke);
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+/* Corner brackets on reticle */
+.qr-reticle::before,
+.qr-reticle::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.qr-reticle::before {
+  top: -2px;
+  left: -2px;
+  border-top: 3px solid var(--interact-tap);
+  border-left: 3px solid var(--interact-tap);
+  border-radius: 4px 0 0 0;
+}
+
+.qr-reticle::after {
+  bottom: -2px;
+  right: -2px;
+  border-bottom: 3px solid var(--interact-tap);
+  border-right: 3px solid var(--interact-tap);
+  border-radius: 0 0 4px 0;
+}
+
+.screen-instruction {
+  text-align: center;
+  padding: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke);
+  flex-shrink: 0;
+}
+
+/* Activation animation screen */
+.activation-anim {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: var(--space-3);
+  border-radius: var(--radius-md);
+}
+
+.anim-spinner {
+  width: 48px;
+  height: 48px;
+  border: var(--stroke-medium) solid var(--wire-stroke-light);
+  border-top-color: var(--wire-stroke);
+  border-radius: var(--radius-full);
+}
+
+.screen-text-center {
+  text-align: center;
+  padding: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--wire-stroke);
+  line-height: var(--leading-normal);
+  flex-shrink: 0;
+}
+
+/* Card reveal screen */
+.card-reveal {
+  flex: 1;
+  margin: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.reveal-card {
+  width: 140px;
+  height: 200px;
+  border: var(--stroke-medium) solid var(--wire-stroke);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.reveal-card .wf-image {
+  flex: 1;
+  border: none;
+  border-bottom: var(--stroke-thin) solid var(--wire-stroke-light);
+}
+
+.reveal-card-info {
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reveal-card-info span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--wire-stroke);
+}
+
+/* Confirmation screen */
+.confirm-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+}
+
+.confirm-check {
+  width: 48px;
+  height: 48px;
+  border: var(--stroke-medium) solid var(--interact-tap);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--interact-tap);
+}
+
+/* Mini gallery preview */
+.mini-gallery {
+  flex: 1;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mini-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.mini-gallery-card {
+  aspect-ratio: 2/3;
+  border: var(--stroke-thin) solid var(--wire-stroke-light);
+  border-radius: var(--radius-sm);
+  background: var(--wire-fill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.mini-gallery-card.collected {
+  background-image: var(--pattern-crosshatch);
+  border-color: var(--wire-stroke);
+}
+
+.mini-gallery-card.locked {
+  background: var(--wire-fill-alt);
+  color: var(--wire-stroke-light);
+}
+
+/* -----------------------------------------------------------
+   VIEW 4: GALLERY
+   ----------------------------------------------------------- */
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  flex-shrink: 0;
+}
+
+.gallery-header h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--wire-black);
+}
+
+.gallery-progress {
+  padding: 0 var(--space-3) var(--space-2);
+  flex-shrink: 0;
+}
+
+.progress-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  flex: 1;
+  align-content: start;
+}
+
+.gallery-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--wire-white);
+  border: var(--stroke-thin) solid var(--wire-stroke-light);
+}
+
+.gallery-card.collected {
+  border-color: var(--wire-stroke);
+}
+
+.gallery-card-photo {
+  aspect-ratio: 2/3;
+  border: none !important;
+}
+
+.gallery-card-name {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--wire-stroke);
+  padding: var(--space-1) var(--space-2);
+  text-align: center;
+}
+
+.gallery-card-date {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--wire-stroke-light);
+  padding: 0 var(--space-2) var(--space-1);
+  text-align: center;
+}
+
+.gallery-card.locked {
+  background: var(--wire-fill-alt);
+  border-style: dashed;
+}
+
+.lock-icon {
+  aspect-ratio: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--wire-stroke-light);
+}
+
+/* Community bar */
+.community-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-top: var(--stroke-thin) solid var(--wire-stroke-light);
+  background: var(--wire-fill);
+  flex-shrink: 0;
+}
+
+.community-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke);
+}
+
+.community-link {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--flow-arrow);
+}
+
+/* Screen nav bar */
+.screen-nav-bar {
+  display: flex;
+  justify-content: space-around;
+  padding: var(--space-2) var(--space-3);
+  border-top: var(--stroke-thin) solid var(--wire-stroke-light);
+  background: var(--wire-white);
+  flex-shrink: 0;
+}
+
+.nav-item {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+  padding: var(--space-1) 0;
+}
+
+.nav-item.active {
+  color: var(--wire-stroke);
+  font-weight: 700;
+  border-bottom: 2px solid var(--wire-stroke);
+}
+
+/* Card detail view */
+.card-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  flex-shrink: 0;
+}
+
+.card-detail-back {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--flow-arrow);
+}
+
+.card-detail-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.card-detail-photo {
+  width: 100%;
+  height: 180px;
+  border-radius: var(--radius-md);
+}
+
+.card-detail-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.card-detail-meta span {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.card-detail-meta .detail-location {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--wire-black);
+}
+
+.card-detail-meta .detail-date,
+.card-detail-meta .detail-edition {
+  color: var(--wire-stroke-light);
+}
+
+.card-detail-story {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--wire-stroke);
+  font-style: italic;
+  line-height: var(--leading-loose);
+  padding: var(--space-3);
+  border-left: 2px solid var(--wire-stroke-light);
+}
+
+.card-detail-footage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: var(--stroke-base) solid var(--wire-stroke-light);
+  border-radius: var(--radius-md);
+  background: var(--wire-fill);
+}
+
+.play-icon {
+  width: 32px;
+  height: 32px;
+  border: var(--stroke-base) solid var(--wire-stroke);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* -----------------------------------------------------------
+   VIEW 5: RARE / LIMITED EDITION
+   ----------------------------------------------------------- */
+
+/* Mini vending machine for rare panel */
+.machine-mini {
+  width: 160px;
+  height: 260px;
+  border: var(--stroke-medium) solid var(--wire-stroke);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--wire-white);
+  margin: 0 auto;
+  position: relative;
+}
+
+.machine-mini .machine-header {
+  padding: var(--space-2);
+}
+
+.machine-mini .machine-headline {
+  font-size: var(--text-xs);
+}
+
+.machine-mini .machine-display-window {
+  margin: 0 var(--space-2);
+  height: 80px;
+}
+
+.event-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: var(--space-1) var(--space-2);
+  background: var(--anno-border);
+  color: var(--wire-white);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-wider);
+  border-radius: var(--radius-sm);
+  z-index: 5;
+  transform: rotate(5deg);
+}
+
+.rare-star {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  font-size: 24px;
+  color: var(--brand-ochre);
+  transform: translateY(-50%);
+}
+
+.edition-label {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke);
+  padding: var(--space-2);
+}
+
+.edition-label.rare {
+  font-weight: 700;
+  color: var(--brand-ochre);
+}
+
+/* Rare digital card */
+.rare-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-4);
+  gap: var(--space-3);
+}
+
+.rare-card-border {
+  border: 3px solid var(--brand-ochre);
+  border-radius: var(--radius-md);
+  padding: var(--space-1);
+  position: relative;
+  box-shadow: 0 0 0 1px rgba(204,119,34,0.3), 0 4px 12px rgba(204,119,34,0.15);
+}
+
+.rare-card-border .wf-anim-zone {
+  width: 100px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rare-card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.rare-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--brand-ochre);
+  letter-spacing: var(--tracking-wider);
+}
+
+.rare-card-meta span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--wire-stroke);
+  text-align: center;
+}
+
+/* Sparkle dots around rare card (animated) */
+.rare-card-sparkles {
+  position: absolute;
+  inset: -12px;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--brand-ochre);
+  border-radius: var(--radius-full);
+  animation: sparkle-pulse 2s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) { top: 10%; left: -6px; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 30%; right: -6px; animation-delay: 0.4s; }
+.sparkle:nth-child(3) { bottom: 20%; left: -6px; animation-delay: 0.8s; }
+.sparkle:nth-child(4) { top: -6px; left: 40%; animation-delay: 1.2s; }
+.sparkle:nth-child(5) { bottom: -6px; right: 30%; animation-delay: 1.6s; }
+
+@keyframes sparkle-pulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Complete set unlock */
+.unlock-mechanic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.set-slots {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.set-slot {
+  width: 36px;
+  height: 48px;
+  border: var(--stroke-base) solid var(--wire-stroke-light);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--wire-stroke-light);
+  background: var(--wire-fill);
+}
+
+.set-slot.filled {
+  border-color: var(--interact-tap);
+  color: var(--interact-tap);
+  font-weight: 700;
+  background: rgba(39, 174, 96, 0.05);
+}
+
+.unlock-reward {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.unlock-badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-4);
+  border: var(--stroke-medium) solid var(--interact-tap);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--interact-tap);
+  letter-spacing: var(--tracking-wider);
+}
+
+.unlock-bonus {
+  width: 160px;
+  height: 80px;
+  border-radius: var(--radius-md);
+}
+
+.unlock-reward p {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+  line-height: var(--leading-normal);
+  max-width: 240px;
+}
+
+/* Community milestone */
+.milestone-tracker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.milestone-bar {
+  width: 100%;
+  height: 16px;
+  background: var(--wire-fill-alt);
+  border-radius: var(--radius-full);
+  border: var(--stroke-thin) solid var(--wire-stroke-light);
+  position: relative;
+  overflow: visible;
+}
+
+.milestone-fill {
+  height: 100%;
+  background: var(--wire-stroke);
+  border-radius: var(--radius-full);
+}
+
+.milestone-marker {
+  position: absolute;
+  top: -24px;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--wire-stroke);
+  padding: var(--space-1) var(--space-2);
+  background: var(--wire-fill);
+  border: var(--stroke-thin) solid var(--wire-stroke-light);
+  border-radius: var(--radius-sm);
+}
+
+.milestone-tracker p {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke-light);
+}
+
+.collaborative-card {
+  width: 180px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.collaborative-card p {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--wire-stroke-light);
+  text-align: center;
+  line-height: var(--leading-normal);
+}
+
+/* Gamification logic flow */
+.logic-flow {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: var(--stroke-thin) solid var(--wire-stroke-light);
+}
+
+.logic-flow h3 {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--wire-stroke);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-4);
+}
+
+.logic-flow-diagram {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  row-gap: var(--space-4);
+}
+
+.logic-node {
+  padding: var(--space-2) var(--space-4);
+  border: var(--stroke-base) solid var(--wire-stroke);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--wire-stroke);
+  background: var(--wire-white);
+  white-space: nowrap;
+}
+
+.logic-node.highlight {
+  border-color: var(--interact-tap);
+  color: var(--interact-tap);
+  font-weight: 700;
+}
+
+.logic-node.branch {
+  border-style: dashed;
+  color: var(--flow-arrow);
+  border-color: var(--flow-arrow);
+}
+
+.logic-flow-diagram .flow-arrow {
+  width: 48px;
+  min-height: 40px;
+}

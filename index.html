@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Notes by L.L.Bean — Interactive Wireframe Concept Boards</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/wireframe.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/views.css">
+  <style>
+    /* Hub-specific preview thumbnails */
+    .preview-machine {
+      width: 40px;
+      height: 72px;
+      border: 2px solid var(--wire-stroke-light);
+      border-radius: 6px;
+      position: relative;
+      background: var(--wire-white);
+    }
+    .preview-machine::before {
+      content: '';
+      position: absolute;
+      top: 12px; left: 6px; right: 6px;
+      height: 20px;
+      background: var(--pattern-crosshatch);
+      border: 1px solid var(--wire-stroke-light);
+    }
+    .preview-machine::after {
+      content: '';
+      position: absolute;
+      bottom: 10px; left: 50%;
+      transform: translateX(-50%);
+      width: 20px; height: 3px;
+      background: var(--wire-stroke-light);
+      border-radius: 2px;
+    }
+
+    .preview-prints {
+      display: flex; gap: 6px; align-items: flex-end;
+    }
+    .preview-print {
+      width: 28px; height: 40px;
+      border: 1.5px solid var(--wire-stroke-light);
+      border-radius: 2px;
+      background: var(--pattern-crosshatch);
+      background-color: var(--wire-fill);
+    }
+    .preview-print:nth-child(2) {
+      height: 40px;
+      background: var(--wire-white);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .preview-print:nth-child(2)::after {
+      content: ''; display: block;
+      width: 14px; height: 14px;
+      border: 1.5px solid var(--wire-stroke-light);
+    }
+
+    .preview-phones {
+      display: flex; gap: 4px; align-items: center;
+    }
+    .preview-phone {
+      width: 22px; height: 42px;
+      border: 1.5px solid var(--wire-stroke-light);
+      border-radius: 6px;
+      background: var(--wire-fill);
+    }
+    .preview-arrow-sm {
+      width: 12px; height: 0;
+      border-top: 1.5px solid var(--flow-arrow-light);
+      position: relative;
+    }
+    .preview-arrow-sm::after {
+      content: '';
+      position: absolute; right: 0; top: -4px;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 5px solid var(--flow-arrow-light);
+    }
+
+    .preview-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      width: 60px;
+    }
+    .preview-gallery-card {
+      aspect-ratio: 2/3;
+      border: 1px solid var(--wire-stroke-light);
+      border-radius: 2px;
+      background: var(--pattern-crosshatch);
+      background-color: var(--wire-fill);
+    }
+    .preview-gallery-card.locked {
+      background: var(--wire-fill-alt);
+      background-image: none;
+      border-style: dashed;
+    }
+
+    .preview-rare {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .preview-rare-card {
+      width: 32px; height: 44px;
+      border: 2px solid var(--brand-ochre);
+      border-radius: 4px;
+      background: var(--pattern-diagonal);
+      background-color: rgba(204,119,34,0.05);
+      position: relative;
+    }
+    .preview-rare-star {
+      font-size: 10px; color: var(--brand-ochre);
+    }
+
+    /* Hub concept description */
+    .hub-concept {
+      max-width: 800px;
+      margin: 0 auto var(--space-8);
+      padding: var(--space-6);
+      background: var(--wire-fill);
+      border-radius: var(--radius-lg);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+    }
+    .hub-concept p {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      color: var(--wire-stroke);
+      line-height: var(--leading-loose);
+      text-align: center;
+    }
+    .hub-concept p + p {
+      margin-top: var(--space-3);
+    }
+    .hub-concept em {
+      font-family: var(--font-display);
+      color: var(--wire-black);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="hub-header">
+    <span class="hub-client">L.L.Bean</span>
+    <h1 class="hub-campaign">"Field Notes"</h1>
+    <p class="hub-type">Interactive Wireframe Concept Boards</p>
+    <p class="hub-desc">
+      A dual collectible system — physical vending machine prints + digital mobile collectibles —
+      that transforms urban exploration into a personal archive and community record.
+    </p>
+
+    <!-- Color Palette -->
+    <div class="palette-strip" style="justify-content:center; margin-top:var(--space-6); display:inline-flex;">
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-rust"></span> Rust
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-ochre"></span> Ochre
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-forest"></span> Forest
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-gray"></span> Warm Gray
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== CONCEPT OVERVIEW ===== -->
+  <div class="hub-concept">
+    <p>
+      <em>Field Notes</em> lives at the intersection of documentary photography and collectible culture.
+      The physical print is an artifact of place. The digital collectible is proof of presence.
+    </p>
+    <p>
+      Seven vending machines placed at urban checkpoint locations dispense limited-edition photo prints.
+      Each print's unique QR code unlocks a digital collectible card with documentary story content.
+      Collect all seven to complete the narrative arc — from solitary commute to community gathering.
+    </p>
+  </div>
+
+  <!-- ===== 5 VIEW CARDS ===== -->
+  <main class="hub-grid">
+
+    <!-- View 1 -->
+    <a href="view-1-vending-machine.html" class="hub-card">
+      <span class="hub-card-num">01</span>
+      <h2>Physical Vending Machine</h2>
+      <p>Exterior design, field equipment locker aesthetic, hardware specs, deployment context. The physical artifact that starts the experience.</p>
+      <div class="hub-card-preview">
+        <div class="preview-machine"></div>
+      </div>
+    </a>
+
+    <!-- View 2 -->
+    <a href="view-2-print-design.html" class="hub-card">
+      <span class="hub-card-num">02</span>
+      <h2>Physical Print Design</h2>
+      <p>Front and back face wireframes, 2×3" documentary photo format, QR code bridge, 7-card collection grid. What you hold in your hand.</p>
+      <div class="hub-card-preview">
+        <div class="preview-prints">
+          <div class="preview-print"></div>
+          <div class="preview-print"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- View 3 -->
+    <a href="view-3-activation-flow.html" class="hub-card">
+      <span class="hub-card-num">03</span>
+      <h2>Digital Activation Flow</h2>
+      <p>5-screen mobile journey: QR scan → loading animation → card reveal → confirmation → gallery. The bridge from physical to digital.</p>
+      <div class="hub-card-preview">
+        <div class="preview-phones">
+          <div class="preview-phone"></div>
+          <div class="preview-arrow-sm"></div>
+          <div class="preview-phone"></div>
+          <div class="preview-arrow-sm"></div>
+          <div class="preview-phone"></div>
+          <div class="preview-arrow-sm"></div>
+          <div class="preview-phone"></div>
+          <div class="preview-arrow-sm"></div>
+          <div class="preview-phone"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- View 4 -->
+    <a href="view-4-gallery.html" class="hub-card">
+      <span class="hub-card-num">04</span>
+      <h2>Digital Field Notes Gallery</h2>
+      <p>Personal collection dashboard, card detail with documentary story content, progress tracker, community layer, social sharing. Your growing archive.</p>
+      <div class="hub-card-preview">
+        <div class="preview-gallery">
+          <div class="preview-gallery-card"></div>
+          <div class="preview-gallery-card"></div>
+          <div class="preview-gallery-card"></div>
+          <div class="preview-gallery-card locked"></div>
+          <div class="preview-gallery-card locked"></div>
+          <div class="preview-gallery-card locked"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- View 5 -->
+    <a href="view-5-rare-edition.html" class="hub-card">
+      <span class="hub-card-num">05</span>
+      <h2>Rare / Limited Edition System</h2>
+      <p>Pop-up event machine, animated gold digital cards, set completion unlock, community milestone (500 prints → collaborative card). The reward for dedication.</p>
+      <div class="hub-card-preview">
+        <div class="preview-rare">
+          <div class="preview-rare-card"></div>
+          <span class="preview-rare-star">★</span>
+        </div>
+      </div>
+    </a>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="hub-footer">
+    <span>ADBR Campaign Concept</span>
+    <span>·</span>
+    <span>L.L.Bean Gen Z Urban Repositioning</span>
+    <span>·</span>
+    <span>2026</span>
+  </footer>
+
+</body>
+</html>

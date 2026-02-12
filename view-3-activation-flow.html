@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View 3 — Digital Activation Flow | Field Notes by L.L.Bean</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/wireframe.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="view-nav">
+    <a href="index.html" class="view-nav-brand">Field Notes — L.L.Bean</a>
+    <div class="view-nav-links">
+      <a href="view-1-vending-machine.html" class="view-nav-link">01 Machine</a>
+      <a href="view-2-print-design.html" class="view-nav-link">02 Print</a>
+      <a href="view-3-activation-flow.html" class="view-nav-link active">03 Activation</a>
+      <a href="view-4-gallery.html" class="view-nav-link">04 Gallery</a>
+      <a href="view-5-rare-edition.html" class="view-nav-link">05 Rare</a>
+    </div>
+    <span class="view-nav-keys"><kbd>←</kbd> <kbd>→</kbd> navigate</span>
+  </nav>
+
+  <!-- ===== BOARD ===== -->
+  <main class="board">
+
+    <!-- Header -->
+    <header class="board-header">
+      <span class="board-number">03 / 05</span>
+      <h1 class="board-title">Digital Activation Flow</h1>
+      <p class="board-subtitle">The bridge from physical to digital — scanning the QR code on your print activates a living digital collectible in 5 steps</p>
+    </header>
+
+    <!-- Color Palette Reference -->
+    <section class="palette-strip">
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-rust"></span> Rust — activation loading accent
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-forest"></span> Forest — confirmed / success states
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-ochre"></span> Ochre — card border highlight
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-gray"></span> Warm Gray — UI chrome / nav
+      </div>
+    </section>
+
+    <!-- ===== 5-SCREEN ACTIVATION FLOW ===== -->
+    <section>
+      <h2 class="section-label">Activation Sequence — 5 Screens</h2>
+
+      <div class="flow-sequence">
+
+        <!-- ===== SCREEN 1: QR SCAN ===== -->
+        <div class="flow-step">
+          <div class="flow-step-label">Step 1</div>
+          <div class="phone-frame phone-small">
+            <div class="phone-screen">
+              <div class="screen-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+              <div class="screen-camera wf-image" style="border:none;">
+                <div class="qr-reticle">
+                  <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:8px;color:var(--wire-stroke-light);">QR</span>
+                </div>
+              </div>
+              <div class="screen-instruction">Point camera at QR code</div>
+            </div>
+          </div>
+          <div class="step-annotations">
+            <div class="anno-callout-static">
+              <span class="anno-num">1</span>
+              <strong>QR Scan</strong>
+              Native camera app — no app install.
+              QR auto-detected via iOS/Android native.
+              Opens web URL in default browser.
+              <em>Zero friction entry point.</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- ARROW 1→2 -->
+        <div class="flow-arrow">
+          <span class="flow-arrow-label">QR read<br>~0.5s</span>
+        </div>
+
+        <!-- ===== SCREEN 2: ACTIVATION ANIMATION ===== -->
+        <div class="flow-step">
+          <div class="flow-step-label">Step 2</div>
+          <div class="phone-frame phone-small">
+            <div class="phone-screen">
+              <div class="screen-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+              <div class="activation-anim wf-anim-zone">
+                <div class="anim-spinner"></div>
+                <span class="wf-image-label">Loading<br>Animation</span>
+              </div>
+              <div class="screen-text-center">
+                Activating your<br>Field Note...
+              </div>
+            </div>
+          </div>
+          <div class="step-annotations">
+            <div class="anno-callout-static">
+              <span class="anno-num">2</span>
+              <strong>Activation Animation</strong>
+              Compass rose spin (L.L.Bean motif).
+              Duration: 2–3 seconds.
+              <em>~ motion: CSS keyframe rotation ~</em>
+            </div>
+            <div class="wf-sound-indicator">
+              Nature ambience fade-in (2s)
+            </div>
+          </div>
+        </div>
+
+        <!-- ARROW 2→3 -->
+        <div class="flow-arrow">
+          <span class="flow-arrow-label">auto<br>~2s</span>
+        </div>
+
+        <!-- ===== SCREEN 3: CARD REVEAL ===== -->
+        <div class="flow-step">
+          <div class="flow-step-label">Step 3</div>
+          <div class="phone-frame phone-small">
+            <div class="phone-screen">
+              <div class="screen-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+              <div class="card-reveal wf-anim-zone" style="border:none; background:transparent;">
+                <div class="reveal-card">
+                  <div class="wf-image" style="border:none;">
+                    <span class="wf-image-label" style="font-size:8px;">Photo</span>
+                  </div>
+                  <div class="reveal-card-info">
+                    <span style="font-weight:700;">THE PARK</span>
+                    <span>Edition 12/50</span>
+                    <span>Jan 15, 2026</span>
+                  </div>
+                </div>
+                <span class="wf-anim-zone-label" style="position:static; margin-top:var(--space-2);">~ card flip reveal ~</span>
+              </div>
+              <div class="screen-text-center" style="font-size:var(--text-xs);">
+                "Every corner has a story"
+              </div>
+            </div>
+          </div>
+          <div class="step-annotations">
+            <div class="anno-callout-static">
+              <span class="anno-num">3</span>
+              <strong>Digital Card Reveal</strong>
+              3D card flip animation reveals full collectible.
+              Documentary photo + location + edition.
+              15-second location story auto-plays.
+              <em>~ motion: 3D transform + parallax ~</em>
+            </div>
+            <div class="wf-sound-indicator">
+              Location-specific ambient audio
+            </div>
+          </div>
+        </div>
+
+        <!-- ARROW 3→4 -->
+        <div class="flow-arrow">
+          <span class="flow-arrow-label">tap to<br>continue</span>
+        </div>
+
+        <!-- ===== SCREEN 4: CONFIRMATION ===== -->
+        <div class="flow-step">
+          <div class="flow-step-label">Step 4</div>
+          <div class="phone-frame phone-small">
+            <div class="phone-screen">
+              <div class="screen-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+              <div class="confirm-content">
+                <div class="confirm-check">✓</div>
+                <div style="text-align:center;">
+                  <span style="font-family:var(--font-mono);font-size:var(--text-sm);font-weight:700;display:block;margin-bottom:var(--space-1);">Added to your<br>Field Notes</span>
+                  <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--wire-stroke-light);">3 of 7 collected</span>
+                </div>
+                <div class="wf-progress" style="width:140px;">
+                  <div class="wf-progress-fill" style="width:43%;"></div>
+                </div>
+                <div style="display:flex; gap:var(--space-2); margin-top: var(--space-3);">
+                  <span class="wf-button" style="font-size:var(--text-xs);padding:var(--space-1) var(--space-3);">Share</span>
+                  <span class="wf-button-filled" style="font-size:var(--text-xs);padding:var(--space-1) var(--space-3);">View Gallery</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="step-annotations">
+            <div class="anno-callout-static">
+              <span class="anno-num">4</span>
+              <strong>Confirmation</strong>
+              Green checkmark animation.
+              Shows progress: "3 of 7 collected."
+              Two CTAs: Share (Instagram Stories)
+              or View Gallery (→ View 4).
+              <em>No account creation required.</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- ARROW 4→5 -->
+        <div class="flow-arrow">
+          <span class="flow-arrow-label">tap<br>gallery</span>
+        </div>
+
+        <!-- ===== SCREEN 5: PROGRESS GALLERY ===== -->
+        <div class="flow-step">
+          <div class="flow-step-label">Step 5</div>
+          <div class="phone-frame phone-small">
+            <div class="phone-screen">
+              <div class="screen-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+              <div class="gallery-header" style="padding:var(--space-1) var(--space-2);">
+                <h2 style="font-size:var(--text-xs);">My Field Notes</h2>
+                <span style="font-family:var(--font-mono);font-size:8px;color:var(--wire-stroke-light);">3/7</span>
+              </div>
+              <div class="mini-gallery">
+                <div class="wf-progress" style="height:4px; margin-bottom:var(--space-2);">
+                  <div class="wf-progress-fill" style="width:43%;"></div>
+                </div>
+                <div class="mini-gallery-grid">
+                  <div class="mini-gallery-card collected">
+                    <span style="font-size:7px;font-family:var(--font-mono);">01</span>
+                  </div>
+                  <div class="mini-gallery-card collected">
+                    <span style="font-size:7px;font-family:var(--font-mono);">02</span>
+                  </div>
+                  <div class="mini-gallery-card collected wf-tap-zone" style="border-width:1px;">
+                    <span style="font-size:7px;font-family:var(--font-mono);">03</span>
+                  </div>
+                  <div class="mini-gallery-card locked">🔒</div>
+                  <div class="mini-gallery-card locked">🔒</div>
+                  <div class="mini-gallery-card locked">🔒</div>
+                  <div class="mini-gallery-card locked" style="grid-column: 2;">🔒</div>
+                </div>
+              </div>
+              <div class="screen-nav-bar" style="font-size:8px;">
+                <span class="nav-item active" style="font-size:8px;">Collection</span>
+                <span class="nav-item" style="font-size:8px;">Map</span>
+                <span class="nav-item" style="font-size:8px;">Share</span>
+              </div>
+            </div>
+          </div>
+          <div class="step-annotations">
+            <div class="anno-callout-static">
+              <span class="anno-num">5</span>
+              <strong>Progress Gallery</strong>
+              Full collection dashboard (detailed in View 4).
+              Collected cards = vivid. Locked = greyed silhouette.
+              Tapping a card expands to full story + documentary footage.
+              <em>Drives repeat visits to new locations.</em>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== INTERACTION LEGEND ===== -->
+    <div class="interaction-legend">
+      <h3>Interaction Key</h3>
+      <div class="legend-item">
+        <span class="legend-icon tap">👆</span> Tap / Touch
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon motion">↻</span> Animation / Motion
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon sound">🔊</span> Sound Design Moment
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon flow">→</span> Auto-advance (timed)
+      </div>
+    </div>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="section-divider"></div>
+
+    <!-- ===== TECHNICAL DETAILS ===== -->
+    <section class="board-specs">
+      <h2>Technical Requirements</h2>
+      <table class="spec-table">
+        <tr><td>Platform</td><td>Mobile web (Progressive Web App — no install required)</td></tr>
+        <tr><td>QR Entry</td><td>Native camera → web browser. Works iOS 11+, Android 8+</td></tr>
+        <tr><td>Activation URL</td><td>llbean.com/fieldnotes/activate/{unique-print-id}</td></tr>
+        <tr><td>Animations</td><td>CSS @keyframes + Web Animations API. No heavy JS libraries.</td></tr>
+        <tr><td>Audio</td><td>Web Audio API, ambient loops per location, auto-muted by default</td></tr>
+        <tr><td>State Storage</td><td>localStorage for collection progress (no sign-up required)</td></tr>
+        <tr><td>Share Mechanic</td><td>Web Share API → Instagram Stories / native share sheet</td></tr>
+        <tr><td>Load Time</td><td>Target &lt;2s on 4G. Lightweight — under 500KB total payload.</td></tr>
+      </table>
+    </section>
+
+    <!-- ===== CAMPAIGN PILLARS ===== -->
+    <section style="margin-top: var(--space-8);">
+      <h2 class="section-label">Campaign Pillar Alignment</h2>
+      <div class="pillar-grid">
+        <div class="pillar-box">
+          <h3>Storytelling</h3>
+          <p>Each activation IS a story moment — the physical print "comes alive" with a 15-second location narrative. The card reveal is a cinematic micro-moment that rewards the ritual of scanning.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Innovative Technology</h3>
+          <p>QR-to-web activation requires zero downloads. Web Animations API for cinematic card reveals. LocalStorage preserves collection state without accounts. Progressive Web App adds to homescreen.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Brand Content Integration</h3>
+          <p>L.L.Bean provides the activation infrastructure — the magic of physical→digital transformation. Brand appears in the confirmation screen subtly. The experience IS the content.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GEN Z INSIGHT ===== -->
+    <section style="margin-top: var(--space-6);">
+      <div class="anno-callout-static" style="max-width:700px;">
+        <strong>Why This Resonates With Gen Z</strong>
+        No app download barrier. No account creation. No data harvesting.
+        The activation ritual mirrors opening a digital pack (trading card / gacha mechanic).
+        The 15-second story plays like a TikTok. The share button goes straight to Stories.
+        Physical-to-digital bridging is the same mechanic driving Pokémon card culture.
+        Scarcity (edition numbers) and progress (3 of 7) trigger collection completionism.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== NAVIGATION JS ===== -->
+  <script>
+    const views = [
+      'view-1-vending-machine.html',
+      'view-2-print-design.html',
+      'view-3-activation-flow.html',
+      'view-4-gallery.html',
+      'view-5-rare-edition.html'
+    ];
+    const current = views.findIndex(v => location.pathname.endsWith(v));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && current < views.length - 1) location.href = views[current + 1];
+      if (e.key === 'ArrowLeft' && current > 0) location.href = views[current - 1];
+    });
+  </script>
+</body>
+</html>

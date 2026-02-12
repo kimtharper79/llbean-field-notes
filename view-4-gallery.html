@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View 4 — Digital Field Notes Gallery | Field Notes by L.L.Bean</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/wireframe.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="view-nav">
+    <a href="index.html" class="view-nav-brand">Field Notes — L.L.Bean</a>
+    <div class="view-nav-links">
+      <a href="view-1-vending-machine.html" class="view-nav-link">01 Machine</a>
+      <a href="view-2-print-design.html" class="view-nav-link">02 Print</a>
+      <a href="view-3-activation-flow.html" class="view-nav-link">03 Activation</a>
+      <a href="view-4-gallery.html" class="view-nav-link active">04 Gallery</a>
+      <a href="view-5-rare-edition.html" class="view-nav-link">05 Rare</a>
+    </div>
+    <span class="view-nav-keys"><kbd>←</kbd> <kbd>→</kbd> navigate</span>
+  </nav>
+
+  <!-- ===== BOARD ===== -->
+  <main class="board">
+
+    <!-- Header -->
+    <header class="board-header">
+      <span class="board-number">04 / 05</span>
+      <h1 class="board-title">Digital Field Notes Gallery</h1>
+      <p class="board-subtitle">Your growing collection — a personal dashboard where collected cards expand into full stories, community connections, and shareable moments</p>
+    </header>
+
+    <!-- Color Palette Reference -->
+    <section class="palette-strip">
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-rust"></span> Rust — progress bar / active states
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-forest"></span> Forest — collected indicators
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-ochre"></span> Ochre — card highlights on tap
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-gray"></span> Warm Gray — locked states / chrome
+      </div>
+    </section>
+
+    <!-- ===== TWO PHONE VIEWS ===== -->
+    <section>
+      <h2 class="section-label">Gallery Views — Collection Grid + Card Detail</h2>
+
+      <div class="two-col" style="gap: var(--space-12); align-items: start;">
+
+        <!-- LEFT: Gallery Grid View -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-6);">
+
+          <div class="phone-frame phone-large annotated">
+            <div class="phone-screen">
+              <!-- Status bar -->
+              <div class="screen-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+
+              <!-- Gallery header -->
+              <div class="gallery-header">
+                <h2>My Field Notes</h2>
+                <span class="wf-button-outline" style="font-size:8px;padding:2px 8px;">Share All</span>
+              </div>
+
+              <!-- Progress -->
+              <div class="gallery-progress">
+                <span class="progress-count">4 of 7 locations discovered</span>
+                <div class="wf-progress">
+                  <div class="wf-progress-fill" style="width:57%;"></div>
+                </div>
+              </div>
+
+              <!-- Card grid -->
+              <div class="gallery-grid">
+                <!-- Collected: The Commute -->
+                <div class="gallery-card collected wf-tap-zone" style="border-width:1px;">
+                  <div class="wf-image gallery-card-photo">
+                    <span class="wf-image-label" style="font-size:7px;">01</span>
+                  </div>
+                  <span class="gallery-card-name">The Commute</span>
+                  <span class="gallery-card-date">Jan 12</span>
+                </div>
+
+                <!-- Collected: The Stoop -->
+                <div class="gallery-card collected wf-tap-zone" style="border-width:1px;">
+                  <div class="wf-image gallery-card-photo">
+                    <span class="wf-image-label" style="font-size:7px;">02</span>
+                  </div>
+                  <span class="gallery-card-name">The Stoop</span>
+                  <span class="gallery-card-date">Jan 14</span>
+                </div>
+
+                <!-- Collected: The Park -->
+                <div class="gallery-card collected wf-tap-zone" style="border-width:1px;">
+                  <div class="wf-image gallery-card-photo">
+                    <span class="wf-image-label" style="font-size:7px;">03</span>
+                  </div>
+                  <span class="gallery-card-name">The Park</span>
+                  <span class="gallery-card-date">Jan 15</span>
+                </div>
+
+                <!-- Collected: The Rooftop -->
+                <div class="gallery-card collected wf-tap-zone" style="border-width:1px;">
+                  <div class="wf-image gallery-card-photo">
+                    <span class="wf-image-label" style="font-size:7px;">04</span>
+                  </div>
+                  <span class="gallery-card-name">The Rooftop</span>
+                  <span class="gallery-card-date">Jan 18</span>
+                </div>
+
+                <!-- Locked: The Market -->
+                <div class="gallery-card locked">
+                  <div class="lock-icon">🔒</div>
+                  <span class="gallery-card-name" style="color:var(--wire-stroke-light);">???</span>
+                </div>
+
+                <!-- Locked: The Bridge -->
+                <div class="gallery-card locked">
+                  <div class="lock-icon">🔒</div>
+                  <span class="gallery-card-name" style="color:var(--wire-stroke-light);">???</span>
+                </div>
+
+                <!-- Locked: The Gather -->
+                <div class="gallery-card locked" style="grid-column: 2;">
+                  <div class="lock-icon">🔒</div>
+                  <span class="gallery-card-name" style="color:var(--wire-stroke-light);">???</span>
+                </div>
+              </div>
+
+              <!-- Community bar -->
+              <div class="community-bar">
+                <span class="community-count">127 collectors active</span>
+                <span class="community-link">View map →</span>
+              </div>
+
+              <!-- Nav bar -->
+              <div class="screen-nav-bar">
+                <span class="nav-item active">Collection</span>
+                <span class="nav-item">Map</span>
+                <span class="nav-item">Profile</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Annotations below gallery phone -->
+          <div style="max-width:340px;">
+            <div class="anno-callout-static">
+              <span class="anno-num">1</span>
+              <strong>Collection Grid</strong>
+              3-column grid, cards in location order.
+              Collected = vivid photo + date. Locked = greyed "???" silhouette.
+              Each card is tappable — opens detail view (right phone).
+              Visual scarcity: locked cards create desire to explore.
+            </div>
+            <div class="anno-callout-static">
+              <span class="anno-num">2</span>
+              <strong>Progress Tracker</strong>
+              "4 of 7 locations discovered" — explicit, encouraging.
+              Progress bar fills with rust accent color.
+              Gen Z responds to completion mechanics (badge/streak culture).
+            </div>
+            <div class="anno-callout-static">
+              <span class="anno-num">3</span>
+              <strong>Community Layer</strong>
+              "127 collectors active" — social proof without social login.
+              Creates awareness that others are on the same trail.
+              "View map" shows real-time collection activity across the city.
+              Builds FOMO and collective momentum.
+            </div>
+          </div>
+        </div>
+
+        <!-- FLOW ARROW between phones -->
+        <!-- (handled visually by the two-col gap + annotation context) -->
+
+        <!-- RIGHT: Card Detail View -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:var(--space-6);">
+
+          <div style="display:flex; align-items:center; gap:var(--space-3); margin-bottom:var(--space-2);">
+            <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--flow-arrow);">TAP CARD</span>
+            <span class="flow-arrow-inline"></span>
+            <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--flow-arrow);">EXPANDS TO</span>
+          </div>
+
+          <div class="phone-frame phone-large annotated">
+            <div class="phone-screen">
+              <!-- Status bar -->
+              <div class="screen-status-bar">
+                <span>9:41</span>
+                <span>●●●</span>
+              </div>
+
+              <!-- Detail header -->
+              <div class="card-detail-header">
+                <span class="card-detail-back">← Back</span>
+                <span class="wf-button-outline" style="font-size:8px;padding:2px 8px;">Share</span>
+              </div>
+
+              <!-- Detail content -->
+              <div class="card-detail-content">
+                <!-- Photo -->
+                <div class="wf-image card-detail-photo">
+                  <span class="wf-image-label">Full Documentary<br>Photograph</span>
+                </div>
+
+                <!-- Meta info -->
+                <div class="card-detail-meta">
+                  <span class="detail-location">CP3: The Park</span>
+                  <span class="detail-date">Collected January 15, 2026</span>
+                  <span class="detail-edition">Edition 12 of 50</span>
+                </div>
+
+                <!-- Story excerpt -->
+                <div class="card-detail-story">
+                  "She found the bench between the oak trees. Not the quiet she
+                  expected — kids on bikes, someone's speaker playing soft.
+                  A different kind of outdoors..."
+                </div>
+
+                <!-- Documentary footage -->
+                <div class="card-detail-footage wf-tap-zone" style="border-width:1px;">
+                  <div class="play-icon">▶</div>
+                  <div>
+                    <span style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;display:block;">Watch the moment</span>
+                    <span style="font-family:var(--font-mono);font-size:8px;color:var(--wire-stroke-light);">Documentary footage — 0:45</span>
+                  </div>
+                </div>
+
+                <!-- Share to stories -->
+                <div class="wf-button-filled" style="text-align:center; width:100%; padding:var(--space-2);">
+                  Share to Instagram Stories
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Annotations below detail phone -->
+          <div style="max-width:340px;">
+            <div class="anno-callout-static">
+              <span class="anno-num">4</span>
+              <strong>Story Chapter</strong>
+              Each card expands to a full narrative moment from the
+              documentary story. First-person, warm, literary tone.
+              This is the "content" in "brand content" — real stories
+              about real urban outdoor moments.
+            </div>
+            <div class="anno-callout-static">
+              <span class="anno-num">5</span>
+              <strong>Documentary Footage</strong>
+              45-second video clip embedded per location.
+              Shot in documentary style — handheld, natural light.
+              Plays inline (no fullscreen takeover).
+              <em>~ motion: video player with progress scrubber ~</em>
+            </div>
+            <div class="anno-callout-static">
+              <span class="anno-num">6</span>
+              <strong>One-Tap Share</strong>
+              "Share to Instagram Stories" creates a pre-formatted
+              story card with the photo, location, and edition number.
+              Uses Web Share API → Instagram deep link.
+              Organic reach multiplier — friends see it, want their own.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="section-divider"></div>
+
+    <!-- ===== NAVIGATION MAP CONCEPT ===== -->
+    <section>
+      <h2 class="section-label">Additional Screen: Collection Map</h2>
+      <div class="two-col" style="gap:var(--space-8);">
+        <div class="phone-frame phone-small" style="margin:0 auto;">
+          <div class="phone-screen">
+            <div class="screen-status-bar">
+              <span>9:41</span>
+              <span>●●●</span>
+            </div>
+            <div class="wf-image" style="flex:1;border:none;">
+              <span class="wf-image-label">City Map<br>with 7 Pins</span>
+            </div>
+            <div style="padding:var(--space-2);text-align:center;">
+              <span style="font-family:var(--font-mono);font-size:8px;color:var(--wire-stroke-light);">
+                ● Collected &nbsp; ○ Undiscovered
+              </span>
+            </div>
+            <div class="screen-nav-bar" style="font-size:8px;">
+              <span class="nav-item" style="font-size:8px;">Collection</span>
+              <span class="nav-item active" style="font-size:8px;">Map</span>
+              <span class="nav-item" style="font-size:8px;">Profile</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="anno-callout-static">
+            <span class="anno-num">7</span>
+            <strong>Map View (Secondary Nav)</strong>
+            Shows all 7 checkpoint locations on a city map.
+            Collected locations: solid pins. Undiscovered: hollow circles.
+            Tapping a pin shows location name + proximity hint
+            ("~0.3 mi from you").
+            Does NOT reveal exact machine location — preserves discovery.
+            <em>No location tracking — map is static reference only.</em>
+          </div>
+          <div class="anno-callout-static">
+            <span class="anno-num">8</span>
+            <strong>Privacy-First Design</strong>
+            No account required. No email capture.
+            Collection stored in localStorage (device-local).
+            Optional: "Save my collection" exports a shareable URL.
+            This respects Gen Z privacy sensitivity while preserving
+            the collection experience.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="section-divider"></div>
+
+    <!-- ===== CAMPAIGN PILLARS ===== -->
+    <section>
+      <h2 class="section-label">Campaign Pillar Alignment</h2>
+      <div class="pillar-grid">
+        <div class="pillar-box">
+          <h3>Storytelling</h3>
+          <p>The gallery IS the story. Each collected card is a chapter. The locked cards are pages not yet turned. The documentary footage brings the written narrative to life with real urban moments.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Innovative Technology</h3>
+          <p>Progressive Web App runs in browser. localStorage preserves state without accounts. Web Share API enables one-tap Instagram sharing. City map uses lightweight tile-based rendering.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Brand Content Integration</h3>
+          <p>L.L.Bean curates the gallery experience. The documentary content IS the brand content — authentic stories about urban outdoor life. No product shots. No sales CTAs. Just stories.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== NAVIGATION JS ===== -->
+  <script>
+    const views = [
+      'view-1-vending-machine.html',
+      'view-2-print-design.html',
+      'view-3-activation-flow.html',
+      'view-4-gallery.html',
+      'view-5-rare-edition.html'
+    ];
+    const current = views.findIndex(v => location.pathname.endsWith(v));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && current < views.length - 1) location.href = views[current + 1];
+      if (e.key === 'ArrowLeft' && current > 0) location.href = views[current - 1];
+    });
+  </script>
+</body>
+</html>

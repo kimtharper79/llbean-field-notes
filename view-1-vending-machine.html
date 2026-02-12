@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View 1 — Vending Machine Exterior | Field Notes by L.L.Bean</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/wireframe.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="view-nav">
+    <a href="index.html" class="view-nav-brand">Field Notes — L.L.Bean</a>
+    <div class="view-nav-links">
+      <a href="view-1-vending-machine.html" class="view-nav-link active">01 Machine</a>
+      <a href="view-2-print-design.html" class="view-nav-link">02 Print</a>
+      <a href="view-3-activation-flow.html" class="view-nav-link">03 Activation</a>
+      <a href="view-4-gallery.html" class="view-nav-link">04 Gallery</a>
+      <a href="view-5-rare-edition.html" class="view-nav-link">05 Rare</a>
+    </div>
+    <span class="view-nav-keys"><kbd>←</kbd> <kbd>→</kbd> navigate</span>
+  </nav>
+
+  <!-- ===== BOARD ===== -->
+  <main class="board">
+
+    <!-- Header -->
+    <header class="board-header">
+      <span class="board-number">01 / 05</span>
+      <h1 class="board-title">Physical Vending Machine Exterior</h1>
+      <p class="board-subtitle">The physical artifact — a compact field equipment locker that dispenses documentary photo prints at urban checkpoint locations</p>
+    </header>
+
+    <!-- Color Palette Reference -->
+    <section class="palette-strip">
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-rust"></span> Rust #C1440E — body panels
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-ochre"></span> Ochre #CC7722 — accent trim / badge
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-forest"></span> Forest #2C5F2D — header / footer
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-gray"></span> Warm Gray #8B8680 — hardware / metal
+      </div>
+    </section>
+
+    <!-- ===== THREE-COLUMN LAYOUT ===== -->
+    <section class="three-col">
+
+      <!-- LEFT ANNOTATIONS -->
+      <aside class="anno-column">
+        <div class="anno-callout-static">
+          <span class="anno-num">1</span>
+          <strong>Brand Header</strong>
+          "FIELD NOTES" as primary headline, large utilitarian type.
+          "L.L.Bean" appears small above — curator, not advertiser.
+          Forest green background with warm gray type.
+        </div>
+
+        <div class="anno-callout-static">
+          <span class="anno-num">2</span>
+          <strong>Location Badge</strong>
+          Laser-etched aluminum plate, swappable per deployment.
+          Format: "CP3: THE PARK" — checkpoint number + name.
+          Echoes trail marker / park signage aesthetic.
+        </div>
+
+        <div class="anno-callout-static">
+          <span class="anno-num">3</span>
+          <strong>Display Window</strong>
+          Tempered glass, 12" × 8" visible area.
+          Shows current print set cycling on backlit display.
+          Edge-lit LED warm tone (2700K) — matches brand palette.
+          Draws attention from 15+ feet.
+        </div>
+
+        <div class="anno-callout-static">
+          <span class="anno-num">4</span>
+          <strong>7" Touchscreen</strong>
+          Capacitive, outdoor-rated, sun-readable.
+          Users browse available prints, see edition counts remaining,
+          preview before purchase. Simple 2-tap flow:
+          select print → confirm payment.
+        </div>
+      </aside>
+
+      <!-- CENTER: MACHINE DRAWING -->
+      <div class="machine-container annotated">
+
+        <!-- Vertical dimension line -->
+        <div class="dim-v" style="position: absolute; left: -44px; top: 0; height: 560px;">
+          <div class="dim-line" style="height: 100%; border-left: 1px solid var(--wire-stroke-light);"></div>
+          <span class="dim-label">~60" (5 ft)</span>
+          <span style="position:absolute; top:0; left:0; right:0; border-top: 1px solid var(--wire-stroke-light);"></span>
+          <span style="position:absolute; bottom:0; left:0; right:0; border-top: 1px solid var(--wire-stroke-light);"></span>
+        </div>
+
+        <!-- The Machine -->
+        <div class="machine-body">
+
+          <!-- Header -->
+          <div class="machine-header">
+            <span class="machine-wordmark">L.L.Bean</span>
+            <span class="machine-headline">FIELD NOTES</span>
+          </div>
+
+          <!-- Location Badge -->
+          <div class="machine-location-badge">CP3: THE PARK</div>
+
+          <!-- Display Window -->
+          <div class="machine-display-window">
+            <div class="wf-image" style="width:100%; height:100%; border:none;">
+              <span class="wf-image-label">Print Preview<br>Display</span>
+            </div>
+          </div>
+
+          <!-- Touchscreen -->
+          <div class="machine-screen-area wf-tap-zone">
+            <div class="wf-image" style="width:100%; height:100%; border:none;">
+              <span class="wf-image-label">7" Touchscreen<br>Select + Preview</span>
+            </div>
+          </div>
+
+          <!-- Tap-to-Pay -->
+          <div class="machine-pay-terminal">
+            <span class="machine-nfc-icon">)))</span>
+            <span class="machine-pay-label">TAP TO PAY</span>
+          </div>
+
+          <!-- Dispense Slot -->
+          <div class="machine-dispense-slot">
+            <div class="machine-slot-opening"></div>
+            <span class="machine-slot-label">COLLECT YOUR FIELD NOTE</span>
+          </div>
+
+          <!-- Footer -->
+          <div class="machine-footer">
+            <span class="machine-power-indicator"></span>
+          </div>
+        </div>
+
+        <!-- Horizontal dimension line -->
+        <div class="dim-h" style="position: absolute; bottom: -44px; left: calc(50% - 160px); width: 320px;">
+          <div class="dim-line"></div>
+          <span class="dim-label">24" (2 ft)</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT ANNOTATIONS -->
+      <aside class="anno-column">
+        <div class="anno-callout-static">
+          <span class="anno-num">5</span>
+          <strong>Physical Dimensions</strong>
+          ~60" H × 24" W × 18" D (~200 lbs).
+          Floor-bolted mounting for security.
+          Fits in transit shelters, park entrances, coffee shop vestibules.
+          Designed to feel like trail equipment, not a candy machine.
+        </div>
+
+        <div class="anno-callout-static">
+          <span class="anno-num">6</span>
+          <strong>NFC Tap-to-Pay</strong>
+          Apple Pay, Google Pay, contactless card.
+          $3–5 per print. No cash, no bills — frictionless.
+          Price point matches Gen Z micro-transaction comfort zone
+          (coffee, sticker, transit fare).
+        </div>
+
+        <div class="anno-callout-static">
+          <span class="anno-num">7</span>
+          <strong>Print Dispensing</strong>
+          Thermal sublimation printer inside. Print on demand —
+          no pre-printed inventory. 2" × 3" matte photo paper.
+          ~15 second print time. Warm whirring sound adds to the ritual.
+          Dispense slot at waist height — easy, accessible.
+        </div>
+
+        <div class="anno-callout-static">
+          <span class="anno-num">8</span>
+          <strong>Aesthetic Direction</strong>
+          Field equipment locker, not retail kiosk.
+          Powder-coated steel in rust/forest colorway.
+          Exposed hex bolts, industrial handles.
+          Feels found, not installed. Belongs in the environment.
+        </div>
+      </aside>
+
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="section-divider"></div>
+
+    <!-- ===== USER JOURNEY FLOW ===== -->
+    <section>
+      <h2 class="section-label">User Interaction Flow</h2>
+      <div class="logic-flow-diagram" style="margin-bottom: var(--space-6);">
+        <div class="logic-node">Spot machine<br>in the wild</div>
+        <div class="flow-arrow"><span class="flow-arrow-label">curiosity</span></div>
+        <div class="logic-node">Read location<br>badge</div>
+        <div class="flow-arrow"><span class="flow-arrow-label">approach</span></div>
+        <div class="logic-node">Browse prints<br>on screen</div>
+        <div class="flow-arrow"><span class="flow-arrow-label">select</span></div>
+        <div class="logic-node">Tap to pay<br>$3–5</div>
+        <div class="flow-arrow"><span class="flow-arrow-label">~15 sec</span></div>
+        <div class="logic-node highlight">Collect<br>your print</div>
+        <div class="flow-arrow"><span class="flow-arrow-label">flip over</span></div>
+        <div class="logic-node branch">Scan QR<br>→ View 3</div>
+      </div>
+    </section>
+
+    <!-- ===== TECHNICAL SPECS ===== -->
+    <section class="board-specs">
+      <h2>Machine Specifications</h2>
+      <table class="spec-table">
+        <tr><td>Exterior</td><td>Powder-coated steel, rust/forest green colorway</td></tr>
+        <tr><td>Dimensions</td><td>~60"H × 24"W × 18"D, ~200 lbs, floor-bolted</td></tr>
+        <tr><td>Display Window</td><td>12" × 8" tempered glass, edge-lit LED (2700K)</td></tr>
+        <tr><td>Touchscreen</td><td>7" capacitive, 800×480, daylight-readable, outdoor-rated</td></tr>
+        <tr><td>Payment</td><td>NFC contactless — Apple Pay, Google Pay, tap card</td></tr>
+        <tr><td>Printer</td><td>Internal thermal sublimation, 2" × 3" matte output</td></tr>
+        <tr><td>Connectivity</td><td>4G LTE cellular (primary), WiFi backup</td></tr>
+        <tr><td>Power</td><td>Standard 120V outlet, ~150W draw</td></tr>
+        <tr><td>Deployment</td><td>7 urban locations matching campaign checkpoint map</td></tr>
+      </table>
+    </section>
+
+    <!-- ===== CAMPAIGN PILLARS ===== -->
+    <section style="margin-top: var(--space-8);">
+      <h2 class="section-label">Campaign Pillar Alignment</h2>
+      <div class="pillar-grid">
+        <div class="pillar-box">
+          <h3>Storytelling</h3>
+          <p>The machine IS a character in the narrative — a mysterious artifact placed along the urban trail. Discovering it is part of the story. The location badge anchors each machine to a chapter.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Innovative Technology</h3>
+          <p>On-demand thermal sublimation printing. NFC contactless payment. Cellular-connected inventory and analytics. Each print has a unique QR code linking physical to digital.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Brand Content Integration</h3>
+          <p>L.L.Bean provides the infrastructure of discovery. The machine's field-equipment aesthetic aligns with the brand's heritage without screaming "sponsored." It curates the experience.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== NAVIGATION JS ===== -->
+  <script>
+    const views = [
+      'view-1-vending-machine.html',
+      'view-2-print-design.html',
+      'view-3-activation-flow.html',
+      'view-4-gallery.html',
+      'view-5-rare-edition.html'
+    ];
+    const current = views.findIndex(v => location.pathname.endsWith(v));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && current < views.length - 1) location.href = views[current + 1];
+      if (e.key === 'ArrowLeft' && current > 0) location.href = views[current - 1];
+    });
+  </script>
+</body>
+</html>

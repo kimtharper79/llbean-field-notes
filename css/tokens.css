@@ -1,0 +1,110 @@
+/* ============================================================
+   DESIGN TOKENS — L.L.Bean "Field Notes" Wireframe System
+   ============================================================
+   Single source of truth for all design values.
+   Every CSS file imports these tokens.
+   ============================================================ */
+
+:root {
+
+  /* === Campaign Brand Colors (shown as swatches, not wireframe fills) === */
+  --brand-rust:         #C1440E;
+  --brand-ochre:        #CC7722;
+  --brand-forest:       #2C5F2D;
+  --brand-warm-gray:    #8B8680;
+
+  /* === Wireframe Working Colors === */
+  --wire-stroke:        #4A4A4A;
+  --wire-stroke-light:  #9B9B9B;
+  --wire-fill:          #F5F3EE;
+  --wire-fill-alt:      #EDEAE3;
+  --wire-bg:            #FAFAF8;
+  --wire-white:         #FFFFFF;
+  --wire-black:         #1A1A1A;
+
+  /* === Annotation Colors === */
+  --anno-line:          #E74C3C;
+  --anno-bg:            #FFF8E1;
+  --anno-border:        #E74C3C;
+  --anno-text:          #333333;
+
+  /* === Flow Arrow Colors === */
+  --flow-arrow:         #2980B9;
+  --flow-arrow-light:   #85C1E9;
+
+  /* === Interactive Indicator Colors === */
+  --interact-tap:       #27AE60;
+  --interact-dashed:    #27AE60;
+  --interact-anim:      #8E44AD;
+
+  /* === Typography === */
+  --font-mono:      'SF Mono', 'Fira Code', 'Consolas', monospace;
+  --font-sans:      -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-display:   Georgia, 'Times New Roman', serif;
+
+  /* === Type Scale (1.25 ratio) === */
+  --text-xs:    0.64rem;
+  --text-sm:    0.8rem;
+  --text-base:  1rem;
+  --text-md:    1.25rem;
+  --text-lg:    1.563rem;
+  --text-xl:    1.953rem;
+  --text-2xl:   2.441rem;
+
+  /* === Line Heights === */
+  --leading-tight:  1.2;
+  --leading-normal: 1.5;
+  --leading-loose:  1.8;
+
+  /* === Letter Spacing === */
+  --tracking-tight:   -0.02em;
+  --tracking-normal:   0;
+  --tracking-wide:     0.05em;
+  --tracking-wider:    0.1em;
+
+  /* === Spacing Scale (8px base) === */
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+  --space-24:  6rem;
+
+  /* === Stroke Widths === */
+  --stroke-thin:    1px;
+  --stroke-base:    1.5px;
+  --stroke-medium:  2px;
+  --stroke-thick:   3px;
+
+  /* === Border Radius === */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* === Mobile Phone Frame === */
+  --phone-width:   280px;
+  --phone-height:  580px;
+  --phone-radius:  36px;
+  --phone-bezel:   12px;
+  --phone-notch-w: 120px;
+  --phone-notch-h: 28px;
+
+  /* === Print Card (2:3 ratio) === */
+  --print-width:   180px;
+  --print-height:  270px;
+
+  /* === Vending Machine === */
+  --machine-width:   320px;
+  --machine-height:  560px;
+
+  /* === SVG Patterns (data URI encoded) === */
+  --pattern-crosshatch: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L8 8M8 0L0 8' stroke='%239B9B9B' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+  --pattern-diagonal: url("data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8L8 0' stroke='%239B9B9B' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+  --pattern-dots: url("data:image/svg+xml,%3Csvg width='12' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='6' cy='6' r='1' fill='%239B9B9B'/%3E%3C/svg%3E");
+}

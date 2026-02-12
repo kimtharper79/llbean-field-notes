@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View 2 — Physical Print Design | Field Notes by L.L.Bean</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/wireframe.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="view-nav">
+    <a href="index.html" class="view-nav-brand">Field Notes — L.L.Bean</a>
+    <div class="view-nav-links">
+      <a href="view-1-vending-machine.html" class="view-nav-link">01 Machine</a>
+      <a href="view-2-print-design.html" class="view-nav-link active">02 Print</a>
+      <a href="view-3-activation-flow.html" class="view-nav-link">03 Activation</a>
+      <a href="view-4-gallery.html" class="view-nav-link">04 Gallery</a>
+      <a href="view-5-rare-edition.html" class="view-nav-link">05 Rare</a>
+    </div>
+    <span class="view-nav-keys"><kbd>←</kbd> <kbd>→</kbd> navigate</span>
+  </nav>
+
+  <!-- ===== BOARD ===== -->
+  <main class="board">
+
+    <!-- Header -->
+    <header class="board-header">
+      <span class="board-number">02 / 05</span>
+      <h1 class="board-title">Physical Print Design</h1>
+      <p class="board-subtitle">What you hold in your hand — a 2×3" documentary photograph becomes a collectible artifact of place</p>
+    </header>
+
+    <!-- Color Palette Reference -->
+    <section class="palette-strip">
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-rust"></span> Rust #C1440E — print border accent
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-ochre"></span> Ochre #CC7722 — location badge
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-forest"></span> Forest #2C5F2D — brand mark
+      </div>
+      <div class="color-swatch-callout">
+        <span class="color-swatch swatch-gray"></span> Warm Gray #8B8680 — back text
+      </div>
+    </section>
+
+    <!-- ===== FRONT & BACK PAIR ===== -->
+    <section class="print-pair">
+
+      <!-- FRONT FACE -->
+      <div class="print-card-large">
+        <span class="print-face-label">Front Face</span>
+        <div class="print-face print-front annotated">
+          <div class="wf-image print-photo">
+            <span class="wf-image-label">Documentary<br>Photograph</span>
+          </div>
+          <div class="print-info">
+            <span class="print-location">CP3: THE PARK</span>
+            <span class="print-edition">12 / 50</span>
+          </div>
+        </div>
+        <div class="anno-callout-static">
+          <span class="anno-num">1</span>
+          <strong>Print Format</strong>
+          2" × 3" thermal sublimation on Kodak KIOSK matte photo paper.
+          Slightly textured stock — tactile quality matters for collectibility.
+          Rounded corners (2mm radius).
+        </div>
+        <div class="anno-callout-static">
+          <span class="anno-num">2</span>
+          <strong>Photography Style</strong>
+          Documentary aesthetic — authentic, unposed urban moments.
+          Warm earth tones in post-production. No filters, no studio lighting.
+          Real people in real city spaces.
+        </div>
+        <div class="anno-callout-static">
+          <span class="anno-num">3</span>
+          <strong>Edition Numbering</strong>
+          Each location prints exactly 50 standard editions.
+          Number appears bottom-right: "12 / 50."
+          Scarcity drives collection behavior — Gen Z trading card mentality.
+        </div>
+      </div>
+
+      <!-- BACK FACE -->
+      <div class="print-card-large">
+        <span class="print-face-label">Back Face</span>
+        <div class="print-face print-back annotated">
+          <div class="wf-qr">
+            <span class="wf-qr-label">Unique QR</span>
+          </div>
+          <p class="print-caption">"Where the trail<br>meets the tide"</p>
+          <span class="print-scan-instruction">Scan to activate your digital collectible</span>
+          <div class="print-brand-mark">
+            <span>FIELD NOTES</span>
+            <span>L.L.Bean</span>
+          </div>
+        </div>
+        <div class="anno-callout-static">
+          <span class="anno-num">4</span>
+          <strong>QR Code — Physical→Digital Bridge</strong>
+          Each print has a unique QR code. Scanning activates the
+          digital collectible card (see View 3: Activation Flow).
+          QR destination: llbean.com/fieldnotes/activate/{uid}
+          Web-based — no app download required.
+        </div>
+        <div class="anno-callout-static">
+          <span class="anno-num">5</span>
+          <strong>Poetic Caption</strong>
+          3–5 word evocative phrase unique to each location.
+          Conversational, warm, first-person feel.
+          Not a tagline — a field observation.
+        </div>
+        <div class="anno-callout-static">
+          <span class="anno-num">6</span>
+          <strong>Brand Presence</strong>
+          "FIELD NOTES" as primary identifier, "L.L.Bean" as subtle
+          secondary mark. Campaign name > brand name.
+          No logo lockup, no corporate footer. Feels editorial.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="section-divider"></div>
+
+    <!-- ===== 7-CARD COLLECTION GRID ===== -->
+    <section class="collection-grid-section">
+      <h2 class="section-label">Complete Set: 7 Field Notes Locations</h2>
+
+      <div class="print-grid">
+        <div class="print-card-small">
+          <div class="wf-image print-thumb">
+            <span class="wf-image-label" style="font-size:8px;">01</span>
+          </div>
+          <span class="print-card-name">The Commute</span>
+          <span class="print-card-num">01/50</span>
+        </div>
+        <div class="print-card-small">
+          <div class="wf-image print-thumb">
+            <span class="wf-image-label" style="font-size:8px;">02</span>
+          </div>
+          <span class="print-card-name">The Stoop</span>
+          <span class="print-card-num">02/50</span>
+        </div>
+        <div class="print-card-small">
+          <div class="wf-image print-thumb">
+            <span class="wf-image-label" style="font-size:8px;">03</span>
+          </div>
+          <span class="print-card-name">The Park</span>
+          <span class="print-card-num">03/50</span>
+        </div>
+        <div class="print-card-small">
+          <div class="wf-image print-thumb">
+            <span class="wf-image-label" style="font-size:8px;">04</span>
+          </div>
+          <span class="print-card-name">The Rooftop</span>
+          <span class="print-card-num">04/50</span>
+        </div>
+        <div class="print-card-small">
+          <div class="wf-image print-thumb">
+            <span class="wf-image-label" style="font-size:8px;">05</span>
+          </div>
+          <span class="print-card-name">The Market</span>
+          <span class="print-card-num">05/50</span>
+        </div>
+        <div class="print-card-small">
+          <div class="wf-image print-thumb">
+            <span class="wf-image-label" style="font-size:8px;">06</span>
+          </div>
+          <span class="print-card-name">The Bridge</span>
+          <span class="print-card-num">06/50</span>
+        </div>
+        <div class="print-card-small">
+          <div class="wf-image print-thumb">
+            <span class="wf-image-label" style="font-size:8px;">07</span>
+          </div>
+          <span class="print-card-name">The Gather</span>
+          <span class="print-card-num">07/50</span>
+        </div>
+      </div>
+
+      <div class="anno-callout-static" style="margin-top: var(--space-6); max-width: 700px;">
+        <span class="anno-num">7</span>
+        <strong>Collection Strategy — 7 Locations</strong>
+        Each location represents a chapter in the urban outdoor narrative: from solitary
+        commute (Act 1: Homesick) through urban discovery (Act 2) to community gathering (Act 3: The Gather).
+        Location names use "The ___" format — simple, archetypal, shareable.
+        50 editions per location × 7 locations = 350 standard prints total in the system.
+      </div>
+    </section>
+
+    <!-- ===== DIVIDER ===== -->
+    <div class="section-divider"></div>
+
+    <!-- ===== TECHNICAL SPECS ===== -->
+    <section class="board-specs">
+      <h2>Print Specifications</h2>
+      <table class="spec-table">
+        <tr><td>Dimensions</td><td>2" × 3" (standard photo print / trading card size)</td></tr>
+        <tr><td>Paper Stock</td><td>Kodak KIOSK matte photo paper, slightly textured</td></tr>
+        <tr><td>Print Method</td><td>Thermal sublimation (vending machine internal printer)</td></tr>
+        <tr><td>Corner Treatment</td><td>Rounded corners, 2mm radius</td></tr>
+        <tr><td>QR Technology</td><td>Unique per-print URL encoded in QR; web-based activation</td></tr>
+        <tr><td>Edition System</td><td>50 standard per location, 10 rare at pop-up events</td></tr>
+        <tr><td>Total Locations</td><td>7 (maps to 3-act narrative arc)</td></tr>
+        <tr><td>Print Cost</td><td>$3–5 per print (tap-to-pay at vending machine)</td></tr>
+      </table>
+    </section>
+
+    <!-- ===== CAMPAIGN PILLARS ===== -->
+    <section style="margin-top: var(--space-8);">
+      <h2 class="section-label">Campaign Pillar Alignment</h2>
+      <div class="pillar-grid">
+        <div class="pillar-box">
+          <h3>Storytelling</h3>
+          <p>Each print is a chapter. The 7 locations map to a narrative arc from isolation to community. The poetic captions are micro-stories. Collecting them assembles a personal urban field guide.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Innovative Technology</h3>
+          <p>Physical-to-digital bridge via unique QR codes. Each physical artifact unlocks a living digital counterpart. No app required — web-based activation keeps the barrier to entry at zero.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>Brand Content Integration</h3>
+          <p>L.L.Bean appears as curator, not advertiser. "Field Notes" owns the visual identity. The brand earns presence through the quality of the experience, not the size of the logo.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== NAVIGATION JS ===== -->
+  <script>
+    const views = [
+      'view-1-vending-machine.html',
+      'view-2-print-design.html',
+      'view-3-activation-flow.html',
+      'view-4-gallery.html',
+      'view-5-rare-edition.html'
+    ];
+    const current = views.findIndex(v => location.pathname.endsWith(v));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && current < views.length - 1) location.href = views[current + 1];
+      if (e.key === 'ArrowLeft' && current > 0) location.href = views[current - 1];
+    });
+  </script>
+</body>
+</html>
