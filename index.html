@@ -136,6 +136,225 @@
       font-family: var(--font-display);
       color: var(--wire-black);
     }
+
+    /* --- NEW: Intro sections for class presentation --- */
+
+    .hub-context {
+      max-width: 800px;
+      margin: 0 auto var(--space-6);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .hub-context-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+    }
+    .hub-context-student {
+      font-family: var(--font-display);
+      font-size: var(--text-md);
+      color: var(--wire-black);
+      letter-spacing: var(--tracking-wide);
+    }
+    .hub-context-detail {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      letter-spacing: var(--tracking-wide);
+    }
+
+    .hub-brief {
+      max-width: 800px;
+      margin: 0 auto var(--space-6);
+      padding: var(--space-4) var(--space-6);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-left: var(--stroke-thick) solid var(--brand-rust);
+      border-radius: var(--radius-sm);
+      background: var(--wire-white);
+    }
+    .hub-brief-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .hub-brief-text {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      color: var(--wire-stroke);
+      line-height: var(--leading-loose);
+    }
+
+    .hub-insight {
+      max-width: 800px;
+      margin: 0 auto var(--space-6);
+      padding: var(--space-4) var(--space-6);
+      background: var(--wire-fill);
+      border-radius: var(--radius-lg);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      text-align: center;
+    }
+    .hub-insight-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--brand-ochre);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-2);
+      font-weight: 700;
+    }
+    .hub-insight-text {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      color: var(--wire-stroke);
+      line-height: var(--leading-loose);
+    }
+
+    .hub-narrative {
+      max-width: 900px;
+      margin: 0 auto var(--space-6);
+      text-align: center;
+    }
+    .hub-narrative-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-4);
+    }
+    .hub-acts {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+    .hub-act {
+      flex: 1;
+      max-width: 260px;
+      padding: var(--space-4);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-radius: var(--radius-md);
+      background: var(--wire-white);
+    }
+    .hub-act-num {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+    .hub-act-name {
+      font-family: var(--font-sans);
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--wire-black);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .hub-act p {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--wire-stroke);
+      line-height: var(--leading-normal);
+    }
+    .hub-act-arrow {
+      flex-shrink: 0;
+      width: 32px;
+      height: 2px;
+      background: var(--wire-stroke-light);
+      margin-top: 48px;
+      position: relative;
+    }
+    .hub-act-arrow::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid var(--wire-stroke-light);
+    }
+
+    .hub-locations {
+      max-width: 800px;
+      margin: 0 auto var(--space-6);
+      text-align: center;
+    }
+    .hub-locations-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-4);
+    }
+    .hub-locations-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-2);
+    }
+    .hub-loc {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--wire-stroke);
+      padding: var(--space-2) var(--space-3);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-radius: var(--radius-sm);
+      background: var(--wire-white);
+      text-align: left;
+    }
+    .hub-loc-num {
+      color: var(--wire-stroke-light);
+      margin-right: var(--space-2);
+      font-size: var(--text-xs);
+    }
+
+    .hub-nav-guide {
+      max-width: 800px;
+      margin: 0 auto var(--space-8);
+      padding: var(--space-4) var(--space-6);
+      background: var(--wire-fill-alt);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .hub-nav-guide-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .hub-nav-guide p {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--wire-stroke);
+      line-height: var(--leading-normal);
+    }
+    .hub-nav-guide kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      border: 1px solid var(--wire-stroke-light);
+      border-radius: 3px;
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+      background: var(--wire-white);
+    }
   </style>
 </head>
 <body>
@@ -167,6 +386,84 @@
     </div>
   </header>
 
+  <!-- ===== CLASS CONTEXT ===== -->
+  <div class="hub-context">
+    <span class="hub-context-label">SCAD — Advertising &amp; Branding</span>
+    <span class="hub-context-student">Kimberly Harper-Colucci</span>
+    <span class="hub-context-detail">ADBR Campaign Concept &middot; Winter 2026</span>
+  </div>
+
+  <!-- ===== STRATEGIC BRIEF ===== -->
+  <div class="hub-brief">
+    <span class="hub-brief-label">Strategic Brief</span>
+    <p class="hub-brief-text">
+      Reposition L.L.Bean for Gen Z urban consumers by transforming outdoor discovery
+      into a collectible, shareable, documentary-driven experience that lives at the
+      intersection of physical and digital space.
+    </p>
+  </div>
+
+  <!-- ===== GEN Z INSIGHT ===== -->
+  <div class="hub-insight">
+    <span class="hub-insight-label">The Insight</span>
+    <p class="hub-insight-text">
+      Gen Z doesn't separate "outdoors" from "urban." They discover nature on rooftops,
+      in parks between classes, on bridges at golden hour. They collect experiences
+      the way previous generations collected gear. A photo print from a vending machine
+      is both a physical artifact and a digital flex &mdash; proof they were there.
+    </p>
+  </div>
+
+  <!-- ===== NARRATIVE ARC ===== -->
+  <div class="hub-narrative">
+    <span class="hub-narrative-label">3-Act Narrative Arc</span>
+    <div class="hub-acts">
+      <div class="hub-act">
+        <span class="hub-act-num">Act 1</span>
+        <span class="hub-act-name">Homesick</span>
+        <p>Solitary urban moments. The commute, the stoop. Missing something you can't name.</p>
+      </div>
+      <div class="hub-act-arrow"></div>
+      <div class="hub-act">
+        <span class="hub-act-num">Act 2</span>
+        <span class="hub-act-name">Discovery</span>
+        <p>Finding nature in the city. The park, the rooftop, the market, the bridge. Eyes opening.</p>
+      </div>
+      <div class="hub-act-arrow"></div>
+      <div class="hub-act">
+        <span class="hub-act-num">Act 3</span>
+        <span class="hub-act-name">Community</span>
+        <p>Individual discovery becomes collective experience. The gather, the promise. We belong here.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 8 LOCATIONS ===== -->
+  <div class="hub-locations">
+    <span class="hub-locations-label">8 Checkpoint Locations &mdash; Savannah, GA</span>
+    <div class="hub-locations-grid">
+      <span class="hub-loc"><span class="hub-loc-num">01</span> The Commute</span>
+      <span class="hub-loc"><span class="hub-loc-num">02</span> The Stoop</span>
+      <span class="hub-loc"><span class="hub-loc-num">03</span> The Park</span>
+      <span class="hub-loc"><span class="hub-loc-num">04</span> The Rooftop</span>
+      <span class="hub-loc"><span class="hub-loc-num">05</span> The Market</span>
+      <span class="hub-loc"><span class="hub-loc-num">06</span> The Bridge</span>
+      <span class="hub-loc"><span class="hub-loc-num">07</span> The Gather</span>
+      <span class="hub-loc"><span class="hub-loc-num">08</span> The Promise</span>
+    </div>
+  </div>
+
+  <!-- ===== HOW TO NAVIGATE ===== -->
+  <div class="hub-nav-guide">
+    <span class="hub-nav-guide-label">How to Navigate</span>
+    <p>
+      Click any board below to explore the wireframe. Use the top navigation bar or
+      <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> arrow keys to move between views.
+      Each board covers one layer of the system: physical machine, print design, digital activation,
+      gallery, and rare/limited editions.
+    </p>
+  </div>
+
   <!-- ===== CONCEPT OVERVIEW ===== -->
   <div class="hub-concept">
     <p>
@@ -174,9 +471,9 @@
       The physical print is an artifact of place. The digital collectible is proof of presence.
     </p>
     <p>
-      Seven vending machines placed at urban checkpoint locations dispense limited-edition photo prints.
+      Eight vending machines placed at urban checkpoint locations dispense limited-edition photo prints.
       Each print's unique QR code unlocks a digital collectible card with documentary story content.
-      Collect all seven to complete the narrative arc — from solitary commute to community gathering.
+      Collect all eight to complete the narrative arc — from solitary commute to community gathering.
     </p>
   </div>
 

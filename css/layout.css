@@ -487,3 +487,422 @@ body {
   body { background: white; }
   .anno-callout-static { break-inside: avoid; }
 }
+
+/* -----------------------------------------------------------
+   RESPONSIVE — TABLET (max-width: 768px)
+   ----------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* === VIEW NAVIGATION === */
+  .view-nav {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .view-nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+
+  .view-nav-keys {
+    display: none;
+  }
+
+  /* === BOARD CONTAINER === */
+  .board {
+    padding: var(--space-6) var(--space-3);
+    padding-bottom: var(--space-16);
+  }
+
+  /* === THREE-COLUMN → SINGLE COLUMN === */
+  .three-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* === TWO-COLUMN → SINGLE COLUMN === */
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .two-col > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* === QUAD GRID → SINGLE COLUMN === */
+  .quad-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* === PILLAR GRID → 1 COLUMN === */
+  .pillar-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  /* === PRINT GRID → 4 COLUMNS === */
+  .print-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-3);
+  }
+
+  /* === GALLERY GRID → 2 COLUMNS === */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* === PHONE FRAME SCALING === */
+  .phone-frame {
+    --phone-width: 260px;
+    --phone-height: 540px;
+    --phone-radius: 32px;
+  }
+
+  .phone-frame.phone-large {
+    --phone-width: 300px;
+    --phone-height: 620px;
+    --phone-radius: 38px;
+  }
+
+  .phone-frame.phone-small {
+    --phone-width: 180px;
+    --phone-height: 380px;
+    --phone-radius: 26px;
+    --phone-bezel: 7px;
+    --phone-notch-w: 70px;
+    --phone-notch-h: 18px;
+  }
+
+  /* === MACHINE BODY SCALING === */
+  .machine-body {
+    --machine-width: 280px;
+    --machine-height: 490px;
+  }
+
+  /* === FLOW SEQUENCE === */
+  .flow-arrow {
+    width: 48px;
+    min-height: 60px;
+  }
+
+  /* === DIMENSION LINES — HIDE ON TABLET === */
+  .dim-h, .dim-v {
+    display: none;
+  }
+
+  /* === SPEC TABLES === */
+  .board-specs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .spec-table {
+    min-width: 500px;
+  }
+
+  /* === HUB PAGE === */
+  .hub-header {
+    padding: var(--space-10) var(--space-3) var(--space-6);
+  }
+
+  .hub-campaign {
+    font-size: var(--text-xl);
+  }
+
+  .hub-grid {
+    padding: 0 var(--space-3) var(--space-12);
+    grid-template-columns: 1fr;
+  }
+
+  .hub-footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-3);
+  }
+
+  /* === HUB INTRO SECTIONS === */
+  .hub-acts {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .hub-act {
+    max-width: 100%;
+  }
+
+  .hub-act-arrow {
+    width: 2px;
+    height: 24px;
+    margin-top: 0;
+    background: var(--wire-stroke-light);
+  }
+
+  .hub-act-arrow::after {
+    right: auto;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid var(--wire-stroke-light);
+    border-bottom: none;
+  }
+
+  .hub-locations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* === PALETTE STRIP === */
+  .palette-strip {
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    justify-content: center;
+  }
+
+  /* === PRINT PAIR (large print cards) === */
+  .print-pair {
+    gap: var(--space-6);
+  }
+
+  /* === LOGIC FLOW DIAGRAM === */
+  .logic-flow-diagram {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: var(--space-3);
+  }
+
+  /* === ANNOTATION COLUMNS === */
+  .anno-column {
+    padding-top: 0;
+  }
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE — PHONE (max-width: 480px)
+   ----------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+  /* === TYPOGRAPHY === */
+  .hub-campaign {
+    font-size: var(--text-lg);
+  }
+
+  .board-title {
+    font-size: var(--text-lg);
+  }
+
+  .board-subtitle {
+    font-size: var(--text-sm);
+  }
+
+  /* === BOARD PADDING === */
+  .board {
+    padding: var(--space-4) var(--space-2);
+    padding-bottom: var(--space-12);
+  }
+
+  /* === PRINT GRID → 2 COLUMNS === */
+  .print-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  /* === GALLERY GRID → 2 COLUMNS === */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-1);
+  }
+
+  /* === PHONE FRAMES → SMALLER === */
+  .phone-frame {
+    --phone-width: 240px;
+    --phone-height: 500px;
+    --phone-radius: 28px;
+    --phone-bezel: 10px;
+    --phone-notch-w: 100px;
+    --phone-notch-h: 24px;
+  }
+
+  .phone-frame.phone-large {
+    --phone-width: 280px;
+    --phone-height: 580px;
+    --phone-radius: 34px;
+  }
+
+  .phone-frame.phone-small {
+    --phone-width: 160px;
+    --phone-height: 340px;
+    --phone-radius: 24px;
+    --phone-bezel: 6px;
+    --phone-notch-w: 60px;
+    --phone-notch-h: 16px;
+  }
+
+  .phone-frame.phone-mini {
+    --phone-width: 140px;
+    --phone-height: 300px;
+    --phone-radius: 20px;
+    --phone-bezel: 5px;
+    --phone-notch-w: 50px;
+    --phone-notch-h: 14px;
+  }
+
+  /* === MACHINE BODY → SMALLER === */
+  .machine-body {
+    --machine-width: 240px;
+    --machine-height: 420px;
+  }
+
+  /* === FLOW SEQUENCE === */
+  .flow-arrow {
+    width: 36px;
+    min-height: 48px;
+  }
+
+  .step-annotations {
+    max-width: 200px;
+  }
+
+  /* === SPEC TABLE === */
+  .spec-table td:first-child {
+    width: 140px;
+    font-size: var(--text-xs);
+  }
+
+  .spec-table td:last-child {
+    font-size: var(--text-xs);
+  }
+
+  /* === HUB PAGE === */
+  .hub-header {
+    padding: var(--space-8) var(--space-2) var(--space-4);
+  }
+
+  .hub-card {
+    padding: var(--space-4);
+  }
+
+  .hub-card-preview {
+    height: 80px;
+  }
+
+  .hub-grid {
+    padding: 0 var(--space-2) var(--space-8);
+    gap: var(--space-4);
+  }
+
+  /* === HUB INTRO SECTIONS === */
+  .hub-context,
+  .hub-brief,
+  .hub-insight,
+  .hub-narrative,
+  .hub-locations,
+  .hub-nav-guide,
+  .hub-concept {
+    margin-left: var(--space-2);
+    margin-right: var(--space-2);
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+
+  .hub-locations-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-1);
+  }
+
+  .hub-loc {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+  }
+
+  /* === PALETTE STRIP === */
+  .color-swatch-callout {
+    font-size: 9px;
+  }
+
+  /* === PRINT FACE (large print card) === */
+  .print-card-large {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .print-face {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
+  }
+
+  /* === QUAD PANEL === */
+  .quad-panel {
+    padding: var(--space-4);
+  }
+
+  .machine-mini {
+    width: 130px;
+    height: 210px;
+  }
+
+  /* === SECTION LABELS === */
+  .section-label {
+    font-size: var(--text-xs);
+  }
+
+  /* === LOGIC NODES === */
+  .logic-node {
+    padding: var(--space-1) var(--space-2);
+    font-size: 9px;
+  }
+
+  .logic-flow-diagram .flow-arrow {
+    width: 32px;
+    min-height: 32px;
+  }
+
+  /* === HUB FOOTER === */
+  .hub-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .hub-footer span:nth-child(even) {
+    display: none;
+  }
+
+  /* === VIEW NAV LINKS === */
+  .view-nav-link {
+    font-size: 9px;
+    padding: var(--space-1) var(--space-2);
+  }
+
+  /* === ANNOTATION CALLOUTS === */
+  .anno-callout-static {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
+
+  /* === SET SLOTS (View 5) === */
+  .set-slots {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .set-slot {
+    width: 30px;
+    height: 40px;
+    font-size: var(--text-xs);
+  }
+}
