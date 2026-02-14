@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Part 1: Concept Overview — Field Notes by L.L.Bean</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/wireframe.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/views.css">
+  <style>
+    /* ============================================================
+       CONCEPT PAGE — Inline Styles
+       Copies hub-* patterns from index.html + new concept classes
+       ============================================================ */
+
+    /* --- Reused hub patterns (copied from index.html) --- */
+
+    .hub-context {
+      max-width: 800px;
+      margin: 0 auto var(--space-4);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .hub-context-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+    }
+    .hub-context-student {
+      font-family: var(--font-display);
+      font-size: var(--text-md);
+      color: var(--wire-black);
+      letter-spacing: var(--tracking-wide);
+    }
+    .hub-context-detail {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      letter-spacing: var(--tracking-wide);
+    }
+
+    .concept-brief {
+      max-width: 800px;
+      margin: 0 auto var(--space-6);
+      padding: var(--space-4) var(--space-6);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-left: var(--stroke-thick) solid var(--brand-rust);
+      border-radius: var(--radius-sm);
+      background: var(--wire-white);
+    }
+    .concept-brief-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+    .concept-brief-text {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      color: var(--wire-stroke);
+      line-height: var(--leading-loose);
+    }
+
+    .concept-insight {
+      max-width: 800px;
+      margin: 0 auto var(--space-8);
+      padding: var(--space-4) var(--space-6);
+      background: var(--wire-fill);
+      border-radius: var(--radius-lg);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      text-align: center;
+    }
+    .concept-insight-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--brand-ochre);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-2);
+      font-weight: 700;
+    }
+    .concept-insight-text {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      color: var(--wire-stroke);
+      line-height: var(--leading-loose);
+    }
+
+    /* --- System Diagram: Physical ↔ QR Bridge ↔ Digital --- */
+
+    .concept-section-label {
+      max-width: 800px;
+      margin: 0 auto var(--space-6);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--wire-stroke);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      text-align: center;
+      padding-bottom: var(--space-2);
+      border-bottom: var(--stroke-thin) solid var(--wire-stroke-light);
+    }
+
+    .concept-diagram {
+      max-width: 800px;
+      margin: 0 auto var(--space-8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-6);
+      padding: var(--space-8) var(--space-4);
+      background: var(--wire-white);
+      border: var(--stroke-base) solid var(--wire-stroke-light);
+      border-radius: var(--radius-lg);
+    }
+
+    .concept-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      text-align: center;
+      flex: 1;
+      max-width: 220px;
+    }
+
+    .concept-side-label {
+      font-family: var(--font-sans);
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--wire-black);
+    }
+
+    .concept-side-desc {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      line-height: var(--leading-normal);
+    }
+
+    /* CSS-only vending machine icon */
+    .concept-machine-icon {
+      width: 80px;
+      height: 140px;
+      border: var(--stroke-medium) solid var(--wire-stroke);
+      border-radius: 8px 8px 4px 4px;
+      position: relative;
+      background: var(--wire-fill);
+    }
+    .concept-machine-icon::before {
+      /* Display window */
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 12px;
+      right: 12px;
+      height: 40px;
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      background: var(--pattern-crosshatch);
+      background-color: var(--wire-white);
+      border-radius: 2px;
+    }
+    .concept-machine-icon::after {
+      /* Dispensing slot */
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      left: 16px;
+      right: 16px;
+      height: 8px;
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-radius: 2px;
+      background: var(--wire-fill-alt);
+    }
+    .machine-icon-slot {
+      /* Coin slot */
+      position: absolute;
+      top: 72px;
+      right: 12px;
+      width: 12px;
+      height: 3px;
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-radius: 1px;
+    }
+    .machine-icon-button {
+      /* Push button */
+      position: absolute;
+      top: 84px;
+      right: 11px;
+      width: 14px;
+      height: 14px;
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-radius: 50%;
+      background: var(--wire-white);
+    }
+
+    /* CSS-only phone icon */
+    .concept-phone-icon {
+      width: 60px;
+      height: 110px;
+      border: var(--stroke-medium) solid var(--wire-stroke);
+      border-radius: 12px;
+      position: relative;
+      background: var(--wire-fill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .concept-phone-icon::before {
+      /* Notch */
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--wire-stroke-light);
+    }
+    .concept-phone-icon::after {
+      /* Home indicator */
+      content: '';
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--wire-stroke-light);
+    }
+    .phone-icon-screen {
+      width: 44px;
+      height: 70px;
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-radius: 2px;
+      background: var(--wire-white);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px;
+      padding: 4px;
+      margin-top: 4px;
+    }
+    .phone-icon-card {
+      aspect-ratio: 2/3;
+      background: var(--pattern-crosshatch);
+      background-color: var(--wire-fill);
+      border: 0.5px solid var(--wire-stroke-light);
+      border-radius: 1px;
+    }
+
+    /* QR Bridge connector */
+    .concept-bridge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    .concept-bridge-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--flow-arrow);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      font-weight: 700;
+    }
+
+    .concept-bridge-line {
+      width: 120px;
+      height: 0;
+      border-top: 2px dashed var(--flow-arrow);
+      position: relative;
+    }
+    .concept-bridge-line::before,
+    .concept-bridge-line::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+    .concept-bridge-line::before {
+      left: -2px;
+      border-right: 7px solid var(--flow-arrow);
+    }
+    .concept-bridge-line::after {
+      right: -2px;
+      border-left: 7px solid var(--flow-arrow);
+    }
+
+    .concept-bridge-qr {
+      width: 36px;
+      height: 36px;
+      border: var(--stroke-medium) solid var(--wire-stroke);
+      border-radius: 3px;
+      background: var(--wire-white);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      padding: 4px;
+    }
+    .qr-block {
+      background: var(--wire-stroke);
+      border-radius: 1px;
+    }
+    .qr-block.empty {
+      background: transparent;
+    }
+
+    /* --- 4-Step "How It Works" Flow --- */
+
+    .concept-steps {
+      max-width: 900px;
+      margin: 0 auto var(--space-8);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      padding: var(--space-4);
+    }
+
+    .concept-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      max-width: 180px;
+      text-align: center;
+    }
+
+    .concept-step-num {
+      width: 40px;
+      height: 40px;
+      border: var(--stroke-medium) solid var(--wire-stroke);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--wire-stroke);
+      background: var(--wire-white);
+      flex-shrink: 0;
+    }
+
+    .concept-step-name {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--wire-black);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+    }
+
+    .concept-step-desc {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--wire-stroke);
+      line-height: var(--leading-normal);
+    }
+
+    .concept-step-arrow {
+      width: 48px;
+      height: 2px;
+      background: var(--flow-arrow-light);
+      margin-top: 20px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .concept-step-arrow::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -4px;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid var(--flow-arrow-light);
+    }
+
+    /* --- Narrative Arc (reused hub-act pattern) --- */
+
+    .concept-narrative {
+      max-width: 900px;
+      margin: 0 auto var(--space-8);
+      text-align: center;
+    }
+
+    .hub-acts {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    .hub-act {
+      flex: 1;
+      max-width: 260px;
+      padding: var(--space-4);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-radius: var(--radius-md);
+      background: var(--wire-white);
+    }
+
+    .hub-act-num {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+
+    .hub-act-name {
+      font-family: var(--font-sans);
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--wire-black);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+
+    .hub-act p {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--wire-stroke);
+      line-height: var(--leading-normal);
+      margin-bottom: var(--space-2);
+    }
+
+    .hub-act-arrow {
+      flex-shrink: 0;
+      width: 32px;
+      height: 2px;
+      background: var(--wire-stroke-light);
+      margin-top: 48px;
+      position: relative;
+    }
+    .hub-act-arrow::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid var(--wire-stroke-light);
+    }
+
+    /* Act location chips inside narrative cards */
+    .act-locations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+      justify-content: center;
+      margin-top: var(--space-1);
+    }
+
+    .act-chip {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--wire-stroke);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      background: var(--wire-fill);
+      white-space: nowrap;
+    }
+    .act-chip.act-1 { border-color: var(--brand-rust); color: var(--brand-rust); }
+    .act-chip.act-2 { border-color: var(--brand-ochre); color: var(--brand-ochre); }
+    .act-chip.act-3 { border-color: var(--brand-forest); color: var(--brand-forest); }
+
+    /* --- 8 Locations Grid --- */
+
+    .concept-locations {
+      max-width: 800px;
+      margin: 0 auto var(--space-8);
+      text-align: center;
+    }
+
+    .hub-locations-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-4);
+    }
+
+    .hub-locations-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-2);
+    }
+
+    .hub-loc {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--wire-stroke);
+      padding: var(--space-2) var(--space-3);
+      border: var(--stroke-thin) solid var(--wire-stroke-light);
+      border-radius: var(--radius-sm);
+      background: var(--wire-white);
+      text-align: left;
+    }
+
+    .hub-loc-num {
+      color: var(--wire-stroke-light);
+      margin-right: var(--space-2);
+      font-size: var(--text-xs);
+    }
+
+    .hub-loc.act-1 { border-left: var(--stroke-thick) solid var(--brand-rust); }
+    .hub-loc.act-2 { border-left: var(--stroke-thick) solid var(--brand-ochre); }
+    .hub-loc.act-3 { border-left: var(--stroke-thick) solid var(--brand-forest); }
+
+    /* --- Brand Alignment Section --- */
+
+    .concept-brand {
+      max-width: 900px;
+      margin: 0 auto var(--space-8);
+    }
+
+    /* --- CTA to Wireframes --- */
+
+    .concept-cta {
+      max-width: 500px;
+      margin: 0 auto var(--space-12);
+      text-align: center;
+      padding: var(--space-6);
+      border: var(--stroke-base) solid var(--wire-stroke-light);
+      border-radius: var(--radius-lg);
+      background: var(--wire-white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .concept-cta:hover {
+      border-color: var(--wire-stroke);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .concept-cta-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+
+    .concept-cta-link {
+      font-family: var(--font-sans);
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--wire-black);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      transition: color 0.2s;
+    }
+    .concept-cta-link:hover {
+      color: var(--brand-rust);
+    }
+    .concept-cta-link .arrow {
+      font-size: var(--text-lg);
+      transition: transform 0.2s;
+    }
+    .concept-cta-link:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    /* --- Hub footer (reused) --- */
+
+    .hub-footer {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-6);
+      padding: var(--space-6);
+      border-top: var(--stroke-thin) solid var(--wire-stroke-light);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--wire-stroke-light);
+    }
+
+    /* ============================================================
+       RESPONSIVE OVERRIDES
+       ============================================================ */
+
+    @media (max-width: 768px) {
+      .concept-diagram {
+        flex-direction: column;
+        gap: var(--space-4);
+        padding: var(--space-6) var(--space-3);
+      }
+
+      .concept-bridge-line {
+        width: 0;
+        height: 48px;
+        border-top: none;
+        border-left: 2px dashed var(--flow-arrow);
+      }
+      .concept-bridge-line::before {
+        left: -5px;
+        top: -2px;
+        right: auto;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 7px solid var(--flow-arrow);
+        border-top: none;
+      }
+      .concept-bridge-line::after {
+        left: -5px;
+        bottom: -2px;
+        top: auto;
+        right: auto;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid var(--flow-arrow);
+        border-bottom: none;
+      }
+
+      .concept-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .concept-step {
+        max-width: 100%;
+      }
+
+      .concept-step-arrow {
+        width: 2px;
+        height: 32px;
+        margin-top: 0;
+        margin-bottom: 0;
+        background: var(--flow-arrow-light);
+      }
+      .concept-step-arrow::after {
+        right: auto;
+        top: auto;
+        bottom: 0;
+        left: -4px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid var(--flow-arrow-light);
+        border-bottom: none;
+      }
+
+      .hub-acts {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+      }
+
+      .hub-act {
+        max-width: 100%;
+      }
+
+      .hub-act-arrow {
+        width: 2px;
+        height: 24px;
+        margin-top: 0;
+        background: var(--wire-stroke-light);
+      }
+      .hub-act-arrow::after {
+        right: auto;
+        top: auto;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid var(--wire-stroke-light);
+        border-bottom: none;
+      }
+
+      .hub-locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pillar-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .board {
+        padding: var(--space-4) var(--space-2);
+      }
+
+      .board-title {
+        font-size: var(--text-lg);
+      }
+
+      .concept-brief,
+      .concept-insight,
+      .concept-diagram,
+      .concept-narrative,
+      .concept-locations,
+      .concept-brand,
+      .concept-cta {
+        margin-left: var(--space-2);
+        margin-right: var(--space-2);
+      }
+
+      .concept-brief,
+      .concept-insight {
+        padding: var(--space-3);
+      }
+
+      .concept-step-num {
+        width: 32px;
+        height: 32px;
+        font-size: var(--text-xs);
+      }
+
+      .hub-locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-1);
+      }
+
+      .hub-loc {
+        font-size: var(--text-xs);
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .hub-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-1);
+      }
+
+      .hub-footer span:nth-child(even) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="view-nav">
+    <a href="index.html" class="view-nav-brand">L.L.Bean &mdash; Field Notes</a>
+    <ul class="view-nav-links">
+      <li><span class="view-nav-link active">Part 1: Concept</span></li>
+      <li><a href="index.html" class="view-nav-link">Part 2: Wireframes &rarr;</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== MAIN BOARD ===== -->
+  <div class="board">
+
+    <!-- ===== 1. TITLE / CONTEXT ===== -->
+    <header class="board-header" style="text-align: center; border-bottom: none; margin-bottom: var(--space-4);">
+      <span class="board-number">Part 1 &mdash; Concept Overview</span>
+      <h1 class="board-title" style="font-size: var(--text-2xl);">&ldquo;Field Notes&rdquo;</h1>
+      <p class="board-subtitle" style="max-width: 600px; margin: 0 auto;">
+        A dual collectible campaign repositioning L.L.Bean for Gen Z urban consumers
+      </p>
+    </header>
+
+    <div class="hub-context">
+      <span class="hub-context-label">SCAD &mdash; Advertising &amp; Branding</span>
+      <span class="hub-context-student">Kimberly Harper-Colucci</span>
+      <span class="hub-context-detail">ADBR Campaign Concept &middot; Winter 2026</span>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== 2. THE PROBLEM ===== -->
+    <div class="concept-brief">
+      <span class="concept-brief-label">The Problem</span>
+      <p class="concept-brief-text">
+        Gen Z sees L.L.Bean as their parents' brand &mdash; built for backcountry weekends they
+        don't take. But this generation doesn't separate &ldquo;outdoors&rdquo; from &ldquo;urban.&rdquo;
+        Their nature is the park between classes, the rooftop at golden hour, the bridge walk home.
+        L.L.Bean needs a way into these moments &mdash; one that feels collectible, shareable, and native to how
+        Gen Z already moves through their city.
+      </p>
+    </div>
+
+    <!-- ===== 3. THE INSIGHT ===== -->
+    <div class="concept-insight">
+      <span class="concept-insight-label">The Insight</span>
+      <p class="concept-insight-text">
+        Gen Z collects <em>experiences</em>, not gear. A photo print from a vending machine is both
+        a physical artifact and a digital flex &mdash; proof they were there. The collectible format
+        turns a brand touchpoint into a personal story worth sharing.
+      </p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== 4. THE CONCEPT — System Diagram ===== -->
+    <div class="concept-section-label">The Concept &mdash; Dual Collectible System</div>
+
+    <div class="concept-diagram">
+
+      <!-- Physical Side -->
+      <div class="concept-side">
+        <div class="concept-machine-icon">
+          <div class="machine-icon-slot"></div>
+          <div class="machine-icon-button"></div>
+        </div>
+        <span class="concept-side-label">Physical Print</span>
+        <span class="concept-side-desc">
+          Vending machine dispenses a limited-edition 2&times;3&rdquo; documentary photo print
+        </span>
+      </div>
+
+      <!-- QR Bridge -->
+      <div class="concept-bridge">
+        <span class="concept-bridge-label">QR Bridge</span>
+        <div class="concept-bridge-qr">
+          <div class="qr-block"></div>
+          <div class="qr-block empty"></div>
+          <div class="qr-block"></div>
+          <div class="qr-block empty"></div>
+          <div class="qr-block"></div>
+          <div class="qr-block empty"></div>
+          <div class="qr-block"></div>
+          <div class="qr-block empty"></div>
+          <div class="qr-block"></div>
+        </div>
+        <div class="concept-bridge-line"></div>
+        <span class="concept-bridge-label" style="font-size: 9px; color: var(--flow-arrow-light);">Scan to Unlock</span>
+      </div>
+
+      <!-- Digital Side -->
+      <div class="concept-side">
+        <div class="concept-phone-icon">
+          <div class="phone-icon-screen">
+            <div class="phone-icon-card"></div>
+            <div class="phone-icon-card"></div>
+            <div class="phone-icon-card"></div>
+            <div class="phone-icon-card"></div>
+          </div>
+        </div>
+        <span class="concept-side-label">Digital Collectible</span>
+        <span class="concept-side-desc">
+          Unlocks a story card in your mobile gallery with documentary content
+        </span>
+      </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== 5. HOW IT WORKS — 4-Step Flow ===== -->
+    <div class="concept-section-label">How It Works</div>
+
+    <div class="concept-steps">
+
+      <div class="concept-step">
+        <div class="concept-step-num">1</div>
+        <span class="concept-step-name">Find</span>
+        <p class="concept-step-desc">
+          Discover a Field Notes vending machine at one of 8 urban checkpoints across Savannah
+        </p>
+      </div>
+
+      <div class="concept-step-arrow"></div>
+
+      <div class="concept-step">
+        <div class="concept-step-num">2</div>
+        <span class="concept-step-name">Collect</span>
+        <p class="concept-step-desc">
+          Insert $2, receive a limited-edition 2&times;3&rdquo; documentary photo print
+        </p>
+      </div>
+
+      <div class="concept-step-arrow"></div>
+
+      <div class="concept-step">
+        <div class="concept-step-num">3</div>
+        <span class="concept-step-name">Scan</span>
+        <p class="concept-step-desc">
+          Flip the print over and scan the unique QR code on the back
+        </p>
+      </div>
+
+      <div class="concept-step-arrow"></div>
+
+      <div class="concept-step">
+        <div class="concept-step-num">4</div>
+        <span class="concept-step-name">Unlock</span>
+        <p class="concept-step-desc">
+          Add the digital collectible card to your gallery. Complete all 8 to unlock the full story.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== 6. NARRATIVE ARC ===== -->
+    <div class="concept-narrative">
+      <div class="concept-section-label" style="margin-left: 0; margin-right: 0;">3-Act Narrative Arc</div>
+
+      <div class="hub-acts">
+
+        <div class="hub-act" style="border-top: 3px solid var(--brand-rust);">
+          <span class="hub-act-num">Act 1</span>
+          <span class="hub-act-name">Homesick</span>
+          <p>Solitary urban moments. Missing something you can't name. The quiet rituals of city life.</p>
+          <div class="act-locations">
+            <span class="act-chip act-1">01 &middot; The Commute</span>
+            <span class="act-chip act-1">02 &middot; The Stoop</span>
+          </div>
+        </div>
+
+        <div class="hub-act-arrow"></div>
+
+        <div class="hub-act" style="border-top: 3px solid var(--brand-ochre);">
+          <span class="hub-act-num">Act 2</span>
+          <span class="hub-act-name">Discovery</span>
+          <p>Finding nature in the city. Eyes opening to the wild beauty between buildings.</p>
+          <div class="act-locations">
+            <span class="act-chip act-2">03 &middot; The Park</span>
+            <span class="act-chip act-2">04 &middot; The Rooftop</span>
+            <span class="act-chip act-2">05 &middot; The Market</span>
+            <span class="act-chip act-2">06 &middot; The Bridge</span>
+          </div>
+        </div>
+
+        <div class="hub-act-arrow"></div>
+
+        <div class="hub-act" style="border-top: 3px solid var(--brand-forest);">
+          <span class="hub-act-num">Act 3</span>
+          <span class="hub-act-name">Community</span>
+          <p>Individual discovery becomes collective experience. We belong here.</p>
+          <div class="act-locations">
+            <span class="act-chip act-3">07 &middot; The Gather</span>
+            <span class="act-chip act-3">08 &middot; The Promise</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== 7. 8 LOCATIONS ===== -->
+    <div class="concept-locations">
+      <span class="hub-locations-label">8 Checkpoint Locations &mdash; Savannah, GA</span>
+      <div class="hub-locations-grid">
+        <span class="hub-loc act-1"><span class="hub-loc-num">01</span> The Commute</span>
+        <span class="hub-loc act-1"><span class="hub-loc-num">02</span> The Stoop</span>
+        <span class="hub-loc act-2"><span class="hub-loc-num">03</span> The Park</span>
+        <span class="hub-loc act-2"><span class="hub-loc-num">04</span> The Rooftop</span>
+        <span class="hub-loc act-2"><span class="hub-loc-num">05</span> The Market</span>
+        <span class="hub-loc act-2"><span class="hub-loc-num">06</span> The Bridge</span>
+        <span class="hub-loc act-3"><span class="hub-loc-num">07</span> The Gather</span>
+        <span class="hub-loc act-3"><span class="hub-loc-num">08</span> The Promise</span>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== 8. BRAND ALIGNMENT ===== -->
+    <div class="concept-brand">
+      <div class="concept-section-label" style="margin-left: 0; margin-right: 0;">Campaign Pillars &mdash; Brand Alignment</div>
+
+      <div class="pillar-grid">
+        <div class="pillar-box">
+          <h3>Storytelling</h3>
+          <p>
+            Rooted in L.L.Bean's tradition of documentary storytelling. Each print captures a real
+            urban moment &mdash; no stock photography, no studio shoots. The collection tells
+            a complete narrative arc from solitude to community.
+          </p>
+        </div>
+
+        <div class="pillar-box">
+          <h3>Innovative Technology</h3>
+          <p>
+            QR-activated digital collectibles bridge physical and digital. NFC-enabled
+            contactless payment. Thermal sublimation printing for archival-quality output.
+            Web-based AR layer for enhanced story content.
+          </p>
+        </div>
+
+        <div class="pillar-box">
+          <h3>Brand Content Integration</h3>
+          <p>
+            L.L.Bean's outdoor heritage meets urban Gen Z culture. The vending machine becomes
+            a brand artifact. The collection mechanic drives repeat engagement.
+            Every interaction is shareable content.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== 9. EDITION & SCARCITY (brief) ===== -->
+    <div class="concept-insight" style="margin-bottom: var(--space-8);">
+      <span class="concept-insight-label" style="color: var(--wire-stroke-light);">Edition System</span>
+      <p class="concept-insight-text" style="font-size: var(--text-sm);">
+        Each location produces <strong>50 standard prints</strong> + <strong>10 rare prints</strong> (gold border, alternate angle).
+        400 standard + 80 rare = <strong>480 total prints</strong> across the campaign.
+        When the community collectively reaches 500 activations, a collaborative <strong>community card</strong> unlocks for everyone.
+      </p>
+    </div>
+
+    <!-- ===== 10. CTA TO WIREFRAMES ===== -->
+    <div class="concept-cta">
+      <span class="concept-cta-label">Next: See the System</span>
+      <a href="index.html" class="concept-cta-link">
+        Explore the Wireframes <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="hub-footer">
+    <span>ADBR Campaign Concept</span>
+    <span>&middot;</span>
+    <span>L.L.Bean Gen Z Urban Repositioning</span>
+    <span>&middot;</span>
+    <span>2026</span>
+  </footer>
+
+</body>
+</html>
