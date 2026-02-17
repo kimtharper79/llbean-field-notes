@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Field Notes Demo — L.L.Bean User Experience</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    /* ============================================================
+       INTERACTIVE DEMO — Field Notes by L.L.Bean
+       A user-facing prototype simulating the full experience
+       ============================================================ */
+
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      background: #E8E4DC;
+      font-family: var(--font-sans);
+      color: var(--wire-black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* === DESKTOP WRAPPER === */
+    .demo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+    }
+
+    /* === NARRATOR BAR === */
+    .demo-narrator {
+      max-width: 420px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      background: rgba(26,26,26,0.85);
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+    }
+    .narrator-dot {
+      width: 8px; height: 8px;
+      background: var(--brand-rust);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: narrator-pulse 2s ease-in-out infinite;
+    }
+    @keyframes narrator-pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    .narrator-text {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+      flex: 1;
+    }
+    .narrator-toggle {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: rgba(255,255,255,0.4);
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 3px 8px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .narrator-toggle:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.3); }
+    .demo-narrator.hidden { display: none; }
+
+    /* === PHONE FRAME === */
+    .demo-phone {
+      width: 375px;
+      height: 780px;
+      border-radius: 44px;
+      border: 6px solid #1A1A1A;
+      background: var(--wire-bg);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.05);
+    }
+    .demo-notch {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 150px; height: 30px;
+      background: #1A1A1A;
+      border-radius: 0 0 20px 20px;
+      z-index: 50;
+    }
+    .demo-home-bar {
+      position: absolute;
+      bottom: 8px; left: 50%;
+      transform: translateX(-50%);
+      width: 120px; height: 4px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 2px;
+      z-index: 50;
+    }
+    .demo-screen-area {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden;
+    }
+
+    /* === SCREEN SYSTEM === */
+    .screen {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: none;
+      flex-direction: column;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding-top: 44px;
+      padding-bottom: 24px;
+    }
+    .screen.active {
+      display: flex;
+      animation: screen-enter 0.35s ease-out;
+    }
+    .screen.exit {
+      display: flex;
+      animation: screen-exit 0.3s ease-in forwards;
+    }
+    @keyframes screen-enter {
+      from { transform: translateX(60px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes screen-exit {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(-60px); opacity: 0; }
+    }
+    @keyframes screen-enter-left {
+      from { transform: translateX(-60px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* === STATUS BAR === */
+    .status-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 44px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 0 24px 6px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--wire-black);
+      z-index: 40;
+    }
+    .status-bar.light { color: white; }
+
+    /* === BUTTONS === */
+    .demo-btn {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .demo-btn:active { transform: scale(0.97); }
+    .demo-btn.primary {
+      background: var(--brand-rust);
+      color: white;
+      width: 100%;
+    }
+    .demo-btn.primary:hover { opacity: 0.9; }
+    .demo-btn.secondary {
+      background: white;
+      color: var(--wire-black);
+      border: 1.5px solid var(--wire-stroke-light);
+    }
+    .demo-btn.gold {
+      background: var(--brand-ochre);
+      color: white;
+      width: 100%;
+    }
+    .demo-btn.small {
+      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+    .demo-btn.ghost {
+      background: none;
+      color: var(--wire-stroke-light);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 8px 16px;
+      border: 1px dashed var(--wire-stroke-light);
+      border-radius: 8px;
+    }
+
+    /* === PROGRESS BAR === */
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: var(--wire-fill-alt);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--brand-forest);
+      border-radius: 3px;
+      transition: width 0.6s ease-out;
+    }
+
+    /* ============================================================
+       SCREEN 1: VENDING MACHINE
+       ============================================================ */
+    .screen[data-screen="vending"] {
+      background: var(--wire-bg);
+      padding-top: 44px;
+    }
+    .vending-header {
+      background: var(--brand-forest);
+      padding: 28px 24px 18px;
+      text-align: center;
+    }
+    .vending-wordmark {
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
+      display: block;
+    }
+    .vending-headline {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 0.04em;
+    }
+    .vending-badge {
+      text-align: center;
+      padding: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--brand-ochre);
+      letter-spacing: 0.1em;
+      background: var(--wire-fill);
+      border-bottom: 1px solid var(--wire-fill-alt);
+    }
+    .vending-photo {
+      width: calc(100% - 48px);
+      margin: 20px auto 0;
+      aspect-ratio: 3/2;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .vending-meta {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--wire-stroke-light);
+    }
+    .vending-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--wire-black);
+      font-family: var(--font-sans);
+    }
+    .vending-actions {
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .vending-pay {
+      text-align: center;
+      padding: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--wire-stroke-light);
+    }
+    .vending-nfc { font-size: 14px; margin-right: 4px; }
+
+    /* ============================================================
+       SCREEN 2/3: PHYSICAL PRINT (front + back with 3D flip)
+       ============================================================ */
+    .screen[data-screen="print"] {
+      background: var(--wire-fill);
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 44px 24px 24px;
+    }
+    .print-scene { perspective: 1000px; }
+    .print-card-3d {
+      width: 210px;
+      height: 315px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.7s ease-in-out;
+    }
+    .print-card-3d.flipped { transform: rotateY(180deg); }
+    .print-face {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    .print-face-front {
+      background: white;
+      display: flex;
+      flex-direction: column;
+    }
+    .print-face-front .print-photo-area {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+    }
+    .print-face-front .print-info-bar {
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+    }
+    .print-cp {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--wire-black);
+      letter-spacing: 0.05em;
+    }
+    .print-ed {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+    }
+    .print-face-back {
+      background: white;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 24px;
+    }
+    .qr-visual {
+      width: 80px; height: 80px;
+      border: 2px solid var(--wire-black);
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      padding: 6px;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .qr-visual:hover { box-shadow: 0 0 0 3px rgba(193,68,14,0.3); }
+    .qr-cell { background: var(--wire-black); border-radius: 1px; }
+    .qr-cell.empty { background: transparent; }
+    .print-caption {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: var(--wire-stroke);
+      font-style: italic;
+      text-align: center;
+    }
+    .print-scan-cta {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .print-brand {
+      margin-top: auto;
+      text-align: center;
+    }
+    .print-brand-fn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--wire-black);
+      letter-spacing: 0.1em;
+      display: block;
+    }
+    .print-brand-ll {
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--wire-stroke-light);
+      display: block;
+    }
+    .print-instruction {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--wire-stroke);
+      text-align: center;
+    }
+    @keyframes print-dispense {
+      0% { transform: translateY(-40px); opacity: 0; }
+      60% { transform: translateY(6px); }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    .print-dispensing { animation: print-dispense 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+    /* ============================================================
+       SCREEN 4: CAMERA SCAN
+       ============================================================ */
+    .screen[data-screen="scan"] {
+      background: #111;
+      padding-top: 0;
+    }
+    .scan-viewfinder {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .scan-reticle {
+      width: 180px; height: 180px;
+      position: relative;
+    }
+    .scan-corner {
+      position: absolute;
+      width: 24px; height: 24px;
+      border-color: var(--brand-rust);
+      border-style: solid;
+      border-width: 0;
+      transition: border-color 0.3s;
+    }
+    .scan-corner.tl { top: 0; left: 0; border-top-width: 3px; border-left-width: 3px; border-radius: 4px 0 0 0; }
+    .scan-corner.tr { top: 0; right: 0; border-top-width: 3px; border-right-width: 3px; border-radius: 0 4px 0 0; }
+    .scan-corner.bl { bottom: 0; left: 0; border-bottom-width: 3px; border-left-width: 3px; border-radius: 0 0 0 4px; }
+    .scan-corner.br { bottom: 0; right: 0; border-bottom-width: 3px; border-right-width: 3px; border-radius: 0 0 4px 0; }
+    .scan-corner.found { border-color: var(--brand-forest); }
+    .scan-line {
+      position: absolute;
+      left: 8px; right: 8px;
+      height: 2px;
+      background: var(--brand-rust);
+      opacity: 0.7;
+      border-radius: 1px;
+      animation: scan-sweep 1.5s ease-in-out infinite;
+    }
+    @keyframes scan-sweep {
+      0%, 100% { top: 12px; }
+      50% { top: calc(100% - 14px); }
+    }
+    .scan-instruction {
+      position: absolute;
+      bottom: 80px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ============================================================
+       SCREEN 5: LOADING
+       ============================================================ */
+    .screen[data-screen="loading"] {
+      background: var(--wire-bg);
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+    .compass-spinner {
+      width: 56px; height: 56px;
+      animation: compass-spin 1.5s ease-in-out infinite;
+    }
+    @keyframes compass-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .loading-text {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      color: var(--wire-stroke);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .loading-bar {
+      width: 200px;
+      height: 4px;
+      background: var(--wire-fill-alt);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .loading-bar-fill {
+      width: 0;
+      height: 100%;
+      background: var(--brand-rust);
+      border-radius: 2px;
+    }
+    .loading-bar-fill.animate {
+      animation: loading-fill 2.5s ease-out forwards;
+    }
+    @keyframes loading-fill {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* ============================================================
+       SCREEN 6: CARD REVEAL
+       ============================================================ */
+    .screen[data-screen="reveal"] {
+      background: var(--wire-bg);
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 44px 24px 24px;
+    }
+    .reveal-scene { perspective: 1000px; }
+    .reveal-card {
+      width: 200px;
+      height: 280px;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    .reveal-card.flip {
+      animation: card-flip-reveal 0.8s ease-out forwards;
+    }
+    @keyframes card-flip-reveal {
+      0% { transform: rotateY(0deg) scale(0.85); }
+      50% { transform: rotateY(90deg) scale(0.95); }
+      100% { transform: rotateY(180deg) scale(1); }
+    }
+    .reveal-face {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .reveal-back-face {
+      background: var(--brand-forest);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    .reveal-back-fn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.15em;
+    }
+    .reveal-back-ll {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+    }
+    .reveal-front-face {
+      transform: rotateY(180deg);
+      background: white;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 30px rgba(193,68,14,0.2), 0 0 0 2px rgba(193,68,14,0.1);
+    }
+    .reveal-photo {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+    }
+    .reveal-info {
+      padding: 14px;
+      text-align: center;
+    }
+    .reveal-name {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--wire-black);
+      display: block;
+    }
+    .reveal-edition {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      display: block;
+      margin-top: 2px;
+    }
+    .reveal-date {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      display: block;
+    }
+    .reveal-caption {
+      font-family: var(--font-display);
+      font-size: 15px;
+      color: var(--wire-stroke);
+      font-style: italic;
+      text-align: center;
+    }
+    .reveal-btn-wrap { width: 100%; padding: 0 24px; opacity: 0; transition: opacity 0.4s; }
+    .reveal-btn-wrap.visible { opacity: 1; }
+
+    /* ============================================================
+       SCREEN 7: CONFIRMATION
+       ============================================================ */
+    .screen[data-screen="confirm"] {
+      background: var(--wire-bg);
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 44px 32px 24px;
+    }
+    .confirm-check {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--brand-forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: check-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes check-pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .confirm-check svg { width: 28px; height: 28px; }
+    .confirm-check path {
+      stroke: white;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      stroke-dasharray: 30;
+      stroke-dashoffset: 30;
+      animation: check-draw 0.4s 0.3s ease-out forwards;
+    }
+    @keyframes check-draw {
+      to { stroke-dashoffset: 0; }
+    }
+    .confirm-title {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .confirm-count {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--wire-stroke-light);
+    }
+    .confirm-progress {
+      width: 100%;
+      max-width: 260px;
+    }
+    .confirm-actions {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      margin-top: 8px;
+    }
+    .confirm-actions .demo-btn { flex: 1; text-align: center; }
+
+    /* ============================================================
+       SCREEN 8: GALLERY
+       ============================================================ */
+    .screen[data-screen="gallery"] {
+      background: var(--wire-bg);
+    }
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+    }
+    .gallery-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .gallery-share {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--brand-rust);
+      cursor: pointer;
+    }
+    .gallery-progress {
+      padding: 0 20px 12px;
+    }
+    .gallery-progress-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 0 20px;
+    }
+    .gallery-card {
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .gallery-card:active { transform: scale(0.96); }
+    .gallery-card.collected {
+      background: white;
+      border: 1.5px solid var(--wire-fill-alt);
+    }
+    .gallery-card.locked {
+      background: var(--wire-fill-alt);
+      border: 1.5px dashed var(--wire-stroke-light);
+    }
+    .gallery-card-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background-size: cover;
+      background-position: center;
+    }
+    .gallery-card-lock {
+      width: 100%;
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--wire-stroke-light);
+    }
+    .gallery-card-name {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--wire-stroke);
+      padding: 6px 8px 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gallery-card-date {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      color: var(--wire-stroke-light);
+      padding: 0 8px 6px;
+    }
+    .gallery-community {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      margin-top: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      border-top: 1px solid var(--wire-fill-alt);
+    }
+    .gallery-map-link {
+      color: var(--brand-rust);
+      cursor: pointer;
+    }
+    .gallery-fast-forward {
+      padding: 12px 20px 0;
+    }
+    .tab-bar {
+      margin-top: auto;
+      display: flex;
+      border-top: 1px solid var(--wire-fill-alt);
+      background: white;
+      padding: 8px 0 4px;
+    }
+    .tab-item {
+      flex: 1;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--wire-stroke-light);
+      padding: 6px 0;
+      cursor: pointer;
+    }
+    .tab-item.active {
+      color: var(--brand-rust);
+      font-weight: 700;
+      border-top: 2px solid var(--brand-rust);
+      margin-top: -1px;
+    }
+    @keyframes card-shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-4px); }
+      40% { transform: translateX(4px); }
+      60% { transform: translateX(-3px); }
+      80% { transform: translateX(3px); }
+    }
+    .gallery-card.shake { animation: card-shake 0.4s ease-out; }
+
+    /* ============================================================
+       SCREEN 9: CARD DETAIL
+       ============================================================ */
+    .screen[data-screen="detail"] {
+      background: white;
+    }
+    .detail-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 20px;
+    }
+    .detail-back {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--brand-rust);
+      cursor: pointer;
+    }
+    .detail-share {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--brand-rust);
+      cursor: pointer;
+    }
+    .detail-photo {
+      width: calc(100% - 40px);
+      margin: 0 auto;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+    }
+    .detail-meta {
+      padding: 16px 20px 8px;
+    }
+    .detail-location {
+      font-size: 18px;
+      font-weight: 700;
+      display: block;
+    }
+    .detail-date {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      display: block;
+      margin-top: 4px;
+    }
+    .detail-edition {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      display: block;
+    }
+    .detail-story {
+      margin: 12px 20px;
+      padding: 12px 16px;
+      border-left: 3px solid var(--brand-ochre);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-style: italic;
+      color: var(--wire-stroke);
+      line-height: 1.6;
+      background: rgba(204,119,34,0.04);
+      border-radius: 0 8px 8px 0;
+    }
+    .detail-video {
+      margin: 8px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--wire-fill);
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .detail-play {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--wire-black);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .detail-video-text strong {
+      font-size: 13px;
+      display: block;
+    }
+    .detail-video-text span {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--wire-stroke-light);
+    }
+    .detail-actions { padding: 16px 20px; }
+
+    /* ============================================================
+       SCREEN 10: MAP
+       ============================================================ */
+    .screen[data-screen="map"] {
+      background: var(--wire-bg);
+    }
+    .map-header {
+      padding: 12px 20px;
+    }
+    .map-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .map-container {
+      flex: 1;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-container svg { width: 100%; max-height: 400px; }
+    .map-legend {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      padding: 8px 20px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+    }
+    .map-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .map-dot.collected { background: var(--brand-rust); }
+    .map-dot.locked { border: 1.5px dashed var(--wire-stroke-light); }
+    .map-continue { padding: 8px 20px; }
+
+    /* ============================================================
+       SCREEN 11: RARE CARD
+       ============================================================ */
+    .screen[data-screen="rare"] {
+      background: #1A1A1A;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 44px 24px 24px;
+    }
+    .rare-container { position: relative; }
+    .rare-card-frame {
+      width: 200px;
+      height: 280px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      border: 3px solid var(--brand-ochre);
+      box-shadow: 0 0 30px rgba(204,119,34,0.4), 0 0 60px rgba(204,119,34,0.15);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: rare-entrance 0.8s ease-out;
+    }
+    @keyframes rare-entrance {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .rare-photo {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+    }
+    .rare-info {
+      padding: 12px;
+      text-align: center;
+      background: white;
+    }
+    .rare-star-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--brand-ochre);
+      letter-spacing: 0.1em;
+      display: block;
+    }
+    .rare-title {
+      font-size: 16px;
+      font-weight: 700;
+      display: block;
+      margin: 2px 0;
+    }
+    .rare-ed {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+    }
+    .sparkle {
+      position: absolute;
+      width: 6px; height: 6px;
+      background: var(--brand-ochre);
+      border-radius: 50%;
+      animation: sparkle-float 2s ease-in-out infinite;
+    }
+    @keyframes sparkle-float {
+      0%, 100% { opacity: 0; transform: scale(0.5) translateY(0); }
+      50% { opacity: 1; transform: scale(1.3) translateY(-10px); }
+    }
+    .rare-screen-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ============================================================
+       SCREEN 12: SET COMPLETE
+       ============================================================ */
+    .screen[data-screen="complete"] {
+      background: var(--wire-bg);
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 44px 24px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .complete-slots {
+      display: flex;
+      gap: 4px;
+    }
+    .complete-slot {
+      width: 32px; height: 32px;
+      border: 1.5px solid var(--brand-forest);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--brand-forest);
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    .complete-slot.filled {
+      animation: slot-fill 0.3s ease-out forwards;
+      background: rgba(44,95,45,0.05);
+    }
+    @keyframes slot-fill {
+      0% { opacity: 0; transform: scale(0.5); }
+      60% { transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .complete-badge {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brand-forest);
+      letter-spacing: 0.1em;
+      padding: 8px 20px;
+      border: 2px solid var(--brand-forest);
+      border-radius: 20px;
+    }
+    .complete-title {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .complete-desc {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--wire-stroke);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .complete-bonus {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--wire-fill);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 280px;
+    }
+    .confetti {
+      position: absolute;
+      width: 6px; height: 6px;
+      border-radius: 1px;
+      opacity: 0;
+      animation: confetti-fall 3s ease-in forwards;
+    }
+    @keyframes confetti-fall {
+      0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(700px) rotate(720deg); opacity: 0; }
+    }
+
+    /* ============================================================
+       SCREEN 13: COMMUNITY
+       ============================================================ */
+    .screen[data-screen="community"] {
+      background: var(--wire-bg);
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 44px 32px 24px;
+    }
+    .community-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .milestone-track {
+      width: 100%;
+      height: 10px;
+      background: var(--wire-fill-alt);
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+    .milestone-fill {
+      height: 100%;
+      background: var(--brand-rust);
+      border-radius: 5px;
+      transition: width 0.3s ease-out;
+    }
+    .milestone-count {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--wire-stroke-light);
+      text-align: center;
+    }
+    .community-reveal {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    .community-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .community-card {
+      display: inline-block;
+      padding: 20px 28px;
+      border: 2px solid var(--brand-rust);
+      border-radius: 12px;
+      background: rgba(193,68,14,0.04);
+      margin-bottom: 12px;
+    }
+    .community-card-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brand-rust);
+      letter-spacing: 0.05em;
+      display: block;
+    }
+    .community-card-text {
+      font-size: 11px;
+      color: var(--wire-stroke);
+      margin-top: 4px;
+    }
+    .community-desc {
+      font-size: 13px;
+      color: var(--wire-stroke);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .community-actions { width: 100%; margin-top: 8px; }
+
+    /* === PROGRESS DOTS === */
+    .demo-dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .demo-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .demo-dot.active {
+      background: var(--brand-rust);
+      transform: scale(1.3);
+    }
+
+    /* ============================================================
+       RESPONSIVE: MOBILE (fills viewport)
+       ============================================================ */
+    @media (max-width: 480px) {
+      body { justify-content: flex-start; }
+      .demo-wrapper { padding: 0; width: 100%; }
+      .demo-narrator { display: none; }
+      .demo-phone {
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .demo-notch, .demo-home-bar { display: none; }
+      .demo-dots { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-wrapper">
+
+  <!-- NARRATOR -->
+  <div class="demo-narrator" id="narrator">
+    <div class="narrator-dot"></div>
+    <span class="narrator-text" id="narratorText">The user approaches a Field Notes vending machine and browses available prints.</span>
+    <button class="narrator-toggle" onclick="toggleNarrator()">Hide</button>
+  </div>
+
+  <!-- PHONE FRAME -->
+  <div class="demo-phone">
+    <div class="demo-notch"></div>
+    <div class="demo-home-bar"></div>
+    <div class="demo-screen-area">
+
+      <!-- Status Bar (shared) -->
+      <div class="status-bar" id="statusBar">
+        <span>9:41</span>
+        <span style="font-size:10px;">&#9679;&#9679;&#9679;</span>
+      </div>
+
+      <!-- ===== SCREEN 1: VENDING ===== -->
+      <section class="screen active" data-screen="vending">
+        <div class="vending-header">
+          <span class="vending-wordmark">L.L.Bean</span>
+          <span class="vending-headline">FIELD NOTES</span>
+        </div>
+        <div class="vending-badge">CP3: THE PARK</div>
+        <div class="vending-photo" style="background-image: url('images/03-park.png');"></div>
+        <div class="vending-meta">
+          <span>38 of 50 remaining</span>
+          <span class="vending-price">$3</span>
+        </div>
+        <div class="vending-actions">
+          <button class="demo-btn primary" onclick="go('print')">Select This Print</button>
+        </div>
+        <div class="vending-pay">
+          <span class="vending-nfc">)))</span> Tap to pay &mdash; Apple Pay, Google Pay
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 2/3: PRINT (3D flip) ===== -->
+      <section class="screen" data-screen="print">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:0 24px;">
+          <div class="print-scene">
+            <div class="print-card-3d print-dispensing" id="printCard" onclick="flipPrint()">
+              <!-- FRONT -->
+              <div class="print-face print-face-front">
+                <div class="print-photo-area" style="background-image: url('images/03-park.png');"></div>
+                <div class="print-info-bar">
+                  <span class="print-cp">CP3: THE PARK</span>
+                  <span class="print-ed">12 / 50</span>
+                </div>
+              </div>
+              <!-- BACK -->
+              <div class="print-face print-face-back">
+                <div class="qr-visual" onclick="event.stopPropagation(); go('scan');">
+                  <div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div>
+                  <div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div>
+                  <div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div>
+                  <div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div>
+                  <div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div>
+                </div>
+                <p class="print-caption">&ldquo;Every corner has a story&rdquo;</p>
+                <p class="print-scan-cta">Scan to activate your digital collectible</p>
+                <div class="print-brand">
+                  <span class="print-brand-fn">FIELD NOTES</span>
+                  <span class="print-brand-ll">L.L.Bean</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="print-instruction" id="printInstruction">Your print has been dispensed. Tap to flip it over.</p>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 4: SCAN ===== -->
+      <section class="screen" data-screen="scan">
+        <div class="scan-viewfinder">
+          <div class="scan-reticle" id="scanReticle">
+            <div class="scan-corner tl"></div>
+            <div class="scan-corner tr"></div>
+            <div class="scan-corner bl"></div>
+            <div class="scan-corner br"></div>
+            <div class="scan-line"></div>
+          </div>
+          <span class="scan-instruction">Point camera at QR code</span>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 5: LOADING ===== -->
+      <section class="screen" data-screen="loading">
+        <div class="compass-spinner">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="26" stroke="#C1440E" stroke-width="1.5" opacity="0.3"/>
+            <path d="M28 2 L31 28 L28 54 L25 28 Z" fill="#C1440E" opacity="0.6"/>
+            <path d="M2 28 L28 25 L54 28 L28 31 Z" fill="#8B8680" opacity="0.4"/>
+            <circle cx="28" cy="28" r="3" fill="#C1440E"/>
+          </svg>
+        </div>
+        <p class="loading-text">Activating your<br>Field Note...</p>
+        <div class="loading-bar">
+          <div class="loading-bar-fill" id="loadingFill"></div>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 6: REVEAL ===== -->
+      <section class="screen" data-screen="reveal">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:0 24px;">
+          <div class="reveal-scene">
+            <div class="reveal-card" id="revealCard">
+              <div class="reveal-face reveal-back-face">
+                <span class="reveal-back-fn">FIELD NOTES</span>
+                <span class="reveal-back-ll">L.L.Bean</span>
+              </div>
+              <div class="reveal-face reveal-front-face">
+                <div class="reveal-photo" style="background-image: url('images/03-park.png');"></div>
+                <div class="reveal-info">
+                  <span class="reveal-name">THE PARK</span>
+                  <span class="reveal-edition">Edition 12 / 50</span>
+                  <span class="reveal-date">January 15, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="reveal-caption">&ldquo;Every corner has a story&rdquo;</p>
+          <div class="reveal-btn-wrap" id="revealBtnWrap">
+            <button class="demo-btn primary" onclick="go('confirm')">Continue</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 7: CONFIRM ===== -->
+      <section class="screen" data-screen="confirm">
+        <div class="confirm-check">
+          <svg viewBox="0 0 24 24"><path d="M4 12 L9 17 L20 6"/></svg>
+        </div>
+        <h2 class="confirm-title">Added to your<br>Field Notes</h2>
+        <span class="confirm-count">4 of 8 collected</span>
+        <div class="confirm-progress">
+          <div class="progress-track">
+            <div class="progress-fill" id="confirmProgress" style="width: 37.5%;"></div>
+          </div>
+        </div>
+        <div class="confirm-actions">
+          <button class="demo-btn secondary small">Share</button>
+          <button class="demo-btn primary small" onclick="go('gallery')">View Gallery</button>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 8: GALLERY ===== -->
+      <section class="screen" data-screen="gallery">
+        <div class="gallery-header">
+          <h2 class="gallery-title">My Field Notes</h2>
+          <span class="gallery-share">Share All</span>
+        </div>
+        <div class="gallery-progress">
+          <span class="gallery-progress-label" id="galleryProgressLabel">4 of 8 locations discovered</span>
+          <div class="progress-track">
+            <div class="progress-fill" id="galleryProgressFill" style="width: 50%;"></div>
+          </div>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+        <div class="gallery-community">
+          <span>487 collectors active</span>
+          <span class="gallery-map-link" onclick="go('map')">View map &rarr;</span>
+        </div>
+        <div class="gallery-fast-forward">
+          <button class="demo-btn ghost" id="fastForwardBtn" onclick="fastForward()">Complete Collection &rarr;</button>
+        </div>
+        <div class="tab-bar">
+          <span class="tab-item active">Collection</span>
+          <span class="tab-item" onclick="go('map')">Map</span>
+          <span class="tab-item">Profile</span>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 9: DETAIL ===== -->
+      <section class="screen" data-screen="detail">
+        <div class="detail-nav">
+          <span class="detail-back" onclick="go('gallery','left')">&larr; Back</span>
+          <span class="detail-share">Share</span>
+        </div>
+        <div class="detail-photo" id="detailPhoto"></div>
+        <div class="detail-meta">
+          <span class="detail-location" id="detailLocation"></span>
+          <span class="detail-date" id="detailDate"></span>
+          <span class="detail-edition" id="detailEdition"></span>
+        </div>
+        <blockquote class="detail-story" id="detailStory"></blockquote>
+        <div class="detail-video">
+          <div class="detail-play">&#9654;</div>
+          <div class="detail-video-text">
+            <strong>Watch the moment</strong>
+            <span>Documentary footage &mdash; 0:45</span>
+          </div>
+        </div>
+        <div class="detail-actions">
+          <button class="demo-btn primary">Share to Instagram Stories</button>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 10: MAP ===== -->
+      <section class="screen" data-screen="map">
+        <div class="map-header">
+          <h2 class="map-title">Savannah Trail</h2>
+        </div>
+        <div class="map-container">
+          <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" id="mapSvg">
+            <path d="M0 28 Q40 22, 80 30 Q120 38, 160 26 Q180 22, 200 25" fill="none" stroke="#B0C4D8" stroke-width="8" opacity="0.5"/>
+            <path d="M0 28 Q40 22, 80 30 Q120 38, 160 26 Q180 22, 200 25 L200 0 L0 0 Z" fill="#D6E4EE" opacity="0.4"/>
+            <text x="100" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#9BB" font-style="italic">Savannah River</text>
+            <line x1="55" y1="18" x2="55" y2="45" stroke="#9B9B9B" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="8" y1="75" x2="192" y2="75" stroke="#D5D0C8" stroke-width="0.8"/>
+            <text x="6" y="73" font-family="monospace" font-size="5" fill="#B0ADA5">Bay St</text>
+            <line x1="8" y1="105" x2="192" y2="105" stroke="#D5D0C8" stroke-width="0.8"/>
+            <text x="6" y="103" font-family="monospace" font-size="5" fill="#B0ADA5">Broughton</text>
+            <line x1="8" y1="145" x2="192" y2="145" stroke="#D5D0C8" stroke-width="0.8"/>
+            <text x="6" y="143" font-family="monospace" font-size="5" fill="#B0ADA5">Perry</text>
+            <line x1="8" y1="168" x2="192" y2="168" stroke="#D5D0C8" stroke-width="0.8"/>
+            <text x="6" y="166" font-family="monospace" font-size="5" fill="#B0ADA5">Jones</text>
+            <line x1="8" y1="195" x2="192" y2="195" stroke="#D5D0C8" stroke-width="0.8"/>
+            <text x="6" y="193" font-family="monospace" font-size="5" fill="#B0ADA5">Gaston</text>
+            <line x1="55" y1="45" x2="55" y2="280" stroke="#D5D0C8" stroke-width="0.8"/>
+            <text x="53" y="288" text-anchor="middle" font-family="monospace" font-size="5" fill="#B0ADA5">Bull</text>
+            <line x1="90" y1="45" x2="90" y2="280" stroke="#D5D0C8" stroke-width="0.8"/>
+            <text x="88" y="288" text-anchor="middle" font-family="monospace" font-size="5" fill="#B0ADA5">Drayton</text>
+            <line x1="125" y1="45" x2="125" y2="280" stroke="#D5D0C8" stroke-width="0.8"/>
+            <text x="123" y="288" text-anchor="middle" font-family="monospace" font-size="5" fill="#B0ADA5">Abercorn</text>
+            <line x1="160" y1="45" x2="160" y2="280" stroke="#D5D0C8" stroke-width="0.8"/>
+            <rect x="35" y="210" width="65" height="55" rx="3" fill="#2C5F2D" opacity="0.08" stroke="#2C5F2D" stroke-width="0.5" stroke-opacity="0.2"/>
+            <text x="67" y="240" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#2C5F2D" opacity="0.5">Forsyth Park</text>
+            <!-- Pins rendered by JS -->
+            <g id="mapPins"></g>
+          </svg>
+        </div>
+        <div class="map-legend">
+          <span><span class="map-dot collected"></span> Collected</span>
+          <span><span class="map-dot locked"></span> Undiscovered</span>
+        </div>
+        <div class="map-continue">
+          <button class="demo-btn ghost" onclick="go('rare')">Continue Demo &rarr;</button>
+        </div>
+        <div class="tab-bar">
+          <span class="tab-item" onclick="go('gallery')">Collection</span>
+          <span class="tab-item active">Map</span>
+          <span class="tab-item">Profile</span>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 11: RARE ===== -->
+      <section class="screen" data-screen="rare">
+        <span class="rare-screen-title">Rare Edition</span>
+        <div class="rare-container" id="rareContainer">
+          <div class="rare-card-frame">
+            <div class="rare-photo" style="background-image: url('images/07-gather.png');"></div>
+            <div class="rare-info">
+              <span class="rare-star-label">&#9733; RARE &#9733;</span>
+              <span class="rare-title">THE GATHER</span>
+              <span class="rare-ed">01 / 10</span>
+            </div>
+          </div>
+        </div>
+        <div style="width:100%;padding:0 24px;">
+          <button class="demo-btn gold" onclick="go('complete')">Continue</button>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 12: COMPLETE ===== -->
+      <section class="screen" data-screen="complete">
+        <div class="complete-slots" id="completeSlots"></div>
+        <div class="complete-badge">&#10022; SET COMPLETE &#10022;</div>
+        <h2 class="complete-title">You collected all 8<br>Field Notes</h2>
+        <p class="complete-desc">
+          Unlocked: Behind-the-scenes<br>mini-documentary + Urban Explorer badge
+        </p>
+        <div class="complete-bonus">
+          <div class="detail-play">&#9654;</div>
+          <div class="detail-video-text">
+            <strong>Watch the full story</strong>
+            <span>Mini-documentary &mdash; 5:00</span>
+          </div>
+        </div>
+        <div style="width:100%;padding:0 24px;margin-top:8px;">
+          <button class="demo-btn primary" onclick="go('community')">Continue</button>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN 13: COMMUNITY ===== -->
+      <section class="screen" data-screen="community">
+        <h2 class="community-title">Community Milestone</h2>
+        <div style="width:100%;">
+          <div class="milestone-track">
+            <div class="milestone-fill" id="milestoneFill" style="width: 97.4%;"></div>
+          </div>
+        </div>
+        <span class="milestone-count"><span id="milestoneNum">487</span> of 500 prints activated city-wide</span>
+        <div class="community-reveal" id="communityReveal">
+          <div class="community-card">
+            <span class="community-card-label">&#127758; COMMUNITY CARD</span>
+            <span class="community-card-text">Unlocked for ALL participants</span>
+          </div>
+          <p class="community-desc">500 collectors came together<br>to unlock this shared moment.</p>
+        </div>
+        <div class="community-actions">
+          <button class="demo-btn primary" onclick="restartDemo()">Restart Demo</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- PROGRESS DOTS -->
+  <div class="demo-dots" id="demoDots"></div>
+
+</div>
+
+<script>
+// ============================================================
+// DATA MODEL
+// ============================================================
+
+const LOCATIONS = [
+  { id:1, name:'The Commute', cp:'CP1', image:'images/01-commute.png', caption:'"Where the sidewalk keeps time"', story:'She matched her pace to the city \u2014 the rhythm of crosswalks, the cadence of bus doors opening and closing. Every morning the same route, but the light was never the same twice.', edition:'08/50', date:'Jan 12', mapX:72, mapY:105 },
+  { id:2, name:'The Stoop', cp:'CP2', image:'images/02-stoop.jpg', caption:'"Between the door and the world"', story:'The stoop was neutral ground \u2014 not inside, not outside. A place to watch the block wake up. The wrought iron held the morning heat and the flag barely moved.', edition:'23/50', date:'Jan 14', mapX:48, mapY:168 },
+  { id:3, name:'The Park', cp:'CP3', image:'images/03-park.png', caption:'"Every corner has a story"', story:'She found the bench between the oak trees. Not the quiet she expected \u2014 kids on bikes, someone\u2019s speaker playing soft. A different kind of outdoors, but hers all the same.', edition:'12/50', date:'Jan 15', mapX:55, mapY:258 },
+  { id:4, name:'The Rooftop', cp:'CP4', image:'images/04-rooftop.png', caption:'"The sky belongs to everyone"', story:'Six floors up, the city flattened into a quilt of rooftops and treetops. The horizon line blurred where the river met the marshes. She stayed until the streetlights won.', edition:'31/50', date:'Jan 18', mapX:105, mapY:145 },
+  { id:5, name:'The Market', cp:'CP5', image:null, caption:'"Where strangers share tables"', story:null, edition:null, date:null, mapX:55, mapY:220 },
+  { id:6, name:'The Bridge', cp:'CP6', image:'images/06-bridge.jpg', caption:'"Where the trail meets the tide"', story:'The bridge was the border between here and somewhere else. Below, the river pushed east. Above, the cables hummed a pitch that changed with the wind.', edition:'07/50', date:'Feb 13', mapX:55, mapY:35 },
+  { id:7, name:'The Gather', cp:'CP7', image:'images/07-gather.png', caption:'"We came as strangers"', story:'Someone brought a speaker. Someone else brought coffee. By sundown they were trading prints, comparing notes, arguing about which checkpoint had the best light.', edition:'04/50', date:'Feb 10', mapX:148, mapY:72 },
+  { id:8, name:'The Promise', cp:'CP8', image:'images/08-promise.jpg', caption:'"What we leave behind"', story:'The locks on the bridge railing told a hundred small promises. Some rusted. Some new. She clipped hers on without a word and walked into the evening.', edition:'19/50', date:'Feb 13', mapX:125, mapY:75 }
+];
+
+const SCREEN_ORDER = ['vending','print','scan','loading','reveal','confirm','gallery','detail','map','rare','complete','community'];
+
+const NARRATOR_TEXT = {
+  vending: 'The user approaches a Field Notes vending machine and browses available prints on the touchscreen.',
+  print: 'A 2\u00d73" documentary photo print is dispensed. The user flips it over to find a QR code.',
+  scan: 'The user scans the QR code using their phone\u2019s native camera. No app install needed.',
+  loading: 'The web app activates the unique print, linking the physical artifact to a digital collectible.',
+  reveal: 'The digital card is revealed with a 3D flip animation. The photo comes alive on screen.',
+  confirm: 'The card is added to the user\u2019s personal Field Notes collection. Progress updated.',
+  gallery: 'The gallery shows all collected and undiscovered cards. Tap any card for its full story.',
+  detail: 'Each card holds a documentary story excerpt and 45 seconds of video footage.',
+  map: 'The collection map shows all 8 checkpoint locations across Savannah.',
+  rare: 'At pop-up events, rare gold-edition prints unlock animated digital cards (10 per location).',
+  complete: 'Collecting all 8 Field Notes unlocks a behind-the-scenes mini-documentary.',
+  community: 'When 500 prints are activated city-wide, a community card unlocks for everyone.'
+};
+
+let state = {
+  currentScreen: 'vending',
+  collected: new Set([1, 2, 4]),
+  allCollected: false,
+  detailCard: null
+};
+
+// ============================================================
+// SCREEN NAVIGATION
+// ============================================================
+
+function go(screenId, direction) {
+  const current = document.querySelector('.screen.active');
+  const next = document.querySelector(`[data-screen="${screenId}"]`);
+  if (!next || current === next) return;
+
+  // Exit current
+  if (current) {
+    current.classList.remove('active');
+    current.classList.add('exit');
+    setTimeout(() => current.classList.remove('exit'), 300);
+  }
+
+  // Enter next
+  if (direction === 'left') {
+    next.style.animation = 'screen-enter-left 0.35s ease-out';
+  } else {
+    next.style.animation = 'screen-enter 0.35s ease-out';
+  }
+  setTimeout(() => { next.classList.add('active'); }, 10);
+
+  state.currentScreen = screenId;
+  updateNarrator(screenId);
+  updateDots(screenId);
+  updateStatusBar(screenId);
+
+  // Screen-specific triggers
+  if (screenId === 'scan') triggerScan();
+  if (screenId === 'loading') triggerLoading();
+  if (screenId === 'reveal') triggerReveal();
+  if (screenId === 'confirm') triggerConfirm();
+  if (screenId === 'gallery') renderGallery();
+  if (screenId === 'map') renderMap();
+  if (screenId === 'rare') triggerRare();
+  if (screenId === 'complete') triggerComplete();
+  if (screenId === 'community') triggerCommunity();
+}
+
+// ============================================================
+// SCREEN-SPECIFIC LOGIC
+// ============================================================
+
+function flipPrint() {
+  const card = document.getElementById('printCard');
+  if (card.classList.contains('flipped')) {
+    go('scan');
+  } else {
+    card.classList.add('flipped');
+    document.getElementById('printInstruction').textContent = 'Tap the QR code to scan it.';
+  }
+}
+
+function triggerScan() {
+  setTimeout(() => {
+    document.querySelectorAll('.scan-corner').forEach(c => c.classList.add('found'));
+    setTimeout(() => go('loading'), 400);
+  }, 1200);
+}
+
+function triggerLoading() {
+  const fill = document.getElementById('loadingFill');
+  fill.classList.remove('animate');
+  void fill.offsetWidth;
+  fill.classList.add('animate');
+  setTimeout(() => go('reveal'), 2800);
+}
+
+function triggerReveal() {
+  const card = document.getElementById('revealCard');
+  card.classList.remove('flip');
+  void card.offsetWidth;
+  setTimeout(() => card.classList.add('flip'), 300);
+  setTimeout(() => {
+    document.getElementById('revealBtnWrap').classList.add('visible');
+  }, 1200);
+}
+
+function triggerConfirm() {
+  state.collected.add(3);
+  setTimeout(() => {
+    document.getElementById('confirmProgress').style.width = '50%';
+  }, 400);
+}
+
+function renderGallery() {
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = '';
+  const count = state.collected.size;
+  document.getElementById('galleryProgressLabel').textContent = `${count} of 8 locations discovered`;
+  document.getElementById('galleryProgressFill').style.width = `${(count/8)*100}%`;
+  document.getElementById('fastForwardBtn').style.display = state.allCollected ? 'none' : 'block';
+
+  LOCATIONS.forEach(loc => {
+    const card = document.createElement('div');
+    const isCollected = state.collected.has(loc.id);
+    card.className = `gallery-card ${isCollected ? 'collected' : 'locked'}`;
+
+    if (isCollected && loc.image) {
+      card.innerHTML = `
+        <div class="gallery-card-photo" style="background-image:url('${loc.image}');"></div>
+        <div class="gallery-card-name">${loc.name}</div>
+        <div class="gallery-card-date">${loc.date}</div>
+      `;
+      card.onclick = () => showDetail(loc.id);
+    } else {
+      card.innerHTML = `
+        <div class="gallery-card-lock">&#128274;</div>
+        <div class="gallery-card-name" style="color:var(--wire-stroke-light);">???</div>
+        <div class="gallery-card-date">&nbsp;</div>
+      `;
+      card.onclick = () => { card.classList.add('shake'); setTimeout(() => card.classList.remove('shake'), 400); };
+    }
+    grid.appendChild(card);
+  });
+}
+
+function showDetail(id) {
+  const loc = LOCATIONS.find(l => l.id === id);
+  if (!loc) return;
+  state.detailCard = id;
+  document.getElementById('detailPhoto').style.backgroundImage = `url('${loc.image}')`;
+  document.getElementById('detailLocation').textContent = `${loc.cp}: ${loc.name}`;
+  document.getElementById('detailDate').textContent = `Collected ${loc.date}, 2026`;
+  document.getElementById('detailEdition').textContent = `Edition ${loc.edition}`;
+  document.getElementById('detailStory').textContent = loc.story;
+  go('detail');
+}
+
+function renderMap() {
+  const pins = document.getElementById('mapPins');
+  pins.innerHTML = '';
+  LOCATIONS.forEach(loc => {
+    const isCollected = state.collected.has(loc.id);
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', loc.mapX);
+    circle.setAttribute('cy', loc.mapY);
+    circle.setAttribute('r', '8');
+    if (isCollected) {
+      circle.setAttribute('fill', '#C1440E');
+      circle.setAttribute('stroke', 'white');
+      circle.setAttribute('stroke-width', '1.5');
+    } else {
+      circle.setAttribute('fill', 'none');
+      circle.setAttribute('stroke', '#9B9B9B');
+      circle.setAttribute('stroke-width', '1.5');
+      circle.setAttribute('stroke-dasharray', '3 2');
+    }
+    g.appendChild(circle);
+
+    const num = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    num.setAttribute('x', loc.mapX);
+    num.setAttribute('y', loc.mapY + 3);
+    num.setAttribute('text-anchor', 'middle');
+    num.setAttribute('font-family', 'monospace');
+    num.setAttribute('font-size', '7');
+    num.setAttribute('font-weight', 'bold');
+    num.setAttribute('fill', isCollected ? 'white' : '#9B9B9B');
+    num.textContent = loc.id;
+    g.appendChild(num);
+
+    pins.appendChild(g);
+  });
+}
+
+function triggerRare() {
+  const container = document.getElementById('rareContainer');
+  // Add sparkles
+  const existingSparkles = container.querySelectorAll('.sparkle');
+  existingSparkles.forEach(s => s.remove());
+  for (let i = 0; i < 10; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.top = `${Math.random() * 100}%`;
+    s.style.left = `${Math.random() * 100}%`;
+    s.style.animationDelay = `${Math.random() * 2}s`;
+    container.appendChild(s);
+  }
+}
+
+function triggerComplete() {
+  const slots = document.getElementById('completeSlots');
+  slots.innerHTML = '';
+  for (let i = 0; i < 8; i++) {
+    const slot = document.createElement('div');
+    slot.className = 'complete-slot';
+    slot.textContent = '\u2713';
+    slot.style.animationDelay = `${i * 0.12}s`;
+    setTimeout(() => slot.classList.add('filled'), 10);
+    slots.appendChild(slot);
+  }
+  // Confetti
+  const screen = document.querySelector('[data-screen="complete"]');
+  screen.querySelectorAll('.confetti').forEach(c => c.remove());
+  const colors = ['#C1440E', '#CC7722', '#2C5F2D', '#8B8680'];
+  for (let i = 0; i < 30; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = `${Math.random() * 100}%`;
+    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+    c.style.animationDelay = `${Math.random() * 1.5}s`;
+    c.style.width = `${4 + Math.random() * 4}px`;
+    c.style.height = `${4 + Math.random() * 4}px`;
+    screen.appendChild(c);
+  }
+}
+
+function triggerCommunity() {
+  let count = 487;
+  const numEl = document.getElementById('milestoneNum');
+  const fillEl = document.getElementById('milestoneFill');
+  const revealEl = document.getElementById('communityReveal');
+  revealEl.classList.remove('visible');
+  fillEl.style.width = '97.4%';
+  numEl.textContent = '487';
+
+  const interval = setInterval(() => {
+    count++;
+    numEl.textContent = count;
+    fillEl.style.width = `${(count / 500) * 100}%`;
+    if (count >= 500) {
+      clearInterval(interval);
+      setTimeout(() => revealEl.classList.add('visible'), 300);
+    }
+  }, 200);
+}
+
+function fastForward() {
+  state.collected = new Set([1,2,3,4,5,6,7,8]);
+  state.allCollected = true;
+
+  // Quick cascade animation on gallery cards
+  const cards = document.querySelectorAll('.gallery-card.locked');
+  cards.forEach((card, i) => {
+    setTimeout(() => {
+      card.classList.remove('locked');
+      card.classList.add('collected');
+      const loc = LOCATIONS[parseInt(card.dataset?.index) || 0];
+      card.style.animation = 'check-pop 0.3s ease-out';
+    }, i * 150);
+  });
+
+  // Update progress
+  document.getElementById('galleryProgressLabel').textContent = '8 of 8 locations discovered';
+  document.getElementById('galleryProgressFill').style.width = '100%';
+  document.getElementById('fastForwardBtn').style.display = 'none';
+
+  // After cascade, re-render and go to rare
+  setTimeout(() => {
+    renderGallery();
+    setTimeout(() => go('rare'), 400);
+  }, 800);
+}
+
+function restartDemo() {
+  state.collected = new Set([1, 2, 4]);
+  state.allCollected = false;
+  state.detailCard = null;
+
+  // Reset print card
+  const printCard = document.getElementById('printCard');
+  printCard.classList.remove('flipped');
+  document.getElementById('printInstruction').textContent = 'Your print has been dispensed. Tap to flip it over.';
+
+  // Reset reveal
+  document.getElementById('revealCard').classList.remove('flip');
+  document.getElementById('revealBtnWrap').classList.remove('visible');
+
+  // Reset scan corners
+  document.querySelectorAll('.scan-corner').forEach(c => c.classList.remove('found'));
+
+  // Reset confirm progress
+  document.getElementById('confirmProgress').style.width = '37.5%';
+
+  // Reset loading bar
+  document.getElementById('loadingFill').classList.remove('animate');
+
+  go('vending');
+}
+
+// ============================================================
+// UI HELPERS
+// ============================================================
+
+function updateNarrator(screenId) {
+  const text = NARRATOR_TEXT[screenId] || '';
+  document.getElementById('narratorText').textContent = text;
+}
+
+function toggleNarrator() {
+  const el = document.getElementById('narrator');
+  el.classList.toggle('hidden');
+}
+
+function updateStatusBar(screenId) {
+  const bar = document.getElementById('statusBar');
+  bar.className = 'status-bar' + (['scan', 'rare'].includes(screenId) ? ' light' : '');
+}
+
+function updateDots(screenId) {
+  const idx = SCREEN_ORDER.indexOf(screenId);
+  document.querySelectorAll('.demo-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === idx);
+  });
+}
+
+// ============================================================
+// INIT
+// ============================================================
+
+(function init() {
+  // Build progress dots
+  const dotsEl = document.getElementById('demoDots');
+  SCREEN_ORDER.forEach((s, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'demo-dot' + (i === 0 ? ' active' : '');
+    dotsEl.appendChild(dot);
+  });
+})();
+</script>
+
+</body>
+</html>
