@@ -1206,6 +1206,624 @@
     }
 
     /* ============================================================
+       SCREEN: PROFILE
+       ============================================================ */
+    .screen[data-screen="profile"] {
+      background: var(--wire-bg);
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 20px;
+    }
+    .profile-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--brand-forest);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .profile-name {
+      font-size: 18px;
+      font-weight: 700;
+      display: block;
+    }
+    .profile-handle {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--wire-stroke-light);
+    }
+    .profile-stats {
+      display: flex;
+      gap: 1px;
+      background: var(--wire-fill-alt);
+      margin: 0 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .profile-stat {
+      flex: 1;
+      text-align: center;
+      padding: 10px 8px;
+      background: white;
+    }
+    .profile-stat-num {
+      font-size: 16px;
+      font-weight: 700;
+      display: block;
+    }
+    .profile-stat-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .profile-section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 16px 20px 8px;
+    }
+    .badge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 0 20px;
+    }
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid var(--wire-fill-alt);
+    }
+    .badge-item.locked { opacity: 0.45; }
+    .badge-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .badge-name {
+      font-size: 11px;
+      font-weight: 600;
+      display: block;
+    }
+    .badge-desc {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      color: var(--wire-stroke-light);
+    }
+    .profile-breakdown {
+      padding: 0 20px;
+    }
+    .breakdown-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+    }
+    .breakdown-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke);
+      width: 60px;
+      flex-shrink: 0;
+    }
+    .breakdown-track {
+      flex: 1;
+      height: 6px;
+      background: var(--wire-fill-alt);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .breakdown-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.4s;
+    }
+    .breakdown-count {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      width: 32px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .profile-actions {
+      display: flex;
+      gap: 8px;
+      padding: 16px 20px 0;
+    }
+    .profile-actions .demo-btn { flex: 1; text-align: center; font-size: 13px; }
+
+    /* ============================================================
+       SCREEN: LEADERBOARD
+       ============================================================ */
+    .screen[data-screen="leaderboard"] {
+      background: var(--wire-bg);
+    }
+    .lb-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 20px;
+    }
+    .lb-back {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--brand-rust);
+      cursor: pointer;
+    }
+    .lb-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .lb-filter {
+      display: flex;
+      margin: 8px 20px;
+      background: var(--wire-fill-alt);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .lb-filter-btn {
+      flex: 1;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 8px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      color: var(--wire-stroke-light);
+      transition: background 0.2s, color 0.2s;
+    }
+    .lb-filter-btn.active {
+      background: white;
+      color: var(--wire-black);
+      font-weight: 700;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .lb-podium {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 12px;
+      padding: 20px 20px 16px;
+    }
+    .podium-item {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .podium-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+    }
+    .podium-avatar.gold { background: #FFD700; border: 2px solid #E6C200; }
+    .podium-avatar.silver { background: #C0C0C0; border: 2px solid #A8A8A8; }
+    .podium-avatar.bronze { background: #CD7F32; border: 2px solid #B56E28; }
+    .podium-name {
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .podium-count {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+    }
+    .podium-rank {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--wire-stroke-light);
+    }
+    .lb-list {
+      padding: 0 20px;
+    }
+    .lb-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-bottom: 4px;
+      background: white;
+      border: 1px solid var(--wire-fill-alt);
+    }
+    .lb-row.is-user {
+      border-left: 3px solid var(--brand-rust);
+      background: rgba(193,68,14,0.03);
+    }
+    .lb-rank {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--wire-stroke-light);
+      width: 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .lb-avatar-sm {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--wire-fill-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--wire-stroke);
+      flex-shrink: 0;
+    }
+    .lb-name { font-size: 13px; font-weight: 600; flex: 1; }
+    .lb-score {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--wire-stroke-light);
+    }
+
+    /* ============================================================
+       SCREEN: FRIENDS
+       ============================================================ */
+    .screen[data-screen="friends"] {
+      background: var(--wire-bg);
+    }
+    .friends-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 20px;
+    }
+    .friends-back {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--brand-rust);
+      cursor: pointer;
+    }
+    .friends-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .friends-add {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--brand-rust);
+      cursor: pointer;
+    }
+    .friends-list {
+      padding: 0 20px;
+    }
+    .friend-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid var(--wire-fill-alt);
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .friend-row:active { transform: scale(0.98); }
+    .friend-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--wire-fill-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--wire-stroke);
+      flex-shrink: 0;
+    }
+    .friend-info { flex: 1; }
+    .friend-name {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .friend-complete-badge {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      background: var(--brand-forest);
+      color: white;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+    .friend-progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .friend-track {
+      flex: 1;
+      height: 4px;
+      background: var(--wire-fill-alt);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .friend-fill {
+      height: 100%;
+      background: var(--brand-forest);
+      border-radius: 2px;
+    }
+    .friend-count {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      flex-shrink: 0;
+    }
+    .friend-compare-hint {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--wire-stroke-light);
+    }
+    .activity-section {
+      padding: 0 20px;
+    }
+    .activity-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--wire-fill-alt);
+    }
+    .activity-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--brand-rust);
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .activity-text {
+      font-size: 12px;
+      color: var(--wire-stroke);
+      line-height: 1.4;
+    }
+    .activity-time {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--wire-stroke-light);
+      display: block;
+    }
+
+    /* COMPARISON OVERLAY */
+    .compare-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: white;
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
+      padding: 16px 20px 24px;
+      transform: translateY(100%);
+      transition: transform 0.35s ease-out;
+      z-index: 60;
+      max-height: 70%;
+      overflow-y: auto;
+    }
+    .compare-overlay.visible { transform: translateY(0); }
+    .compare-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .compare-title { font-size: 14px; font-weight: 700; }
+    .compare-close {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--wire-fill-alt);
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .compare-card {
+      aspect-ratio: 1;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      text-align: center;
+      padding: 4px;
+    }
+    .compare-card.both {
+      background: rgba(44,95,45,0.12);
+      border: 1.5px solid var(--brand-forest);
+      color: var(--brand-forest);
+    }
+    .compare-card.you-only {
+      background: rgba(193,68,14,0.08);
+      border: 1.5px solid var(--brand-rust);
+      color: var(--brand-rust);
+    }
+    .compare-card.friend-only {
+      background: var(--wire-fill-alt);
+      border: 1.5px solid var(--wire-stroke-light);
+      color: var(--wire-stroke-light);
+    }
+    .compare-card.neither {
+      background: var(--wire-fill);
+      border: 1.5px dashed var(--wire-fill-alt);
+      color: var(--wire-fill-alt);
+    }
+    .compare-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--wire-stroke-light);
+    }
+    .compare-legend-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 2px;
+      margin-right: 3px;
+      vertical-align: middle;
+    }
+
+    /* ============================================================
+       SCREEN: VIP / #GOGATHER
+       ============================================================ */
+    .screen[data-screen="vip"] {
+      background: #1A1A1A;
+      align-items: center;
+      padding: 44px 24px 24px;
+      gap: 16px;
+    }
+    .vip-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .vip-pass {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .vip-pass-header {
+      background: var(--brand-forest);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .vip-pass-title {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.08em;
+    }
+    .vip-pass-check {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+    }
+    .vip-pass-body {
+      padding: 20px;
+      text-align: center;
+    }
+    .vip-user-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--brand-forest);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 auto 8px;
+    }
+    .vip-user-name {
+      font-size: 16px;
+      font-weight: 700;
+      display: block;
+    }
+    .vip-member-id {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      display: block;
+      margin-top: 2px;
+    }
+    .vip-divider {
+      border: none;
+      border-top: 1px dashed var(--wire-fill-alt);
+      margin: 14px 0;
+    }
+    .vip-event-name {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--wire-black);
+      display: block;
+    }
+    .vip-event-date {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--wire-stroke-light);
+      display: block;
+      margin-top: 3px;
+    }
+    .vip-perks {
+      list-style: none;
+      text-align: left;
+      padding: 0 20px;
+      width: 100%;
+      max-width: 300px;
+    }
+    .vip-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 6px 0;
+    }
+    .vip-perk-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .vip-perk-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.4;
+    }
+    .vip-actions {
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ============================================================
        RESPONSIVE: MOBILE (fills viewport)
        ============================================================ */
     @media (max-width: 480px) {
@@ -1400,7 +2018,7 @@
         <div class="tab-bar">
           <span class="tab-item active">Collection</span>
           <span class="tab-item" onclick="go('map')">Map</span>
-          <span class="tab-item">Profile</span>
+          <span class="tab-item" onclick="go('profile')">Profile</span>
         </div>
       </section>
 
@@ -1473,7 +2091,150 @@
         <div class="tab-bar">
           <span class="tab-item" onclick="go('gallery')">Collection</span>
           <span class="tab-item active">Map</span>
-          <span class="tab-item">Profile</span>
+          <span class="tab-item" onclick="go('profile')">Profile</span>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN: PROFILE ===== -->
+      <section class="screen" data-screen="profile">
+        <div class="profile-header">
+          <div class="profile-avatar">KH</div>
+          <div>
+            <span class="profile-name">Kim Harper</span>
+            <span class="profile-handle">@kimtharper</span>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <div class="profile-stat">
+            <span class="profile-stat-num" id="profileCollected">4/8</span>
+            <span class="profile-stat-label">Collected</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-num">2</span>
+            <span class="profile-stat-label">Rare</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-num">#5</span>
+            <span class="profile-stat-label">Rank</span>
+          </div>
+        </div>
+        <div class="profile-section-label">Achievements</div>
+        <div class="badge-grid" id="badgeGrid"></div>
+        <div class="profile-section-label">Collection Breakdown</div>
+        <div class="profile-breakdown">
+          <div class="breakdown-row">
+            <span class="breakdown-label">Standard</span>
+            <div class="breakdown-track">
+              <div class="breakdown-fill" id="breakdownStandard" style="width:50%;background:var(--brand-forest);"></div>
+            </div>
+            <span class="breakdown-count" id="breakdownStdCount">4/8</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Rare</span>
+            <div class="breakdown-track">
+              <div class="breakdown-fill" style="width:20%;background:var(--brand-ochre);"></div>
+            </div>
+            <span class="breakdown-count">2/10</span>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="demo-btn secondary small" onclick="go('leaderboard')">Leaderboard</button>
+          <button class="demo-btn secondary small" onclick="go('friends')">Friends (4)</button>
+        </div>
+        <div class="tab-bar">
+          <span class="tab-item" onclick="go('gallery')">Collection</span>
+          <span class="tab-item" onclick="go('map')">Map</span>
+          <span class="tab-item active">Profile</span>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN: LEADERBOARD ===== -->
+      <section class="screen" data-screen="leaderboard">
+        <div class="lb-nav">
+          <span class="lb-back" onclick="go('profile','left')">&larr; Profile</span>
+          <span class="lb-title">Leaderboard</span>
+          <span style="width:50px;"></span>
+        </div>
+        <div class="lb-filter">
+          <button class="lb-filter-btn active" onclick="this.parentNode.querySelector('.active').classList.remove('active');this.classList.add('active');">All Time</button>
+          <button class="lb-filter-btn" onclick="this.parentNode.querySelector('.active').classList.remove('active');this.classList.add('active');">This Week</button>
+        </div>
+        <div class="lb-podium">
+          <div class="podium-item">
+            <div class="podium-rank">#2</div>
+            <div class="podium-avatar silver">JL</div>
+            <div class="podium-name">Jordan L.</div>
+            <div class="podium-count">8/8</div>
+          </div>
+          <div class="podium-item" style="margin-bottom:12px;">
+            <div class="podium-rank" style="font-size:12px;">&#9813;</div>
+            <div class="podium-avatar gold" style="width:52px;height:52px;font-size:14px;">AM</div>
+            <div class="podium-name">Alex M.</div>
+            <div class="podium-count">8/8</div>
+          </div>
+          <div class="podium-item">
+            <div class="podium-rank">#3</div>
+            <div class="podium-avatar bronze">SK</div>
+            <div class="podium-name">Sam K.</div>
+            <div class="podium-count">7/8</div>
+          </div>
+        </div>
+        <div class="lb-list" id="lbList"></div>
+      </section>
+
+      <!-- ===== SCREEN: FRIENDS ===== -->
+      <section class="screen" data-screen="friends">
+        <div class="friends-nav">
+          <span class="friends-back" onclick="go('profile','left')">&larr; Profile</span>
+          <span class="friends-title">Friends</span>
+          <span class="friends-add">Add +</span>
+        </div>
+        <div class="friends-list" id="friendsList"></div>
+        <div class="profile-section-label">Recent Activity</div>
+        <div class="activity-section" id="activityFeed"></div>
+        <!-- Comparison Overlay -->
+        <div class="compare-overlay" id="compareOverlay">
+          <div class="compare-header">
+            <span class="compare-title" id="compareTitle">You vs Sarah M.</span>
+            <button class="compare-close" onclick="hideComparison()">&times;</button>
+          </div>
+          <div class="compare-grid" id="compareGrid"></div>
+          <div class="compare-legend">
+            <span><span class="compare-legend-dot" style="background:var(--brand-forest);"></span> Both</span>
+            <span><span class="compare-legend-dot" style="background:var(--brand-rust);"></span> Only you</span>
+            <span><span class="compare-legend-dot" style="background:var(--wire-stroke-light);"></span> Only them</span>
+            <span><span class="compare-legend-dot" style="background:var(--wire-fill);border:1px dashed var(--wire-fill-alt);"></span> Neither</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SCREEN: VIP / #GOGATHER ===== -->
+      <section class="screen" data-screen="vip">
+        <span class="vip-label">Exclusive Access</span>
+        <div class="vip-pass">
+          <div class="vip-pass-header">
+            <span class="vip-pass-title">VIP ACCESS</span>
+            <span class="vip-pass-check">&#10003;</span>
+          </div>
+          <div class="vip-pass-body">
+            <div class="vip-user-avatar">KH</div>
+            <span class="vip-user-name">Kim Harper</span>
+            <span class="vip-member-id">FN-2026-0487</span>
+            <hr class="vip-divider">
+            <span class="vip-event-name">#GoGather by L.L.Bean</span>
+            <span class="vip-event-date">March 15, 2026 &mdash; Forsyth Park</span>
+          </div>
+        </div>
+        <ul class="vip-perks">
+          <li class="vip-perk"><span class="vip-perk-icon">&#9733;</span><span class="vip-perk-text">Priority entry to #GoGather pop-up event</span></li>
+          <li class="vip-perk"><span class="vip-perk-icon">&#127912;</span><span class="vip-perk-text">Exclusive rare print (only for complete collectors)</span></li>
+          <li class="vip-perk"><span class="vip-perk-icon">&#128247;</span><span class="vip-perk-text">Meet the documentary photographer</span></li>
+          <li class="vip-perk"><span class="vip-perk-icon">&#127873;</span><span class="vip-perk-text">$50 L.L.Bean digital gift card</span></li>
+          <li class="vip-perk"><span class="vip-perk-icon">&#128444;</span><span class="vip-perk-text">Your print on the community wall</span></li>
+        </ul>
+        <div class="vip-actions">
+          <button class="demo-btn gold" onclick="go('community')">RSVP to #GoGather</button>
+          <button class="demo-btn ghost" onclick="go('community')" style="color:rgba(255,255,255,0.4);border-color:rgba(255,255,255,0.15);">Continue Demo &rarr;</button>
         </div>
       </section>
 
@@ -1511,7 +2272,7 @@
           </div>
         </div>
         <div style="width:100%;padding:0 24px;margin-top:8px;">
-          <button class="demo-btn primary" onclick="go('community')">Continue</button>
+          <button class="demo-btn primary" onclick="go('vip')">Continue</button>
         </div>
       </section>
 
@@ -1560,7 +2321,7 @@ const LOCATIONS = [
   { id:8, name:'The Promise', cp:'CP8', image:'images/08-promise.jpg', caption:'"What we leave behind"', story:'The locks on the bridge railing told a hundred small promises. Some rusted. Some new. She clipped hers on without a word and walked into the evening.', edition:'19/50', date:'Feb 13', mapX:125, mapY:75 }
 ];
 
-const SCREEN_ORDER = ['vending','print','scan','loading','reveal','confirm','gallery','detail','map','rare','complete','community'];
+const SCREEN_ORDER = ['vending','print','scan','loading','reveal','confirm','gallery','detail','map','profile','leaderboard','friends','rare','complete','vip','community'];
 
 const NARRATOR_TEXT = {
   vending: 'The user approaches a Field Notes vending machine and browses available prints on the touchscreen.',
@@ -1574,6 +2335,10 @@ const NARRATOR_TEXT = {
   map: 'The collection map shows all 8 checkpoint locations across Savannah.',
   rare: 'At pop-up events, rare gold-edition prints unlock animated digital cards (10 per location).',
   complete: 'Collecting all 8 Field Notes unlocks a behind-the-scenes mini-documentary.',
+  profile: 'The user\u2019s profile shows collection progress, achievements, and social connections.',
+  leaderboard: 'A city-wide leaderboard drives friendly competition among Savannah collectors.',
+  friends: 'Friends can compare collections and track each other\u2019s progress in real time.',
+  vip: 'Completing all 8 Field Notes earns VIP access to the #GoGather L.L.Bean pop-up event.',
   community: 'When 500 prints are activated city-wide, a community card unlocks for everyone.'
 };
 
@@ -1620,6 +2385,9 @@ function go(screenId, direction) {
   if (screenId === 'confirm') triggerConfirm();
   if (screenId === 'gallery') renderGallery();
   if (screenId === 'map') renderMap();
+  if (screenId === 'profile') renderProfile();
+  if (screenId === 'leaderboard') renderLeaderboard();
+  if (screenId === 'friends') renderFriends();
   if (screenId === 'rare') triggerRare();
   if (screenId === 'complete') triggerComplete();
   if (screenId === 'community') triggerCommunity();
@@ -1814,6 +2582,151 @@ function triggerCommunity() {
   }, 200);
 }
 
+// ============================================================
+// SOCIAL DATA MODELS
+// ============================================================
+
+const LEADERBOARD = [
+  { rank:1, name:'Alex M.', init:'AM', count:8, total:8 },
+  { rank:2, name:'Jordan L.', init:'JL', count:8, total:8 },
+  { rank:3, name:'Sam K.', init:'SK', count:7, total:8 },
+  { rank:4, name:'Taylor R.', init:'TR', count:6, total:8 },
+  { rank:5, name:'Kim H.', init:'KH', count:4, total:8, isUser:true },
+  { rank:6, name:'Riley J.', init:'RJ', count:4, total:8 },
+  { rank:7, name:'Morgan P.', init:'MP', count:3, total:8 },
+  { rank:8, name:'Casey W.', init:'CW', count:3, total:8 }
+];
+
+const FRIENDS = [
+  { name:'Sarah M.', initial:'S', count:6, total:8, has:[1,2,3,4,6,7] },
+  { name:'David R.', initial:'D', count:5, total:8, has:[1,3,4,5,7] },
+  { name:'Maya C.', initial:'M', count:8, total:8, has:[1,2,3,4,5,6,7,8] },
+  { name:'James T.', initial:'J', count:3, total:8, has:[1,3,7] }
+];
+
+const ACTIVITY = [
+  { text:'Sarah just collected The Bridge!', time:'2h ago' },
+  { text:'Maya completed her set!', time:'5h ago' },
+  { text:'David found a rare Gather!', time:'1d ago' }
+];
+
+const BADGES = [
+  { name:'Urban Explorer', icon:'\u{1F9ED}', desc:'Collected 4+ Field Notes', color:'var(--brand-forest)', earned:true },
+  { name:'Early Bird', icon:'\u{1F305}', desc:'First 50 to find a location', color:'var(--brand-ochre)', earned:true },
+  { name:'Rare Hunter', icon:'\u2B50', desc:'Found a rare edition', color:'var(--brand-rust)', earned:true },
+  { name:'Social Butterfly', icon:'\u{1F98B}', desc:'Shared 3 cards', color:'var(--wire-stroke-light)', earned:false }
+];
+
+// ============================================================
+// SOCIAL RENDER FUNCTIONS
+// ============================================================
+
+function renderProfile() {
+  const count = state.collected.size;
+  document.getElementById('profileCollected').textContent = `${count}/8`;
+  document.getElementById('breakdownStandard').style.width = `${(count/8)*100}%`;
+  document.getElementById('breakdownStdCount').textContent = `${count}/8`;
+
+  const grid = document.getElementById('badgeGrid');
+  grid.innerHTML = '';
+  BADGES.forEach(b => {
+    const item = document.createElement('div');
+    item.className = 'badge-item' + (b.earned ? '' : ' locked');
+    item.innerHTML = `
+      <div class="badge-icon" style="background:${b.earned ? b.color : 'var(--wire-fill-alt)'};opacity:${b.earned ? '0.15' : '0.3'};">
+        <span style="opacity:${b.earned ? '1' : '0.5'};position:relative;">${b.icon}</span>
+      </div>
+      <div>
+        <span class="badge-name">${b.name}</span>
+        <span class="badge-desc">${b.desc}</span>
+      </div>
+    `;
+    grid.appendChild(item);
+  });
+}
+
+function renderLeaderboard() {
+  const list = document.getElementById('lbList');
+  list.innerHTML = '';
+  LEADERBOARD.filter(e => e.rank > 3).forEach(entry => {
+    const row = document.createElement('div');
+    row.className = 'lb-row' + (entry.isUser ? ' is-user' : '');
+    row.innerHTML = `
+      <span class="lb-rank">${entry.rank}</span>
+      <div class="lb-avatar-sm">${entry.init}</div>
+      <span class="lb-name">${entry.name}${entry.isUser ? ' (You)' : ''}</span>
+      <span class="lb-score">${entry.count}/${entry.total}</span>
+    `;
+    list.appendChild(row);
+  });
+}
+
+function renderFriends() {
+  const list = document.getElementById('friendsList');
+  list.innerHTML = '';
+  FRIENDS.forEach((f, i) => {
+    const row = document.createElement('div');
+    row.className = 'friend-row';
+    row.onclick = () => showComparison(i);
+    const pct = (f.count / f.total) * 100;
+    row.innerHTML = `
+      <div class="friend-avatar">${f.initial}</div>
+      <div class="friend-info">
+        <div class="friend-name">${f.name}${f.count === f.total ? ' <span class="friend-complete-badge">Completed!</span>' : ''}</div>
+        <div class="friend-progress-wrap">
+          <div class="friend-track"><div class="friend-fill" style="width:${pct}%;"></div></div>
+          <span class="friend-count">${f.count}/${f.total}</span>
+        </div>
+      </div>
+      <span class="friend-compare-hint">&rsaquo;</span>
+    `;
+    list.appendChild(row);
+  });
+
+  const feed = document.getElementById('activityFeed');
+  feed.innerHTML = '';
+  ACTIVITY.forEach(a => {
+    const item = document.createElement('div');
+    item.className = 'activity-item';
+    item.innerHTML = `
+      <div class="activity-dot"></div>
+      <div>
+        <span class="activity-text">${a.text}</span>
+        <span class="activity-time">${a.time}</span>
+      </div>
+    `;
+    feed.appendChild(item);
+  });
+}
+
+function showComparison(friendIdx) {
+  const friend = FRIENDS[friendIdx];
+  const overlay = document.getElementById('compareOverlay');
+  const grid = document.getElementById('compareGrid');
+  document.getElementById('compareTitle').textContent = `You vs ${friend.name}`;
+
+  grid.innerHTML = '';
+  LOCATIONS.forEach(loc => {
+    const youHave = state.collected.has(loc.id);
+    const theyHave = friend.has.includes(loc.id);
+    const card = document.createElement('div');
+    let cls, label;
+    if (youHave && theyHave) { cls = 'both'; label = loc.name.replace('The ',''); }
+    else if (youHave) { cls = 'you-only'; label = loc.name.replace('The ',''); }
+    else if (theyHave) { cls = 'friend-only'; label = loc.name.replace('The ',''); }
+    else { cls = 'neither'; label = '???'; }
+    card.className = `compare-card ${cls}`;
+    card.textContent = label;
+    grid.appendChild(card);
+  });
+
+  overlay.classList.add('visible');
+}
+
+function hideComparison() {
+  document.getElementById('compareOverlay').classList.remove('visible');
+}
+
 function fastForward() {
   state.collected = new Set([1,2,3,4,5,6,7,8]);
   state.allCollected = true;
@@ -1864,6 +2777,13 @@ function restartDemo() {
   // Reset loading bar
   document.getElementById('loadingFill').classList.remove('animate');
 
+  // Reset comparison overlay
+  hideComparison();
+
+  // Reset leaderboard filter
+  const lbFilters = document.querySelectorAll('.lb-filter-btn');
+  lbFilters.forEach((btn, i) => btn.classList.toggle('active', i === 0));
+
   go('vending');
 }
 
@@ -1883,7 +2803,7 @@ function toggleNarrator() {
 
 function updateStatusBar(screenId) {
   const bar = document.getElementById('statusBar');
-  bar.className = 'status-bar' + (['scan', 'rare'].includes(screenId) ? ' light' : '');
+  bar.className = 'status-bar' + (['scan', 'rare', 'vip'].includes(screenId) ? ' light' : '');
 }
 
 function updateDots(screenId) {
