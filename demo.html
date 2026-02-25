@@ -15,9 +15,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
     body {
-      background: #E8E4DC;
+      background: #111111;
       font-family: var(--font-sans);
-      color: var(--wire-black);
+      color: var(--dark-text-primary);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -49,7 +49,7 @@
     }
     .narrator-dot {
       width: 8px; height: 8px;
-      background: var(--brand-rust);
+      background: var(--dark-green-light);
       border-radius: 50%;
       flex-shrink: 0;
       animation: narrator-pulse 2s ease-in-out infinite;
@@ -84,11 +84,11 @@
       width: 375px;
       height: 780px;
       border-radius: 44px;
-      border: 6px solid #1A1A1A;
-      background: var(--wire-bg);
+      border: 6px solid #000000;
+      background: var(--dark-bg);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
     }
     .demo-notch {
       position: absolute;
@@ -104,7 +104,7 @@
       bottom: 8px; left: 50%;
       transform: translateX(-50%);
       width: 120px; height: 4px;
-      background: rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.2);
       border-radius: 2px;
       z-index: 50;
     }
@@ -159,7 +159,7 @@
       font-family: var(--font-sans);
       font-size: 12px;
       font-weight: 600;
-      color: var(--wire-black);
+      color: var(--dark-text-primary);
       z-index: 40;
     }
     .status-bar.light { color: white; }
@@ -178,15 +178,15 @@
     }
     .demo-btn:active { transform: scale(0.97); }
     .demo-btn.primary {
-      background: var(--brand-rust);
+      background: var(--dark-green-primary);
       color: white;
       width: 100%;
     }
     .demo-btn.primary:hover { opacity: 0.9; }
     .demo-btn.secondary {
-      background: white;
-      color: var(--wire-black);
-      border: 1.5px solid var(--wire-stroke-light);
+      background: var(--dark-surface);
+      color: var(--dark-text-primary);
+      border: 1.5px solid var(--dark-border);
     }
     .demo-btn.gold {
       background: var(--brand-ochre);
@@ -200,13 +200,13 @@
     }
     .demo-btn.ghost {
       background: none;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       font-size: 11px;
       font-family: var(--font-mono);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       padding: 8px 16px;
-      border: 1px dashed var(--wire-stroke-light);
+      border: 1px dashed var(--dark-text-muted);
       border-radius: 8px;
     }
 
@@ -214,13 +214,13 @@
     .progress-track {
       width: 100%;
       height: 6px;
-      background: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
       border-radius: 3px;
       overflow: hidden;
     }
     .progress-fill {
       height: 100%;
-      background: var(--brand-forest);
+      background: var(--dark-green-primary);
       border-radius: 3px;
       transition: width 0.6s ease-out;
     }
@@ -229,7 +229,7 @@
        SCREEN 1: VENDING MACHINE
        ============================================================ */
     .screen[data-screen="vending"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
       padding-top: 44px;
     }
     .vending-header {
@@ -258,8 +258,8 @@
       font-size: 11px;
       color: var(--brand-ochre);
       letter-spacing: 0.1em;
-      background: var(--wire-fill);
-      border-bottom: 1px solid var(--wire-fill-alt);
+      background: var(--dark-surface);
+      border-bottom: 1px solid var(--dark-border-subtle);
     }
     .vending-photo {
       width: calc(100% - 48px);
@@ -276,12 +276,12 @@
       padding: 14px 24px;
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
     .vending-price {
       font-size: 18px;
       font-weight: 700;
-      color: var(--wire-black);
+      color: var(--dark-text-primary);
       font-family: var(--font-sans);
     }
     .vending-actions {
@@ -295,7 +295,7 @@
       padding: 12px;
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-muted);
     }
     .vending-nfc { font-size: 14px; margin-right: 4px; }
 
@@ -303,7 +303,7 @@
        SCREEN 2/3: PHYSICAL PRINT (front + back with 3D flip)
        ============================================================ */
     .screen[data-screen="print"] {
-      background: var(--wire-fill);
+      background: var(--dark-bg);
       align-items: center;
       justify-content: center;
       gap: 20px;
@@ -378,7 +378,7 @@
       cursor: pointer;
       transition: box-shadow 0.2s;
     }
-    .qr-visual:hover { box-shadow: 0 0 0 3px rgba(193,68,14,0.3); }
+    .qr-visual:hover { box-shadow: 0 0 0 3px rgba(44,95,45,0.4); }
     .qr-cell { background: var(--wire-black); border-radius: 1px; }
     .qr-cell.empty { background: transparent; }
     .print-caption {
@@ -416,7 +416,7 @@
     .print-instruction {
       font-family: var(--font-sans);
       font-size: 13px;
-      color: var(--wire-stroke);
+      color: var(--dark-text-secondary);
       text-align: center;
     }
     @keyframes print-dispense {
@@ -448,7 +448,7 @@
     .scan-corner {
       position: absolute;
       width: 24px; height: 24px;
-      border-color: var(--brand-rust);
+      border-color: var(--dark-green-light);
       border-style: solid;
       border-width: 0;
       transition: border-color 0.3s;
@@ -462,7 +462,7 @@
       position: absolute;
       left: 8px; right: 8px;
       height: 2px;
-      background: var(--brand-rust);
+      background: var(--dark-green-light);
       opacity: 0.7;
       border-radius: 1px;
       animation: scan-sweep 1.5s ease-in-out infinite;
@@ -483,7 +483,7 @@
        SCREEN 5: LOADING
        ============================================================ */
     .screen[data-screen="loading"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
       align-items: center;
       justify-content: center;
       gap: 24px;
@@ -499,21 +499,21 @@
     .loading-text {
       font-family: var(--font-sans);
       font-size: 16px;
-      color: var(--wire-stroke);
+      color: var(--dark-text-secondary);
       text-align: center;
       line-height: 1.5;
     }
     .loading-bar {
       width: 200px;
       height: 4px;
-      background: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
       border-radius: 2px;
       overflow: hidden;
     }
     .loading-bar-fill {
       width: 0;
       height: 100%;
-      background: var(--brand-rust);
+      background: var(--dark-green-primary);
       border-radius: 2px;
     }
     .loading-bar-fill.animate {
@@ -528,7 +528,7 @@
        SCREEN 6: CARD REVEAL
        ============================================================ */
     .screen[data-screen="reveal"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
       align-items: center;
       justify-content: center;
       gap: 20px;
@@ -584,7 +584,7 @@
       background: white;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 30px rgba(193,68,14,0.2), 0 0 0 2px rgba(193,68,14,0.1);
+      box-shadow: 0 8px 30px rgba(44,95,45,0.3), 0 0 0 2px rgba(44,95,45,0.2);
     }
     .reveal-photo {
       flex: 1;
@@ -618,7 +618,7 @@
     .reveal-caption {
       font-family: var(--font-display);
       font-size: 15px;
-      color: var(--wire-stroke);
+      color: var(--dark-text-secondary);
       font-style: italic;
       text-align: center;
     }
@@ -629,7 +629,7 @@
        SCREEN 7: CONFIRMATION
        ============================================================ */
     .screen[data-screen="confirm"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
       align-items: center;
       justify-content: center;
       gap: 16px;
@@ -671,7 +671,7 @@
     .confirm-count {
       font-family: var(--font-mono);
       font-size: 12px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
     .confirm-progress {
       width: 100%;
@@ -689,7 +689,7 @@
        SCREEN 8: GALLERY
        ============================================================ */
     .screen[data-screen="gallery"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
     }
     .gallery-header {
       display: flex;
@@ -704,7 +704,7 @@
     .gallery-share {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--brand-rust);
+      color: var(--dark-green-light);
       cursor: pointer;
     }
     .gallery-progress {
@@ -713,7 +713,7 @@
     .gallery-progress-label {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       display: block;
       margin-bottom: 6px;
     }
@@ -731,12 +731,12 @@
     }
     .gallery-card:active { transform: scale(0.96); }
     .gallery-card.collected {
-      background: white;
-      border: 1.5px solid var(--wire-fill-alt);
+      background: var(--dark-surface);
+      border: 1.5px solid var(--dark-border);
     }
     .gallery-card.locked {
-      background: var(--wire-fill-alt);
-      border: 1.5px dashed var(--wire-stroke-light);
+      background: var(--dark-surface-alt);
+      border: 1.5px dashed var(--dark-text-muted);
     }
     .gallery-card-photo {
       width: 100%;
@@ -751,12 +751,12 @@
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-muted);
     }
     .gallery-card-name {
       font-family: var(--font-mono);
       font-size: 9px;
-      color: var(--wire-stroke);
+      color: var(--dark-text-primary);
       padding: 6px 8px 2px;
       white-space: nowrap;
       overflow: hidden;
@@ -765,7 +765,7 @@
     .gallery-card-date {
       font-family: var(--font-mono);
       font-size: 8px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       padding: 0 8px 6px;
     }
     .gallery-community {
@@ -776,11 +776,11 @@
       margin-top: 8px;
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke-light);
-      border-top: 1px solid var(--wire-fill-alt);
+      color: var(--dark-text-secondary);
+      border-top: 1px solid var(--dark-border-subtle);
     }
     .gallery-map-link {
-      color: var(--brand-rust);
+      color: var(--dark-green-light);
       cursor: pointer;
     }
     .gallery-fast-forward {
@@ -789,8 +789,8 @@
     .tab-bar {
       margin-top: auto;
       display: flex;
-      border-top: 1px solid var(--wire-fill-alt);
-      background: white;
+      border-top: 1px solid var(--dark-border-subtle);
+      background: var(--dark-surface);
       padding: 8px 0 4px;
     }
     .tab-item {
@@ -798,14 +798,14 @@
       text-align: center;
       font-family: var(--font-mono);
       font-size: 9px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-muted);
       padding: 6px 0;
       cursor: pointer;
     }
     .tab-item.active {
-      color: var(--brand-rust);
+      color: var(--dark-green-light);
       font-weight: 700;
-      border-top: 2px solid var(--brand-rust);
+      border-top: 2px solid var(--dark-green-primary);
       margin-top: -1px;
     }
     @keyframes card-shake {
@@ -821,7 +821,7 @@
        SCREEN 9: CARD DETAIL
        ============================================================ */
     .screen[data-screen="detail"] {
-      background: white;
+      background: var(--dark-bg);
     }
     .detail-nav {
       display: flex;
@@ -832,13 +832,13 @@
     .detail-back {
       font-family: var(--font-sans);
       font-size: 14px;
-      color: var(--brand-rust);
+      color: var(--dark-green-light);
       cursor: pointer;
     }
     .detail-share {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--brand-rust);
+      color: var(--dark-green-light);
       cursor: pointer;
     }
     .detail-photo {
@@ -860,26 +860,26 @@
     .detail-date {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       display: block;
       margin-top: 4px;
     }
     .detail-edition {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       display: block;
     }
     .detail-story {
       margin: 12px 20px;
       padding: 12px 16px;
-      border-left: 3px solid var(--brand-ochre);
+      border-left: 3px solid var(--dark-green-primary);
       font-family: var(--font-display);
       font-size: 14px;
       font-style: italic;
-      color: var(--wire-stroke);
+      color: var(--dark-text-secondary);
       line-height: 1.6;
-      background: rgba(204,119,34,0.04);
+      background: var(--dark-green-glow);
       border-radius: 0 8px 8px 0;
     }
     .detail-video {
@@ -888,14 +888,14 @@
       align-items: center;
       gap: 12px;
       padding: 14px 16px;
-      background: var(--wire-fill);
+      background: var(--dark-surface);
       border-radius: 12px;
       cursor: pointer;
     }
     .detail-play {
       width: 36px; height: 36px;
       border-radius: 50%;
-      background: var(--wire-black);
+      background: var(--dark-green-primary);
       color: white;
       display: flex;
       align-items: center;
@@ -910,7 +910,7 @@
     .detail-video-text span {
       font-family: var(--font-mono);
       font-size: 9px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
     .detail-actions { padding: 16px 20px; }
 
@@ -918,7 +918,7 @@
        SCREEN 10: MAP
        ============================================================ */
     .screen[data-screen="map"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
     }
     .map-header {
       padding: 12px 20px;
@@ -942,7 +942,7 @@
       padding: 8px 20px;
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
     .map-dot {
       display: inline-block;
@@ -951,8 +951,8 @@
       margin-right: 4px;
       vertical-align: middle;
     }
-    .map-dot.collected { background: var(--brand-rust); }
-    .map-dot.locked { border: 1.5px dashed var(--wire-stroke-light); }
+    .map-dot.collected { background: var(--dark-green-primary); }
+    .map-dot.locked { border: 1.5px dashed var(--dark-text-muted); }
     .map-continue { padding: 8px 20px; }
 
     /* ============================================================
@@ -1036,7 +1036,7 @@
        SCREEN 12: SET COMPLETE
        ============================================================ */
     .screen[data-screen="complete"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
       align-items: center;
       justify-content: center;
       gap: 16px;
@@ -1062,7 +1062,7 @@
     }
     .complete-slot.filled {
       animation: slot-fill 0.3s ease-out forwards;
-      background: rgba(44,95,45,0.05);
+      background: rgba(44,95,45,0.15);
     }
     @keyframes slot-fill {
       0% { opacity: 0; transform: scale(0.5); }
@@ -1088,7 +1088,7 @@
     .complete-desc {
       font-family: var(--font-sans);
       font-size: 13px;
-      color: var(--wire-stroke);
+      color: var(--dark-text-secondary);
       text-align: center;
       line-height: 1.5;
     }
@@ -1097,7 +1097,7 @@
       align-items: center;
       gap: 12px;
       padding: 14px 16px;
-      background: var(--wire-fill);
+      background: var(--dark-surface);
       border-radius: 12px;
       width: 100%;
       max-width: 280px;
@@ -1118,7 +1118,7 @@
        SCREEN 13: COMMUNITY
        ============================================================ */
     .screen[data-screen="community"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
       align-items: center;
       justify-content: center;
       gap: 20px;
@@ -1131,21 +1131,21 @@
     .milestone-track {
       width: 100%;
       height: 10px;
-      background: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
       border-radius: 5px;
       overflow: hidden;
       position: relative;
     }
     .milestone-fill {
       height: 100%;
-      background: var(--brand-rust);
+      background: var(--dark-green-primary);
       border-radius: 5px;
       transition: width 0.3s ease-out;
     }
     .milestone-count {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       text-align: center;
     }
     .community-reveal {
@@ -1161,27 +1161,27 @@
     .community-card {
       display: inline-block;
       padding: 20px 28px;
-      border: 2px solid var(--brand-rust);
+      border: 2px solid var(--dark-green-primary);
       border-radius: 12px;
-      background: rgba(193,68,14,0.04);
+      background: var(--dark-green-glow);
       margin-bottom: 12px;
     }
     .community-card-label {
       font-family: var(--font-mono);
       font-size: 12px;
       font-weight: 700;
-      color: var(--brand-rust);
+      color: var(--dark-green-light);
       letter-spacing: 0.05em;
       display: block;
     }
     .community-card-text {
       font-size: 11px;
-      color: var(--wire-stroke);
+      color: var(--dark-text-secondary);
       margin-top: 4px;
     }
     .community-desc {
       font-size: 13px;
-      color: var(--wire-stroke);
+      color: var(--dark-text-secondary);
       text-align: center;
       line-height: 1.5;
     }
@@ -1197,11 +1197,11 @@
     .demo-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: rgba(0,0,0,0.15);
+      background: rgba(255,255,255,0.15);
       transition: background 0.3s, transform 0.3s;
     }
     .demo-dot.active {
-      background: var(--brand-rust);
+      background: var(--dark-green-light);
       transform: scale(1.3);
     }
 
@@ -1209,7 +1209,7 @@
        SCREEN: PROFILE
        ============================================================ */
     .screen[data-screen="profile"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
     }
     .profile-header {
       display: flex;
@@ -1238,12 +1238,12 @@
     .profile-handle {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
     .profile-stats {
       display: flex;
       gap: 1px;
-      background: var(--wire-fill-alt);
+      background: var(--dark-border-subtle);
       margin: 0 20px;
       border-radius: 10px;
       overflow: hidden;
@@ -1252,7 +1252,7 @@
       flex: 1;
       text-align: center;
       padding: 10px 8px;
-      background: white;
+      background: var(--dark-surface);
     }
     .profile-stat-num {
       font-size: 16px;
@@ -1262,14 +1262,14 @@
     .profile-stat-label {
       font-family: var(--font-mono);
       font-size: 9px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
     .profile-section-label {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       padding: 16px 20px 8px;
@@ -1285,9 +1285,9 @@
       align-items: center;
       gap: 10px;
       padding: 10px 12px;
-      background: white;
+      background: var(--dark-surface);
       border-radius: 10px;
-      border: 1px solid var(--wire-fill-alt);
+      border: 1px solid var(--dark-border);
     }
     .badge-item.locked { opacity: 0.45; }
     .badge-icon {
@@ -1307,7 +1307,7 @@
     .badge-desc {
       font-family: var(--font-mono);
       font-size: 8px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
     .profile-breakdown {
       padding: 0 20px;
@@ -1321,14 +1321,14 @@
     .breakdown-label {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke);
+      color: var(--dark-text-secondary);
       width: 60px;
       flex-shrink: 0;
     }
     .breakdown-track {
       flex: 1;
       height: 6px;
-      background: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
       border-radius: 3px;
       overflow: hidden;
     }
@@ -1340,7 +1340,7 @@
     .breakdown-count {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       width: 32px;
       text-align: right;
       flex-shrink: 0;
@@ -1356,7 +1356,7 @@
        SCREEN: LEADERBOARD
        ============================================================ */
     .screen[data-screen="leaderboard"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
     }
     .lb-nav {
       display: flex;
@@ -1367,7 +1367,7 @@
     .lb-back {
       font-family: var(--font-sans);
       font-size: 14px;
-      color: var(--brand-rust);
+      color: var(--dark-green-light);
       cursor: pointer;
     }
     .lb-title {
@@ -1377,7 +1377,7 @@
     .lb-filter {
       display: flex;
       margin: 8px 20px;
-      background: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
       border-radius: 8px;
       overflow: hidden;
     }
@@ -1390,15 +1390,15 @@
       cursor: pointer;
       background: transparent;
       border: none;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-muted);
       transition: background 0.2s, color 0.2s;
     }
     .lb-filter-btn.active {
-      background: white;
-      color: var(--wire-black);
+      background: var(--dark-green-primary);
+      color: white;
       font-weight: 700;
       border-radius: 6px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
     .lb-podium {
       display: flex;
@@ -1434,13 +1434,13 @@
     .podium-count {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
     .podium-rank {
       font-family: var(--font-mono);
       font-size: 9px;
       font-weight: 700;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
     .lb-list {
       padding: 0 20px;
@@ -1452,18 +1452,18 @@
       padding: 10px 12px;
       border-radius: 8px;
       margin-bottom: 4px;
-      background: white;
-      border: 1px solid var(--wire-fill-alt);
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border-subtle);
     }
     .lb-row.is-user {
-      border-left: 3px solid var(--brand-rust);
-      background: rgba(193,68,14,0.03);
+      border-left: 3px solid var(--dark-green-primary);
+      background: var(--dark-green-glow);
     }
     .lb-rank {
       font-family: var(--font-mono);
       font-size: 12px;
       font-weight: 700;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       width: 20px;
       text-align: center;
       flex-shrink: 0;
@@ -1471,27 +1471,27 @@
     .lb-avatar-sm {
       width: 30px; height: 30px;
       border-radius: 50%;
-      background: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 10px;
       font-weight: 700;
-      color: var(--wire-stroke);
+      color: var(--dark-text-primary);
       flex-shrink: 0;
     }
     .lb-name { font-size: 13px; font-weight: 600; flex: 1; }
     .lb-score {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
 
     /* ============================================================
        SCREEN: FRIENDS
        ============================================================ */
     .screen[data-screen="friends"] {
-      background: var(--wire-bg);
+      background: var(--dark-bg);
     }
     .friends-nav {
       display: flex;
@@ -1502,7 +1502,7 @@
     .friends-back {
       font-family: var(--font-sans);
       font-size: 14px;
-      color: var(--brand-rust);
+      color: var(--dark-green-light);
       cursor: pointer;
     }
     .friends-title {
@@ -1512,7 +1512,7 @@
     .friends-add {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--brand-rust);
+      color: var(--dark-green-light);
       cursor: pointer;
     }
     .friends-list {
@@ -1523,9 +1523,9 @@
       align-items: center;
       gap: 12px;
       padding: 12px;
-      background: white;
+      background: var(--dark-surface);
       border-radius: 10px;
-      border: 1px solid var(--wire-fill-alt);
+      border: 1px solid var(--dark-border);
       margin-bottom: 8px;
       cursor: pointer;
       transition: transform 0.15s;
@@ -1534,13 +1534,13 @@
     .friend-avatar {
       width: 38px; height: 38px;
       border-radius: 50%;
-      background: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 14px;
       font-weight: 700;
-      color: var(--wire-stroke);
+      color: var(--dark-text-primary);
       flex-shrink: 0;
     }
     .friend-info { flex: 1; }
@@ -1568,7 +1568,7 @@
     .friend-track {
       flex: 1;
       height: 4px;
-      background: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
       border-radius: 2px;
       overflow: hidden;
     }
@@ -1580,13 +1580,13 @@
     .friend-count {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
       flex-shrink: 0;
     }
     .friend-compare-hint {
       font-family: var(--font-mono);
       font-size: 9px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-muted);
     }
     .activity-section {
       padding: 0 20px;
@@ -1596,24 +1596,24 @@
       align-items: flex-start;
       gap: 8px;
       padding: 8px 0;
-      border-bottom: 1px solid var(--wire-fill-alt);
+      border-bottom: 1px solid var(--dark-border-subtle);
     }
     .activity-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: var(--brand-rust);
+      background: var(--dark-green-light);
       margin-top: 5px;
       flex-shrink: 0;
     }
     .activity-text {
       font-size: 12px;
-      color: var(--wire-stroke);
+      color: var(--dark-text-primary);
       line-height: 1.4;
     }
     .activity-time {
       font-family: var(--font-mono);
       font-size: 9px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-muted);
       display: block;
     }
 
@@ -1621,9 +1621,9 @@
     .compare-overlay {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      background: white;
+      background: var(--dark-surface);
       border-radius: 16px 16px 0 0;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
       padding: 16px 20px 24px;
       transform: translateY(100%);
       transition: transform 0.35s ease-out;
@@ -1642,9 +1642,10 @@
     .compare-close {
       width: 28px; height: 28px;
       border-radius: 50%;
-      background: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
       border: none;
       font-size: 14px;
+      color: var(--dark-text-primary);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -1677,14 +1678,14 @@
       color: var(--brand-rust);
     }
     .compare-card.friend-only {
-      background: var(--wire-fill-alt);
-      border: 1.5px solid var(--wire-stroke-light);
-      color: var(--wire-stroke-light);
+      background: var(--dark-surface-alt);
+      border: 1.5px solid var(--dark-text-muted);
+      color: var(--dark-text-muted);
     }
     .compare-card.neither {
-      background: var(--wire-fill);
-      border: 1.5px dashed var(--wire-fill-alt);
-      color: var(--wire-fill-alt);
+      background: var(--dark-surface-alt);
+      border: 1.5px dashed var(--dark-text-muted);
+      color: var(--dark-text-muted);
     }
     .compare-legend {
       display: flex;
@@ -1693,7 +1694,7 @@
       margin-top: 10px;
       font-family: var(--font-mono);
       font-size: 9px;
-      color: var(--wire-stroke-light);
+      color: var(--dark-text-secondary);
     }
     .compare-legend-dot {
       display: inline-block;
@@ -1824,6 +1825,390 @@
     }
 
     /* ============================================================
+       SCREEN: ONBOARDING (3 screens)
+       ============================================================ */
+    .screen[data-screen="onboard-1"],
+    .screen[data-screen="onboard-2"],
+    .screen[data-screen="onboard-3"] {
+      background: var(--dark-bg);
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 44px 24px 24px;
+    }
+    .onboard-hero {
+      width: calc(100% + 48px);
+      margin: -20px -24px 0;
+      height: 260px;
+      background: linear-gradient(135deg, #1a2e1a 0%, #2C5F2D 50%, #1a3a1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .onboard-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(transparent, var(--dark-bg));
+    }
+    .onboard-hero-icon {
+      font-size: 72px;
+      opacity: 0.3;
+    }
+    .onboard-title {
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.2;
+      color: var(--dark-text-primary);
+    }
+    .onboard-subtitle {
+      font-size: 14px;
+      color: var(--dark-text-secondary);
+      text-align: center;
+      line-height: 1.5;
+      max-width: 280px;
+    }
+    .onboard-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .onboard-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--dark-text-muted);
+    }
+    .onboard-dot.active {
+      background: var(--dark-green-light);
+      width: 24px;
+      border-radius: 4px;
+    }
+    .onboard-skip {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--dark-text-muted);
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .onboard-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .onboard-feature-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      background: var(--dark-surface);
+      border-radius: 12px;
+      border: 1px solid var(--dark-border);
+    }
+    .onboard-feature-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--dark-green-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .onboard-feature-title {
+      font-size: 14px;
+      font-weight: 700;
+      display: block;
+      color: var(--dark-text-primary);
+    }
+    .onboard-feature-desc {
+      font-size: 12px;
+      color: var(--dark-text-secondary);
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       SCREEN: HOME DASHBOARD
+       ============================================================ */
+    .screen[data-screen="home"] {
+      background: var(--dark-bg);
+    }
+    .home-greeting {
+      padding: 12px 20px 8px;
+    }
+    .home-welcome {
+      font-size: 14px;
+      color: var(--dark-text-secondary);
+      display: block;
+    }
+    .home-name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--dark-text-primary);
+    }
+    .home-stats-row {
+      display: flex;
+      gap: 8px;
+      padding: 8px 20px;
+    }
+    .home-stat-card {
+      flex: 1;
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+    .home-stat-val {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark-text-primary);
+      display: block;
+    }
+    .home-stat-label {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      color: var(--dark-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .home-trail-card {
+      margin: 12px 20px;
+      padding: 16px;
+      background: var(--dark-surface);
+      border-radius: 12px;
+      border: 1px solid var(--dark-border);
+    }
+    .home-trail-title {
+      font-size: 14px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .home-trail-pct {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--dark-text-secondary);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .home-trail-btn {
+      margin-top: 10px;
+    }
+    .home-milestone {
+      margin: 0 20px;
+      padding: 12px 16px;
+      background: var(--dark-surface);
+      border-radius: 10px;
+      border: 1px solid var(--dark-border);
+    }
+    .home-milestone-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--dark-text-secondary);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .home-section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--dark-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 14px 20px 8px;
+    }
+    .home-activity {
+      padding: 0 20px;
+    }
+    .home-activity-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--dark-border-subtle);
+    }
+    .home-activity-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--dark-green-light);
+      flex-shrink: 0;
+    }
+    .home-activity-text {
+      font-size: 12px;
+      color: var(--dark-text-primary);
+      flex: 1;
+    }
+    .home-activity-time {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--dark-text-muted);
+    }
+
+    /* ============================================================
+       SCREEN: GROUPS
+       ============================================================ */
+    .screen[data-screen="groups"] {
+      background: var(--dark-bg);
+    }
+    .groups-header {
+      padding: 12px 20px;
+    }
+    .groups-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .groups-create {
+      margin: 0 20px 12px;
+      padding: 16px;
+      background: var(--dark-green-glow);
+      border: 1.5px dashed var(--dark-green-primary);
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .groups-create-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark-green-light);
+    }
+    .groups-section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--dark-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 12px 20px 8px;
+    }
+    .groups-list {
+      padding: 0 20px;
+    }
+    .group-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: var(--dark-surface);
+      border-radius: 12px;
+      border: 1px solid var(--dark-border);
+      margin-bottom: 8px;
+    }
+    .group-avatar {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: var(--dark-green-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .group-info { flex: 1; }
+    .group-name {
+      font-size: 14px;
+      font-weight: 700;
+      display: block;
+    }
+    .group-members {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--dark-text-secondary);
+    }
+    .group-join-btn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--dark-green-light);
+      background: var(--dark-green-glow);
+      border: 1px solid var(--dark-green-primary);
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       SCREEN: REWARDS
+       ============================================================ */
+    .screen[data-screen="rewards"] {
+      background: var(--dark-bg);
+    }
+    .rewards-header {
+      padding: 12px 20px;
+    }
+    .rewards-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .rewards-points-card {
+      margin: 0 20px 16px;
+      padding: 20px;
+      background: linear-gradient(135deg, #2C5F2D, #1a3a1a);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .rewards-points-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: block;
+    }
+    .rewards-points-val {
+      font-size: 36px;
+      font-weight: 800;
+      color: white;
+      display: block;
+      margin: 4px 0;
+    }
+    .rewards-points-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+    }
+    .rewards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 0 20px;
+    }
+    .reward-card {
+      background: var(--dark-surface);
+      border-radius: 12px;
+      border: 1px solid var(--dark-border);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .reward-card:active { transform: scale(0.97); }
+    .reward-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--dark-surface-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+    .reward-info {
+      padding: 10px 12px;
+    }
+    .reward-name {
+      font-size: 12px;
+      font-weight: 600;
+      display: block;
+      color: var(--dark-text-primary);
+    }
+    .reward-pts {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--dark-green-light);
+      font-weight: 700;
+    }
+
+    /* ============================================================
        RESPONSIVE: MOBILE (fills viewport)
        ============================================================ */
     @media (max-width: 480px) {
@@ -1850,7 +2235,7 @@
   <!-- NARRATOR -->
   <div class="demo-narrator" id="narrator">
     <div class="narrator-dot"></div>
-    <span class="narrator-text" id="narratorText">The user approaches a Field Notes vending machine and browses available prints.</span>
+    <span class="narrator-text" id="narratorText">The app introduces the Outdoor Walking Experience — discover hidden checkpoints across the city.</span>
     <button class="narrator-toggle" onclick="toggleNarrator()">Hide</button>
   </div>
 
@@ -1861,13 +2246,95 @@
     <div class="demo-screen-area">
 
       <!-- Status Bar (shared) -->
-      <div class="status-bar" id="statusBar">
+      <div class="status-bar light" id="statusBar">
         <span>9:41</span>
         <span style="font-size:10px;">&#9679;&#9679;&#9679;</span>
       </div>
 
+      <!-- ===== SCREEN: ONBOARDING 1 ===== -->
+      <section class="screen active" data-screen="onboard-1">
+        <div class="onboard-hero">
+          <span class="onboard-hero-icon">&#127795;</span>
+        </div>
+        <h1 class="onboard-title">Find the Trail<br>Within the City</h1>
+        <p class="onboard-subtitle">Discover hidden checkpoints, collect documentary photo prints, and explore Savannah like never before.</p>
+        <div class="onboard-dots">
+          <span class="onboard-dot active"></span>
+          <span class="onboard-dot"></span>
+          <span class="onboard-dot"></span>
+        </div>
+        <button class="demo-btn primary" onclick="go('onboard-2')">Start the Trail</button>
+        <span class="onboard-skip" onclick="go('vending')">Skip</span>
+      </section>
+
+      <!-- ===== SCREEN: ONBOARDING 2 ===== -->
+      <section class="screen" data-screen="onboard-2">
+        <h2 class="onboard-title" style="font-size:20px;">How It Works</h2>
+        <div class="onboard-features">
+          <div class="onboard-feature-card">
+            <div class="onboard-feature-icon">&#128205;</div>
+            <div>
+              <span class="onboard-feature-title">Explore</span>
+              <span class="onboard-feature-desc">Walk the Savannah City Trail and find vending machines at 8 checkpoints.</span>
+            </div>
+          </div>
+          <div class="onboard-feature-card">
+            <div class="onboard-feature-icon">&#128244;</div>
+            <div>
+              <span class="onboard-feature-title">Tap NFC</span>
+              <span class="onboard-feature-desc">Buy a $3 documentary photo print and scan the QR code on the back.</span>
+            </div>
+          </div>
+          <div class="onboard-feature-card">
+            <div class="onboard-feature-icon">&#127942;</div>
+            <div>
+              <span class="onboard-feature-title">Unlock</span>
+              <span class="onboard-feature-desc">Collect digital cards, earn points, and unlock exclusive L.L.Bean rewards.</span>
+            </div>
+          </div>
+        </div>
+        <div class="onboard-dots">
+          <span class="onboard-dot"></span>
+          <span class="onboard-dot active"></span>
+          <span class="onboard-dot"></span>
+        </div>
+        <button class="demo-btn primary" onclick="go('onboard-3')">Continue</button>
+        <span class="onboard-skip" onclick="go('vending')">Skip</span>
+      </section>
+
+      <!-- ===== SCREEN: ONBOARDING 3 ===== -->
+      <section class="screen" data-screen="onboard-3">
+        <div class="onboard-hero" style="height:200px;background:linear-gradient(135deg, #1a2a1a 0%, #2C5F2D 60%, #1a3a1a 100%);">
+          <span class="onboard-hero-icon">&#129309;</span>
+        </div>
+        <h2 class="onboard-title" style="font-size:20px;">Walk Together</h2>
+        <div class="onboard-features">
+          <div class="onboard-feature-card">
+            <div class="onboard-feature-icon">&#128101;</div>
+            <div>
+              <span class="onboard-feature-title">Groups</span>
+              <span class="onboard-feature-desc">Join walking groups and explore the trail with friends.</span>
+            </div>
+          </div>
+          <div class="onboard-feature-card">
+            <div class="onboard-feature-icon">&#127942;</div>
+            <div>
+              <span class="onboard-feature-title">Leaderboards</span>
+              <span class="onboard-feature-desc">Compete for top collector and earn bragging rights.</span>
+            </div>
+          </div>
+        </div>
+        <div class="onboard-dots">
+          <span class="onboard-dot"></span>
+          <span class="onboard-dot"></span>
+          <span class="onboard-dot active"></span>
+        </div>
+        <button class="demo-btn primary" onclick="go('vending')">Find Friends</button>
+        <span class="onboard-skip" onclick="go('vending')">Skip</span>
+      </section>
+
       <!-- ===== SCREEN 1: VENDING ===== -->
-      <section class="screen active" data-screen="vending">
+      <section class="screen" data-screen="vending">
         <div class="vending-header">
           <span class="vending-wordmark">L.L.Bean</span>
           <span class="vending-headline">FIELD NOTES</span>
@@ -1939,10 +2406,10 @@
       <section class="screen" data-screen="loading">
         <div class="compass-spinner">
           <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="28" cy="28" r="26" stroke="#C1440E" stroke-width="1.5" opacity="0.3"/>
-            <path d="M28 2 L31 28 L28 54 L25 28 Z" fill="#C1440E" opacity="0.6"/>
+            <circle cx="28" cy="28" r="26" stroke="#3A7D3C" stroke-width="1.5" opacity="0.3"/>
+            <path d="M28 2 L31 28 L28 54 L25 28 Z" fill="#3A7D3C" opacity="0.6"/>
             <path d="M2 28 L28 25 L54 28 L28 31 Z" fill="#8B8680" opacity="0.4"/>
-            <circle cx="28" cy="28" r="3" fill="#C1440E"/>
+            <circle cx="28" cy="28" r="3" fill="#3A7D3C"/>
           </svg>
         </div>
         <p class="loading-text">Activating your<br>Field Note...</p>
@@ -1991,7 +2458,7 @@
         </div>
         <div class="confirm-actions">
           <button class="demo-btn secondary small">Share</button>
-          <button class="demo-btn primary small" onclick="go('gallery')">View Gallery</button>
+          <button class="demo-btn primary small" onclick="go('home')">View Dashboard</button>
         </div>
       </section>
 
@@ -2015,11 +2482,7 @@
         <div class="gallery-fast-forward">
           <button class="demo-btn ghost" id="fastForwardBtn" onclick="fastForward()">Complete Collection &rarr;</button>
         </div>
-        <div class="tab-bar">
-          <span class="tab-item active">Collection</span>
-          <span class="tab-item" onclick="go('map')">Map</span>
-          <span class="tab-item" onclick="go('profile')">Profile</span>
-        </div>
+        <div class="tab-bar" id="tabBarGallery"></div>
       </section>
 
       <!-- ===== SCREEN 9: DETAIL ===== -->
@@ -2054,29 +2517,30 @@
         </div>
         <div class="map-container">
           <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" id="mapSvg">
-            <path d="M0 28 Q40 22, 80 30 Q120 38, 160 26 Q180 22, 200 25" fill="none" stroke="#B0C4D8" stroke-width="8" opacity="0.5"/>
-            <path d="M0 28 Q40 22, 80 30 Q120 38, 160 26 Q180 22, 200 25 L200 0 L0 0 Z" fill="#D6E4EE" opacity="0.4"/>
-            <text x="100" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#9BB" font-style="italic">Savannah River</text>
-            <line x1="55" y1="18" x2="55" y2="45" stroke="#9B9B9B" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="8" y1="75" x2="192" y2="75" stroke="#D5D0C8" stroke-width="0.8"/>
-            <text x="6" y="73" font-family="monospace" font-size="5" fill="#B0ADA5">Bay St</text>
-            <line x1="8" y1="105" x2="192" y2="105" stroke="#D5D0C8" stroke-width="0.8"/>
-            <text x="6" y="103" font-family="monospace" font-size="5" fill="#B0ADA5">Broughton</text>
-            <line x1="8" y1="145" x2="192" y2="145" stroke="#D5D0C8" stroke-width="0.8"/>
-            <text x="6" y="143" font-family="monospace" font-size="5" fill="#B0ADA5">Perry</text>
-            <line x1="8" y1="168" x2="192" y2="168" stroke="#D5D0C8" stroke-width="0.8"/>
-            <text x="6" y="166" font-family="monospace" font-size="5" fill="#B0ADA5">Jones</text>
-            <line x1="8" y1="195" x2="192" y2="195" stroke="#D5D0C8" stroke-width="0.8"/>
-            <text x="6" y="193" font-family="monospace" font-size="5" fill="#B0ADA5">Gaston</text>
-            <line x1="55" y1="45" x2="55" y2="280" stroke="#D5D0C8" stroke-width="0.8"/>
-            <text x="53" y="288" text-anchor="middle" font-family="monospace" font-size="5" fill="#B0ADA5">Bull</text>
-            <line x1="90" y1="45" x2="90" y2="280" stroke="#D5D0C8" stroke-width="0.8"/>
-            <text x="88" y="288" text-anchor="middle" font-family="monospace" font-size="5" fill="#B0ADA5">Drayton</text>
-            <line x1="125" y1="45" x2="125" y2="280" stroke="#D5D0C8" stroke-width="0.8"/>
-            <text x="123" y="288" text-anchor="middle" font-family="monospace" font-size="5" fill="#B0ADA5">Abercorn</text>
-            <line x1="160" y1="45" x2="160" y2="280" stroke="#D5D0C8" stroke-width="0.8"/>
-            <rect x="35" y="210" width="65" height="55" rx="3" fill="#2C5F2D" opacity="0.08" stroke="#2C5F2D" stroke-width="0.5" stroke-opacity="0.2"/>
-            <text x="67" y="240" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#2C5F2D" opacity="0.5">Forsyth Park</text>
+            <rect width="200" height="300" fill="#1A1A1A"/>
+            <path d="M0 28 Q40 22, 80 30 Q120 38, 160 26 Q180 22, 200 25" fill="none" stroke="#2A4A5A" stroke-width="8" opacity="0.6"/>
+            <path d="M0 28 Q40 22, 80 30 Q120 38, 160 26 Q180 22, 200 25 L200 0 L0 0 Z" fill="#1E3040" opacity="0.5"/>
+            <text x="100" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="6" fill="#4A7080" font-style="italic">Savannah River</text>
+            <line x1="55" y1="18" x2="55" y2="45" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="8" y1="75" x2="192" y2="75" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+            <text x="6" y="73" font-family="monospace" font-size="5" fill="rgba(255,255,255,0.25)">Bay St</text>
+            <line x1="8" y1="105" x2="192" y2="105" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+            <text x="6" y="103" font-family="monospace" font-size="5" fill="rgba(255,255,255,0.25)">Broughton</text>
+            <line x1="8" y1="145" x2="192" y2="145" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+            <text x="6" y="143" font-family="monospace" font-size="5" fill="rgba(255,255,255,0.25)">Perry</text>
+            <line x1="8" y1="168" x2="192" y2="168" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+            <text x="6" y="166" font-family="monospace" font-size="5" fill="rgba(255,255,255,0.25)">Jones</text>
+            <line x1="8" y1="195" x2="192" y2="195" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+            <text x="6" y="193" font-family="monospace" font-size="5" fill="rgba(255,255,255,0.25)">Gaston</text>
+            <line x1="55" y1="45" x2="55" y2="280" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+            <text x="53" y="288" text-anchor="middle" font-family="monospace" font-size="5" fill="rgba(255,255,255,0.25)">Bull</text>
+            <line x1="90" y1="45" x2="90" y2="280" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+            <text x="88" y="288" text-anchor="middle" font-family="monospace" font-size="5" fill="rgba(255,255,255,0.25)">Drayton</text>
+            <line x1="125" y1="45" x2="125" y2="280" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+            <text x="123" y="288" text-anchor="middle" font-family="monospace" font-size="5" fill="rgba(255,255,255,0.25)">Abercorn</text>
+            <line x1="160" y1="45" x2="160" y2="280" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+            <rect x="35" y="210" width="65" height="55" rx="3" fill="#2C5F2D" opacity="0.15" stroke="#2C5F2D" stroke-width="0.5" stroke-opacity="0.3"/>
+            <text x="67" y="240" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#3A7D3C" opacity="0.6">Forsyth Park</text>
             <!-- Pins rendered by JS -->
             <g id="mapPins"></g>
           </svg>
@@ -2086,13 +2550,9 @@
           <span><span class="map-dot locked"></span> Undiscovered</span>
         </div>
         <div class="map-continue">
-          <button class="demo-btn ghost" onclick="go('rare')">Continue Demo &rarr;</button>
+          <button class="demo-btn ghost" onclick="go('groups')">Continue Demo &rarr;</button>
         </div>
-        <div class="tab-bar">
-          <span class="tab-item" onclick="go('gallery')">Collection</span>
-          <span class="tab-item active">Map</span>
-          <span class="tab-item" onclick="go('profile')">Profile</span>
-        </div>
+        <div class="tab-bar" id="tabBarMap"></div>
       </section>
 
       <!-- ===== SCREEN: PROFILE ===== -->
@@ -2141,11 +2601,154 @@
           <button class="demo-btn secondary small" onclick="go('leaderboard')">Leaderboard</button>
           <button class="demo-btn secondary small" onclick="go('friends')">Friends (4)</button>
         </div>
-        <div class="tab-bar">
-          <span class="tab-item" onclick="go('gallery')">Collection</span>
-          <span class="tab-item" onclick="go('map')">Map</span>
-          <span class="tab-item active">Profile</span>
+        <div class="tab-bar" id="tabBarProfile"></div>
+      </section>
+
+      <!-- ===== SCREEN: HOME DASHBOARD ===== -->
+      <section class="screen" data-screen="home">
+        <div class="home-greeting">
+          <span class="home-welcome">Welcome back,</span>
+          <span class="home-name">Kim Harper</span>
         </div>
+        <div class="home-stats-row">
+          <div class="home-stat-card">
+            <span class="home-stat-val">2.4 mi</span>
+            <span class="home-stat-label">Distance</span>
+          </div>
+          <div class="home-stat-card">
+            <span class="home-stat-val" id="homeTrailPct">50%</span>
+            <span class="home-stat-label">Trail</span>
+          </div>
+          <div class="home-stat-card">
+            <span class="home-stat-val">2,450</span>
+            <span class="home-stat-label">Points</span>
+          </div>
+        </div>
+        <div class="home-trail-card">
+          <span class="home-trail-title">Savannah City Trail</span>
+          <span class="home-trail-pct" id="homeTrailLabel">4 of 8 collected</span>
+          <div class="progress-track">
+            <div class="progress-fill" id="homeTrailFill" style="width:50%;"></div>
+          </div>
+          <div class="home-trail-btn">
+            <button class="demo-btn primary small" onclick="go('gallery')">View Collection</button>
+          </div>
+        </div>
+        <div class="home-milestone">
+          <span class="home-milestone-label">Milestone Progress</span>
+          <div class="progress-track">
+            <div class="progress-fill" style="width:45%;"></div>
+          </div>
+        </div>
+        <span class="home-section-label">Recent Activity</span>
+        <div class="home-activity">
+          <div class="home-activity-item">
+            <div class="home-activity-dot"></div>
+            <span class="home-activity-text">You collected The Park</span>
+            <span class="home-activity-time">Just now</span>
+          </div>
+          <div class="home-activity-item">
+            <div class="home-activity-dot"></div>
+            <span class="home-activity-text">Sarah M. found The Bridge</span>
+            <span class="home-activity-time">2h ago</span>
+          </div>
+          <div class="home-activity-item">
+            <div class="home-activity-dot"></div>
+            <span class="home-activity-text">Maya C. completed her set!</span>
+            <span class="home-activity-time">5h ago</span>
+          </div>
+        </div>
+        <div class="tab-bar" id="tabBarHome"></div>
+      </section>
+
+      <!-- ===== SCREEN: GROUPS ===== -->
+      <section class="screen" data-screen="groups">
+        <div class="groups-header">
+          <h2 class="groups-title">Groups</h2>
+        </div>
+        <div class="groups-create">
+          <span class="groups-create-text">+ Create a Group</span>
+        </div>
+        <span class="groups-section-label">My Groups</span>
+        <div class="groups-list">
+          <div class="group-card">
+            <div class="group-avatar">&#128694;</div>
+            <div class="group-info">
+              <span class="group-name">Savannah Strollers</span>
+              <span class="group-members">24 members</span>
+            </div>
+          </div>
+          <div class="group-card">
+            <div class="group-avatar">&#9728;</div>
+            <div class="group-info">
+              <span class="group-name">Morning Walkers</span>
+              <span class="group-members">18 members</span>
+            </div>
+          </div>
+        </div>
+        <span class="groups-section-label">Suggested Groups</span>
+        <div class="groups-list">
+          <div class="group-card">
+            <div class="group-avatar">&#127793;</div>
+            <div class="group-info">
+              <span class="group-name">Trail Blazers</span>
+              <span class="group-members">42 members</span>
+            </div>
+            <button class="group-join-btn">Join</button>
+          </div>
+          <div class="group-card">
+            <div class="group-avatar">&#127774;</div>
+            <div class="group-info">
+              <span class="group-name">Weekend Warriors</span>
+              <span class="group-members">31 members</span>
+            </div>
+            <button class="group-join-btn">Join</button>
+          </div>
+        </div>
+        <div class="tab-bar" id="tabBarGroups"></div>
+      </section>
+
+      <!-- ===== SCREEN: REWARDS ===== -->
+      <section class="screen" data-screen="rewards">
+        <div class="rewards-header">
+          <h2 class="rewards-title">Rewards</h2>
+        </div>
+        <div class="rewards-points-card">
+          <span class="rewards-points-label">Available Points</span>
+          <span class="rewards-points-val">2,450</span>
+          <span class="rewards-points-sub">Earn more by collecting Field Notes</span>
+        </div>
+        <div class="rewards-grid">
+          <div class="reward-card">
+            <div class="reward-img">&#129507;</div>
+            <div class="reward-info">
+              <span class="reward-name">Mountain Classic Fleece</span>
+              <span class="reward-pts">2,000 pts</span>
+            </div>
+          </div>
+          <div class="reward-card">
+            <div class="reward-img">&#127746;</div>
+            <div class="reward-info">
+              <span class="reward-name">Trail Model Rain Jacket</span>
+              <span class="reward-pts">3,500 pts</span>
+            </div>
+          </div>
+          <div class="reward-card">
+            <div class="reward-img">&#128092;</div>
+            <div class="reward-info">
+              <span class="reward-name">Katahdin Day Pack</span>
+              <span class="reward-pts">4,000 pts</span>
+            </div>
+          </div>
+          <div class="reward-card">
+            <div class="reward-img">&#9749;</div>
+            <div class="reward-info">
+              <span class="reward-name">Camp Mug</span>
+              <span class="reward-pts">500 pts</span>
+            </div>
+          </div>
+        </div>
+        <div class="tab-bar" id="tabBarRewards"></div>
       </section>
 
       <!-- ===== SCREEN: LEADERBOARD ===== -->
@@ -2180,6 +2783,7 @@
           </div>
         </div>
         <div class="lb-list" id="lbList"></div>
+        <div class="tab-bar" id="tabBarLeaderboard"></div>
       </section>
 
       <!-- ===== SCREEN: FRIENDS ===== -->
@@ -2202,8 +2806,8 @@
           <div class="compare-legend">
             <span><span class="compare-legend-dot" style="background:var(--brand-forest);"></span> Both</span>
             <span><span class="compare-legend-dot" style="background:var(--brand-rust);"></span> Only you</span>
-            <span><span class="compare-legend-dot" style="background:var(--wire-stroke-light);"></span> Only them</span>
-            <span><span class="compare-legend-dot" style="background:var(--wire-fill);border:1px dashed var(--wire-fill-alt);"></span> Neither</span>
+            <span><span class="compare-legend-dot" style="background:var(--dark-text-muted);"></span> Only them</span>
+            <span><span class="compare-legend-dot" style="background:var(--dark-surface-alt);border:1px dashed var(--dark-text-muted);"></span> Neither</span>
           </div>
         </div>
       </section>
@@ -2321,29 +2925,35 @@ const LOCATIONS = [
   { id:8, name:'The Promise', cp:'CP8', image:'images/08-promise.jpg', caption:'"What we leave behind"', story:'The locks on the bridge railing told a hundred small promises. Some rusted. Some new. She clipped hers on without a word and walked into the evening.', edition:'19/50', date:'Feb 13', mapX:125, mapY:75 }
 ];
 
-const SCREEN_ORDER = ['vending','print','scan','loading','reveal','confirm','gallery','detail','map','profile','leaderboard','friends','rare','complete','vip','community'];
+const SCREEN_ORDER = ['onboard-1','onboard-2','onboard-3','vending','print','scan','loading','reveal','confirm','home','gallery','detail','map','groups','profile','leaderboard','friends','rewards','rare','complete','vip','community'];
 
 const NARRATOR_TEXT = {
+  'onboard-1': 'The app introduces the Outdoor Walking Experience \u2014 discover hidden checkpoints across the city.',
+  'onboard-2': 'Three steps: Explore the trail, tap NFC at vending machines, and unlock digital collectibles.',
+  'onboard-3': 'Walk together \u2014 join groups, compete on leaderboards, and explore with friends.',
   vending: 'The user approaches a Field Notes vending machine and browses available prints on the touchscreen.',
   print: 'A 2\u00d73" documentary photo print is dispensed. The user flips it over to find a QR code.',
   scan: 'The user scans the QR code using their phone\u2019s native camera. No app install needed.',
   loading: 'The web app activates the unique print, linking the physical artifact to a digital collectible.',
   reveal: 'The digital card is revealed with a 3D flip animation. The photo comes alive on screen.',
   confirm: 'The card is added to the user\u2019s personal Field Notes collection. Progress updated.',
+  home: 'The home dashboard shows trail progress, points earned, and recent activity at a glance.',
   gallery: 'The gallery shows all collected and undiscovered cards. Tap any card for its full story.',
   detail: 'Each card holds a documentary story excerpt and 45 seconds of video footage.',
   map: 'The collection map shows all 8 checkpoint locations across Savannah.',
+  groups: 'Join walking groups to explore the trail together and earn bonus points.',
   rare: 'At pop-up events, rare gold-edition prints unlock animated digital cards (10 per location).',
   complete: 'Collecting all 8 Field Notes unlocks a behind-the-scenes mini-documentary.',
   profile: 'The user\u2019s profile shows collection progress, achievements, and social connections.',
   leaderboard: 'A city-wide leaderboard drives friendly competition among Savannah collectors.',
   friends: 'Friends can compare collections and track each other\u2019s progress in real time.',
+  rewards: 'Earn points by collecting Field Notes and redeem them for L.L.Bean gear.',
   vip: 'Completing all 8 Field Notes earns VIP access to the #GoGather L.L.Bean pop-up event.',
   community: 'When 500 prints are activated city-wide, a community card unlocks for everyone.'
 };
 
 let state = {
-  currentScreen: 'vending',
+  currentScreen: 'onboard-1',
   collected: new Set([1, 2, 4]),
   allCollected: false,
   detailCard: null
@@ -2378,11 +2988,17 @@ function go(screenId, direction) {
   updateDots(screenId);
   updateStatusBar(screenId);
 
+  // Render tab bar on screens that have one
+  if (TAB_SCREENS.includes(screenId)) {
+    renderTabBar(screenId);
+  }
+
   // Screen-specific triggers
   if (screenId === 'scan') triggerScan();
   if (screenId === 'loading') triggerLoading();
   if (screenId === 'reveal') triggerReveal();
   if (screenId === 'confirm') triggerConfirm();
+  if (screenId === 'home') renderHome();
   if (screenId === 'gallery') renderGallery();
   if (screenId === 'map') renderMap();
   if (screenId === 'profile') renderProfile();
@@ -2439,6 +3055,17 @@ function triggerConfirm() {
   }, 400);
 }
 
+function renderHome() {
+  const count = state.collected.size;
+  const pct = Math.round((count / 8) * 100);
+  const homeTrailPct = document.getElementById('homeTrailPct');
+  const homeTrailLabel = document.getElementById('homeTrailLabel');
+  const homeTrailFill = document.getElementById('homeTrailFill');
+  if (homeTrailPct) homeTrailPct.textContent = pct + '%';
+  if (homeTrailLabel) homeTrailLabel.textContent = count + ' of 8 collected';
+  if (homeTrailFill) homeTrailFill.style.width = pct + '%';
+}
+
 function renderGallery() {
   const grid = document.getElementById('galleryGrid');
   grid.innerHTML = '';
@@ -2462,7 +3089,7 @@ function renderGallery() {
     } else {
       card.innerHTML = `
         <div class="gallery-card-lock">&#128274;</div>
-        <div class="gallery-card-name" style="color:var(--wire-stroke-light);">???</div>
+        <div class="gallery-card-name" style="color:var(--dark-text-muted);">???</div>
         <div class="gallery-card-date">&nbsp;</div>
       `;
       card.onclick = () => { card.classList.add('shake'); setTimeout(() => card.classList.remove('shake'), 400); };
@@ -2494,12 +3121,12 @@ function renderMap() {
     circle.setAttribute('cy', loc.mapY);
     circle.setAttribute('r', '8');
     if (isCollected) {
-      circle.setAttribute('fill', '#C1440E');
-      circle.setAttribute('stroke', 'white');
+      circle.setAttribute('fill', '#2C5F2D');
+      circle.setAttribute('stroke', '#3A7D3C');
       circle.setAttribute('stroke-width', '1.5');
     } else {
       circle.setAttribute('fill', 'none');
-      circle.setAttribute('stroke', '#9B9B9B');
+      circle.setAttribute('stroke', 'rgba(255,255,255,0.25)');
       circle.setAttribute('stroke-width', '1.5');
       circle.setAttribute('stroke-dasharray', '3 2');
     }
@@ -2512,7 +3139,7 @@ function renderMap() {
     num.setAttribute('font-family', 'monospace');
     num.setAttribute('font-size', '7');
     num.setAttribute('font-weight', 'bold');
-    num.setAttribute('fill', isCollected ? 'white' : '#9B9B9B');
+    num.setAttribute('fill', isCollected ? 'white' : 'rgba(255,255,255,0.3)');
     num.textContent = loc.id;
     g.appendChild(num);
 
@@ -2549,7 +3176,7 @@ function triggerComplete() {
   // Confetti
   const screen = document.querySelector('[data-screen="complete"]');
   screen.querySelectorAll('.confetti').forEach(c => c.remove());
-  const colors = ['#C1440E', '#CC7722', '#2C5F2D', '#8B8680'];
+  const colors = ['#2C5F2D', '#3A7D3C', '#CC7722', '#F5F3EE'];
   for (let i = 0; i < 30; i++) {
     const c = document.createElement('div');
     c.className = 'confetti';
@@ -2614,7 +3241,7 @@ const BADGES = [
   { name:'Urban Explorer', icon:'\u{1F9ED}', desc:'Collected 4+ Field Notes', color:'var(--brand-forest)', earned:true },
   { name:'Early Bird', icon:'\u{1F305}', desc:'First 50 to find a location', color:'var(--brand-ochre)', earned:true },
   { name:'Rare Hunter', icon:'\u2B50', desc:'Found a rare edition', color:'var(--brand-rust)', earned:true },
-  { name:'Social Butterfly', icon:'\u{1F98B}', desc:'Shared 3 cards', color:'var(--wire-stroke-light)', earned:false }
+  { name:'Social Butterfly', icon:'\u{1F98B}', desc:'Shared 3 cards', color:'var(--dark-text-muted)', earned:false }
 ];
 
 // ============================================================
@@ -2633,7 +3260,7 @@ function renderProfile() {
     const item = document.createElement('div');
     item.className = 'badge-item' + (b.earned ? '' : ' locked');
     item.innerHTML = `
-      <div class="badge-icon" style="background:${b.earned ? b.color : 'var(--wire-fill-alt)'};opacity:${b.earned ? '0.15' : '0.3'};">
+      <div class="badge-icon" style="background:${b.earned ? b.color : 'var(--dark-surface-alt)'};opacity:${b.earned ? '0.15' : '0.3'};">
         <span style="opacity:${b.earned ? '1' : '0.5'};position:relative;">${b.icon}</span>
       </div>
       <div>
@@ -2784,7 +3411,7 @@ function restartDemo() {
   const lbFilters = document.querySelectorAll('.lb-filter-btn');
   lbFilters.forEach((btn, i) => btn.classList.toggle('active', i === 0));
 
-  go('vending');
+  go('onboard-1');
 }
 
 // ============================================================
@@ -2803,13 +3430,44 @@ function toggleNarrator() {
 
 function updateStatusBar(screenId) {
   const bar = document.getElementById('statusBar');
-  bar.className = 'status-bar' + (['scan', 'rare', 'vip'].includes(screenId) ? ' light' : '');
+  bar.className = 'status-bar light';
 }
 
 function updateDots(screenId) {
   const idx = SCREEN_ORDER.indexOf(screenId);
   document.querySelectorAll('.demo-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === idx);
+  });
+}
+
+// ============================================================
+// TAB BAR
+// ============================================================
+
+const TABS = [
+  { id: 'home', label: 'Home', icon: '&#9750;' },
+  { id: 'map', label: 'Map', icon: '&#9873;' },
+  { id: 'groups', label: 'Groups', icon: '&#9883;' },
+  { id: 'leaderboard', label: 'Board', icon: '&#9813;' },
+  { id: 'rewards', label: 'Rewards', icon: '&#9733;' },
+  { id: 'profile', label: 'Profile', icon: '&#9679;' }
+];
+
+const TAB_SCREENS = ['home', 'gallery', 'map', 'groups', 'leaderboard', 'rewards', 'profile'];
+
+function renderTabBar(activeScreen) {
+  // Map gallery to home tab highlight
+  const activeTab = activeScreen === 'gallery' ? 'home' : activeScreen;
+  const bars = document.querySelectorAll('.tab-bar');
+  bars.forEach(bar => {
+    bar.innerHTML = '';
+    TABS.forEach(tab => {
+      const span = document.createElement('span');
+      span.className = 'tab-item' + (tab.id === activeTab ? ' active' : '');
+      span.innerHTML = tab.label;
+      span.onclick = () => go(tab.id);
+      bar.appendChild(span);
+    });
   });
 }
 

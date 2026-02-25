@@ -22,6 +22,19 @@
   --wire-white:         #FFFFFF;
   --wire-black:         #1A1A1A;
 
+  /* === Dark Theme Colors (Figma Merge) === */
+  --dark-bg:            #1A1A1A;
+  --dark-surface:       #242424;
+  --dark-surface-alt:   #2E2E2E;
+  --dark-border:        rgba(45, 95, 45, 0.3);
+  --dark-border-subtle: rgba(255, 255, 255, 0.08);
+  --dark-text-primary:  #F5F3EE;
+  --dark-text-secondary: rgba(255, 255, 255, 0.55);
+  --dark-text-muted:    rgba(255, 255, 255, 0.35);
+  --dark-green-primary: #2C5F2D;
+  --dark-green-light:   #3A7D3C;
+  --dark-green-glow:    rgba(44, 95, 45, 0.25);
+
   /* === Annotation Colors === */
   --anno-line:          #E74C3C;
   --anno-bg:            #FFF8E1;
