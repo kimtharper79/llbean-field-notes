@@ -2209,6 +2209,903 @@
     }
 
     /* ============================================================
+       URBAN GEAR LIBRARY — All Screens
+       ============================================================ */
+
+    /* --- Gear Hub (Location Selector) --- */
+    .screen[data-screen="gear-hub"] {
+      background: var(--dark-bg);
+      padding-top: 0 !important;
+    }
+    .gear-hero {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a2e1a 0%, #2C5F2D 50%, #1a3a1a 100%);
+    }
+    .gear-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 40%, rgba(26,26,26,0.9) 100%);
+      z-index: 1;
+    }
+    .gear-hero-branding {
+      position: absolute;
+      top: 52px;
+      left: 20px;
+      right: 20px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .gear-hero-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--dark-green-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: white;
+    }
+    .gear-hero-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .gear-hero-label {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.06em;
+    }
+    .gear-hero-title {
+      font-family: var(--font-sans);
+      font-size: 24px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .gear-hero-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 20px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.95);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+    .gear-hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--dark-green-primary);
+    }
+    .gear-hub-content {
+      padding: 20px;
+    }
+    .gear-hub-heading {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--dark-text-primary);
+      margin-bottom: 4px;
+    }
+    .gear-hub-sub {
+      font-size: 13px;
+      color: var(--dark-text-secondary);
+      margin-bottom: 16px;
+    }
+    .gear-location-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      background: var(--dark-surface);
+      border-radius: 16px;
+      border: 1px solid var(--dark-border);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: transform 0.15s, background 0.15s;
+    }
+    .gear-location-card:active { transform: scale(0.98); background: var(--dark-surface-alt); }
+    .gear-loc-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      background: var(--dark-surface-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+    .gear-loc-badge {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      font-size: 9px;
+      font-weight: 800;
+      color: white;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+    .gear-loc-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .gear-loc-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--dark-text-primary);
+      line-height: 1.2;
+      display: block;
+    }
+    .gear-loc-area {
+      font-size: 11px;
+      color: var(--dark-text-secondary);
+      display: block;
+      margin-top: 2px;
+    }
+    .gear-loc-tags {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .gear-loc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 8px;
+      background: var(--dark-surface-alt);
+      color: var(--dark-text-secondary);
+    }
+    .gear-loc-tag.terrain {
+      background: rgba(44, 95, 45, 0.15);
+      color: var(--dark-green-light);
+    }
+    .gear-loc-icon-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* --- Gear Location (Bundle Grid) --- */
+    .screen[data-screen="gear-tybee"],
+    .screen[data-screen="gear-forsyth"],
+    .screen[data-screen="gear-daffin"] {
+      background: var(--dark-bg);
+    }
+    .gear-loc-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--dark-bg);
+      border-bottom: 1px solid var(--dark-border-subtle);
+      padding: 6px 20px 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .gear-back-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: none;
+      background: var(--dark-surface);
+      color: var(--dark-text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.15s;
+    }
+    .gear-back-btn:active { background: var(--dark-surface-alt); }
+    .gear-loc-header-info {
+      flex: 1;
+    }
+    .gear-loc-header-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 1px;
+    }
+    .gear-loc-header-tag .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .gear-loc-header-title {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--dark-text-primary);
+    }
+    .gear-loc-header-city {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: var(--dark-surface);
+      color: var(--dark-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .gear-bundle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 14px 14px 100px;
+    }
+    .gear-bundle-card {
+      background: var(--dark-surface);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--dark-border);
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .gear-bundle-card:active { transform: scale(0.97); }
+    .gear-bundle-img {
+      width: 100%;
+      height: 100px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      background: var(--dark-surface-alt);
+      overflow: hidden;
+    }
+    .gear-bundle-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+    }
+    .gear-bundle-proximity {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      font-size: 9px;
+      font-weight: 800;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 10px;
+      z-index: 2;
+    }
+    .gear-bundle-price-tag {
+      position: absolute;
+      bottom: 6px;
+      left: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #1A1A1A;
+      background: rgba(255,255,255,0.92);
+      padding: 2px 8px;
+      border-radius: 10px;
+      z-index: 2;
+    }
+    .gear-bundle-body {
+      padding: 10px 10px 12px;
+    }
+    .gear-bundle-name {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--dark-text-primary);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .gear-item-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 3px;
+    }
+    .gear-item-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      flex-shrink: 0;
+    }
+    .gear-item-text {
+      font-size: 10px;
+      color: var(--dark-text-secondary);
+    }
+    .gear-bundle-duration {
+      margin-top: 8px;
+      text-align: center;
+      padding: 5px;
+      border-radius: 8px;
+      background: var(--dark-surface-alt);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--dark-text-secondary);
+    }
+
+    /* --- Gear Smart Map (bottom bar) --- */
+    .gear-map-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--dark-surface);
+      border-top: 1px solid var(--dark-border);
+      padding: 14px 20px;
+      z-index: 20;
+    }
+    .gear-map-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .gear-map-heading-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--dark-text-primary);
+      text-transform: uppercase;
+    }
+    .gear-map-terrain {
+      font-size: 10px;
+      color: var(--dark-text-muted);
+    }
+    .gear-map-visual {
+      width: 100%;
+      height: 80px;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .gear-map-pin {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: white;
+      z-index: 2;
+    }
+    .gear-map-pin::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      animation: gear-pin-pulse 2s ease-in-out infinite;
+    }
+    @keyframes gear-pin-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.4); opacity: 0; }
+    }
+    .gear-locker-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: var(--dark-surface-alt);
+      margin-bottom: 4px;
+    }
+    .gear-locker-row-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark-text-primary);
+    }
+    .gear-locker-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+    .gear-locker-dist {
+      font-size: 10px;
+      font-weight: 700;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    /* --- Gear Verification --- */
+    .screen[data-screen="gear-verify"] {
+      background: var(--dark-bg);
+    }
+    .gear-verify-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--dark-bg);
+      border-bottom: 1px solid var(--dark-border-subtle);
+      padding: 6px 20px 0;
+    }
+    .gear-verify-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .gear-verify-progress {
+      display: flex;
+      gap: 6px;
+      padding-bottom: 12px;
+    }
+    .gear-verify-bar {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--dark-surface-alt);
+      overflow: hidden;
+    }
+    .gear-verify-bar-fill {
+      height: 100%;
+      background: var(--dark-green-primary);
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    .gear-verify-bar.done .gear-verify-bar-fill { width: 100%; }
+    .gear-verify-steps {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 20px;
+    }
+    .gear-verify-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .gear-verify-step-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s;
+      background: var(--dark-surface);
+      color: var(--dark-text-muted);
+    }
+    .gear-verify-step-circle.active {
+      background: rgba(44,95,45,0.2);
+      color: var(--dark-green-light);
+      box-shadow: 0 0 0 2px var(--dark-green-primary);
+    }
+    .gear-verify-step-circle.done {
+      background: var(--dark-green-primary);
+      color: white;
+    }
+    .gear-verify-step-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--dark-text-secondary);
+      text-align: center;
+    }
+    .gear-verify-content {
+      flex: 1;
+      padding: 0 20px;
+    }
+    .gear-verify-card {
+      background: var(--dark-surface);
+      border-radius: 16px;
+      border: 1px solid var(--dark-border);
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+    .gear-verify-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .gear-verify-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(44,95,45,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--dark-green-light);
+    }
+    .gear-verify-card-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--dark-text-primary);
+      display: block;
+    }
+    .gear-verify-card-sub {
+      font-size: 11px;
+      color: var(--dark-text-secondary);
+    }
+    .gear-phone-input {
+      width: 100%;
+      padding: 14px;
+      background: var(--dark-surface-alt);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      color: var(--dark-text-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .gear-phone-input:focus {
+      border-color: var(--dark-green-primary);
+      box-shadow: 0 0 0 2px var(--dark-green-glow);
+    }
+    .gear-phone-input::placeholder {
+      color: var(--dark-text-muted);
+    }
+    .gear-scan-zone {
+      width: 100%;
+      min-height: 160px;
+      border: 2px dashed var(--dark-border);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.02);
+      transition: all 0.3s;
+    }
+    .gear-scan-zone.verified {
+      border-color: var(--dark-green-primary);
+      background: rgba(44,95,45,0.08);
+    }
+    .gear-scan-zone .scan-icon {
+      font-size: 40px;
+      color: var(--dark-text-muted);
+    }
+    .gear-scan-zone.verified .scan-icon {
+      color: var(--dark-green-light);
+    }
+    .gear-scan-btn {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: none;
+      background: var(--dark-green-primary);
+      color: white;
+      cursor: pointer;
+    }
+    .gear-scan-btn:active { transform: scale(0.97); }
+    .gear-verify-info {
+      display: flex;
+      gap: 10px;
+      padding: 14px;
+      background: var(--dark-surface-alt);
+      border-radius: 12px;
+    }
+    .gear-verify-info-icon {
+      font-size: 16px;
+      color: var(--dark-green-light);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .gear-verify-info-text {
+      font-size: 12px;
+      color: var(--dark-text-secondary);
+      line-height: 1.5;
+    }
+    .gear-payment-rows {
+      margin-top: 14px;
+      text-align: center;
+    }
+    .gear-payment-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 16px;
+      font-size: 12px;
+    }
+    .gear-payment-row .label { color: var(--dark-text-secondary); }
+    .gear-payment-row .value { font-weight: 700; color: var(--dark-text-primary); }
+    .gear-payment-divider {
+      border: none;
+      border-top: 1px solid var(--dark-border-subtle);
+      margin: 6px 16px;
+    }
+    .gear-payment-note {
+      font-size: 10px;
+      color: var(--dark-text-muted);
+      text-align: center;
+      margin-top: 6px;
+    }
+    .gear-verify-cta {
+      padding: 16px 20px 24px;
+    }
+    .gear-verify-cta .demo-btn {
+      transition: background 0.2s, color 0.2s;
+    }
+    .gear-verify-cta .demo-btn.disabled {
+      background: var(--dark-surface-alt);
+      color: var(--dark-text-muted);
+      cursor: not-allowed;
+    }
+
+    /* --- Gear Unlock --- */
+    .screen[data-screen="gear-unlock"] {
+      background: var(--dark-bg);
+    }
+    .gear-unlock-header {
+      padding: 10px 20px 0;
+    }
+    .gear-unlock-badge {
+      display: inline-block;
+      background: var(--dark-green-primary);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+    .gear-unlock-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--dark-text-primary);
+      letter-spacing: -0.02em;
+    }
+    .gear-unlock-subtitle {
+      font-size: 14px;
+      color: var(--dark-text-secondary);
+      margin-top: 2px;
+    }
+    .gear-unlock-info {
+      margin: 16px 20px;
+      background: var(--dark-surface);
+      border-radius: 20px;
+      border: 1px solid var(--dark-border);
+      padding: 18px;
+    }
+    .gear-unlock-info-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .gear-unlock-bundle-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--dark-text-primary);
+    }
+    .gear-unlock-bundle-tag {
+      font-size: 11px;
+      color: var(--dark-text-secondary);
+    }
+    .gear-unlock-bundle-price {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark-green-light);
+      background: rgba(44,95,45,0.15);
+      padding: 3px 10px;
+      border-radius: 10px;
+    }
+    .gear-unlock-detail-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .gear-unlock-detail-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(44,95,45,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--dark-green-light);
+      flex-shrink: 0;
+    }
+    .gear-unlock-detail-label {
+      font-size: 11px;
+      color: var(--dark-text-muted);
+      display: block;
+    }
+    .gear-unlock-detail-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark-text-primary);
+    }
+    .gear-unlock-items-section {
+      border-top: 1px solid var(--dark-border-subtle);
+      padding-top: 12px;
+      margin-top: 4px;
+    }
+    .gear-unlock-items-label {
+      font-size: 11px;
+      color: var(--dark-text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .gear-unlock-items-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .gear-unlock-item-chip {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: var(--dark-surface-alt);
+      color: var(--dark-text-secondary);
+    }
+    .gear-countdown {
+      margin: 0 20px 14px;
+      background: var(--dark-surface-alt);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+    .gear-countdown-label {
+      font-size: 11px;
+      color: var(--dark-text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .gear-countdown-time {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--dark-green-light);
+      letter-spacing: -0.02em;
+    }
+
+    /* Slide to Unlock */
+    .gear-slider-wrap {
+      padding: 0 20px;
+    }
+    .gear-slider-track {
+      position: relative;
+      height: 64px;
+      border-radius: 20px;
+      background: var(--dark-green-primary);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(44,95,45,0.3);
+      touch-action: none;
+    }
+    .gear-slider-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 0.04em;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .gear-slider-thumb {
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width: 52px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--dark-green-primary);
+      cursor: grab;
+      touch-action: none;
+      transition: left 0.1s;
+      z-index: 2;
+      user-select: none;
+    }
+    .gear-slider-thumb:active { cursor: grabbing; }
+    .gear-slider-hint {
+      text-align: center;
+      font-size: 12px;
+      color: var(--dark-text-muted);
+      margin-top: 12px;
+    }
+
+    /* Unlock Success State */
+    .gear-success-card {
+      margin: 0 20px 14px;
+      background: var(--dark-green-primary);
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      color: white;
+    }
+    .gear-success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 12px;
+    }
+    .gear-success-title {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+    .gear-success-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      margin-top: 6px;
+    }
+    .gear-unlock-actions {
+      padding: 0 20px;
+    }
+    .gear-return-note {
+      background: var(--dark-surface-alt);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--dark-text-secondary);
+      margin-top: 10px;
+    }
+
+    /* Lock overlay animation */
+    .gear-lock-overlay {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 80px;
+      pointer-events: none;
+      opacity: 0.06;
+      color: var(--dark-green-light);
+      animation: gear-lock-breathe 2s ease-in-out infinite;
+    }
+    @keyframes gear-lock-breathe {
+      0%, 100% { opacity: 0.04; }
+      50% { opacity: 0.08; }
+    }
+
+    /* ============================================================
        RESPONSIVE: MOBILE (fills viewport)
        ============================================================ */
     @media (max-width: 480px) {
@@ -2640,6 +3537,15 @@
             <div class="progress-fill" style="width:45%;"></div>
           </div>
         </div>
+        <!-- Gear Library Quick Access -->
+        <div onclick="go('gear-hub')" style="margin:0 20px 14px;padding:14px 16px;background:linear-gradient(135deg,rgba(44,95,45,0.2),rgba(44,95,45,0.08));border:1px solid var(--dark-border);border-radius:14px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:transform 0.15s;" onmousedown="this.style.transform='scale(0.98)'" onmouseup="this.style.transform=''">
+          <div style="width:40px;height:40px;border-radius:10px;background:var(--dark-green-primary);display:flex;align-items:center;justify-content:center;font-size:18px;">&#128205;</div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:800;color:var(--dark-text-primary);">Urban Gear Library</div>
+            <div style="font-size:11px;color:var(--dark-text-secondary);">Rent outdoor gear at Savannah&rsquo;s parks</div>
+          </div>
+          <span style="font-size:18px;color:var(--dark-text-muted);">&#8250;</span>
+        </div>
         <span class="home-section-label">Recent Activity</span>
         <div class="home-activity">
           <div class="home-activity-item">
@@ -2898,7 +3804,132 @@
         </div>
         <div class="community-actions">
           <button class="demo-btn primary" onclick="restartDemo()">Restart Demo</button>
+          <button class="demo-btn secondary" onclick="go('gear-hub')" style="margin-top:8px;width:100%;">&#128205; Explore Gear Library</button>
         </div>
+      </section>
+
+      <!-- ===== URBAN GEAR LIBRARY: HUB ===== -->
+      <section class="screen" data-screen="gear-hub">
+        <div class="gear-hero">
+          <div class="gear-hero-overlay"></div>
+          <div class="gear-hero-branding">
+            <div class="gear-hero-icon">&#128205;</div>
+            <div class="gear-hero-text">
+              <span class="gear-hero-label">L.L. BEAN URBAN GEAR LIBRARY</span>
+              <span class="gear-hero-title">Savannah</span>
+            </div>
+          </div>
+          <div class="gear-hero-badge">
+            <span class="gear-hero-badge-dot"></span>
+            4 Locker Locations
+          </div>
+        </div>
+        <div class="gear-hub-content">
+          <div class="gear-hub-heading">Choose Your Location</div>
+          <div class="gear-hub-sub">Select a gear locker near your next micro-adventure</div>
+          <div id="gearHubList"></div>
+        </div>
+      </section>
+
+      <!-- ===== URBAN GEAR LIBRARY: TYBEE ===== -->
+      <section class="screen" data-screen="gear-tybee">
+        <div class="gear-loc-header">
+          <button class="gear-back-btn" onclick="go('gear-hub','left')">&#8592;</button>
+          <div class="gear-loc-header-info">
+            <div class="gear-loc-header-tag" style="color:#00B4D8;">
+              <span class="dot" style="background:#00B4D8;"></span>TYBEE ISLAND
+            </div>
+            <div class="gear-loc-header-title">Beach Gear</div>
+          </div>
+          <div class="gear-loc-header-city">&#9992; Savannah, GA</div>
+        </div>
+        <div class="gear-bundle-grid" id="gearTybeeGrid"></div>
+        <div class="gear-map-footer" id="gearTybeeMap"></div>
+      </section>
+
+      <!-- ===== URBAN GEAR LIBRARY: FORSYTH ===== -->
+      <section class="screen" data-screen="gear-forsyth">
+        <div class="gear-loc-header">
+          <button class="gear-back-btn" onclick="go('gear-hub','left')">&#8592;</button>
+          <div class="gear-loc-header-info">
+            <div class="gear-loc-header-tag" style="color:#2D6A4F;">
+              <span class="dot" style="background:#2D6A4F;"></span>FORSYTH PARK
+            </div>
+            <div class="gear-loc-header-title">Park Gear</div>
+          </div>
+          <div class="gear-loc-header-city">&#9992; Savannah, GA</div>
+        </div>
+        <div class="gear-bundle-grid" id="gearForsythGrid"></div>
+        <div class="gear-map-footer" id="gearForsythMap"></div>
+      </section>
+
+      <!-- ===== URBAN GEAR LIBRARY: DAFFIN ===== -->
+      <section class="screen" data-screen="gear-daffin">
+        <div class="gear-loc-header">
+          <button class="gear-back-btn" onclick="go('gear-hub','left')">&#8592;</button>
+          <div class="gear-loc-header-info">
+            <div class="gear-loc-header-tag" style="color:#2D6A4F;">
+              <span class="dot" style="background:#2D6A4F;"></span>DAFFIN PARK
+            </div>
+            <div class="gear-loc-header-title">Park Gear</div>
+          </div>
+          <div class="gear-loc-header-city">&#9992; Savannah, GA</div>
+        </div>
+        <div class="gear-bundle-grid" id="gearDaffinGrid"></div>
+        <div class="gear-map-footer" id="gearDaffinMap"></div>
+      </section>
+
+      <!-- ===== URBAN GEAR LIBRARY: VERIFICATION ===== -->
+      <section class="screen" data-screen="gear-verify">
+        <div class="gear-verify-header">
+          <div class="gear-verify-top">
+            <button class="gear-back-btn" id="gearVerifyBack">&#8592;</button>
+            <div>
+              <div style="font-size:18px;font-weight:800;color:var(--dark-text-primary);">Quick Verification</div>
+              <div style="font-size:12px;color:var(--dark-text-secondary);" id="gearVerifyStepLabel">Step 1 of 3</div>
+            </div>
+          </div>
+          <div class="gear-verify-progress">
+            <div class="gear-verify-bar done" id="gvBar1"><div class="gear-verify-bar-fill"></div></div>
+            <div class="gear-verify-bar" id="gvBar2"><div class="gear-verify-bar-fill"></div></div>
+            <div class="gear-verify-bar" id="gvBar3"><div class="gear-verify-bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="gear-verify-steps" id="gearVerifySteps"></div>
+        <div class="gear-verify-content" id="gearVerifyContent"></div>
+        <div class="gear-verify-cta">
+          <button class="demo-btn primary disabled" id="gearVerifyCta" onclick="gearVerifyNext()">Continue</button>
+        </div>
+      </section>
+
+      <!-- ===== URBAN GEAR LIBRARY: UNLOCK ===== -->
+      <section class="screen" data-screen="gear-unlock">
+        <div class="gear-unlock-header">
+          <div class="gear-unlock-badge">L.L. BEAN URBAN GEAR LIBRARY</div>
+          <div class="gear-unlock-title" id="gearUnlockTitle">Ready to Unlock</div>
+          <div class="gear-unlock-subtitle" id="gearUnlockSub">Slide to open your locker</div>
+        </div>
+        <div class="gear-unlock-info" id="gearUnlockInfo"></div>
+        <div class="gear-countdown" id="gearCountdown">
+          <span class="gear-countdown-label">Time to collect gear</span>
+          <span class="gear-countdown-time" id="gearCountdownTime">5:00</span>
+        </div>
+        <div class="gear-success-card" id="gearSuccessCard" style="display:none;"></div>
+        <div style="flex:1;"></div>
+        <div id="gearSliderSection">
+          <div class="gear-slider-wrap">
+            <div class="gear-slider-track" id="gearSliderTrack">
+              <div class="gear-slider-label" id="gearSliderLabel">SLIDE TO UNLOCK</div>
+              <div class="gear-slider-thumb" id="gearSliderThumb">&#10145;</div>
+            </div>
+            <div class="gear-slider-hint">Drag the slider to open locker #12</div>
+          </div>
+        </div>
+        <div class="gear-unlock-actions" id="gearUnlockActions" style="display:none;padding:0 20px 20px;">
+          <button class="demo-btn secondary" onclick="go('gear-hub','left')" style="width:100%;margin-bottom:8px;">Return Home</button>
+          <div class="gear-return-note" id="gearReturnNote">Remember to return your gear to any locker within 4 hours</div>
+        </div>
+        <div class="gear-lock-overlay" id="gearLockOverlay">&#128274;</div>
       </section>
 
     </div>
@@ -2925,7 +3956,7 @@ const LOCATIONS = [
   { id:8, name:'The Promise', cp:'CP8', image:'images/08-promise.jpg', caption:'"What we leave behind"', story:'The locks on the bridge railing told a hundred small promises. Some rusted. Some new. She clipped hers on without a word and walked into the evening.', edition:'19/50', date:'Feb 13', mapX:125, mapY:75 }
 ];
 
-const SCREEN_ORDER = ['onboard-1','onboard-2','onboard-3','vending','print','scan','loading','reveal','confirm','home','gallery','detail','map','groups','profile','leaderboard','friends','rewards','rare','complete','vip','community'];
+const SCREEN_ORDER = ['onboard-1','onboard-2','onboard-3','vending','print','scan','loading','reveal','confirm','home','gallery','detail','map','groups','profile','leaderboard','friends','rewards','rare','complete','vip','community','gear-hub','gear-tybee','gear-forsyth','gear-daffin','gear-verify','gear-unlock'];
 
 const NARRATOR_TEXT = {
   'onboard-1': 'The app introduces the Outdoor Walking Experience \u2014 discover hidden checkpoints across the city.',
@@ -2949,7 +3980,13 @@ const NARRATOR_TEXT = {
   friends: 'Friends can compare collections and track each other\u2019s progress in real time.',
   rewards: 'Earn points by collecting Field Notes and redeem them for L.L.Bean gear.',
   vip: 'Completing all 8 Field Notes earns VIP access to the #GoGather L.L.Bean pop-up event.',
-  community: 'When 500 prints are activated city-wide, a community card unlocks for everyone.'
+  community: 'When 500 prints are activated city-wide, a community card unlocks for everyone.',
+  'gear-hub': 'The Urban Gear Library \u2014 rental kiosks in Savannah\u2019s green spaces. Choose a locker location.',
+  'gear-tybee': 'Tybee Island beach gear bundles \u2014 cabanas, paddleboards, and beach games for the day.',
+  'gear-forsyth': 'Forsyth Park gear \u2014 hammocks, firepits, lawn games, and blankets for the perfect afternoon.',
+  'gear-daffin': 'Daffin Park community gear \u2014 firepits, lawn games, and hammocks in Midtown Savannah.',
+  'gear-verify': 'Quick verification \u2014 phone number, photo ID, and a refundable deposit to unlock your locker.',
+  'gear-unlock': 'Slide to unlock the locker and grab your gear. Enjoy your micro-adventure!'
 };
 
 let state = {
@@ -3007,6 +4044,12 @@ function go(screenId, direction) {
   if (screenId === 'rare') triggerRare();
   if (screenId === 'complete') triggerComplete();
   if (screenId === 'community') triggerCommunity();
+  if (screenId === 'gear-hub') renderGearHub();
+  if (screenId === 'gear-tybee') renderGearLocation('tybee');
+  if (screenId === 'gear-forsyth') renderGearLocation('forsyth');
+  if (screenId === 'gear-daffin') renderGearLocation('daffin');
+  if (screenId === 'gear-verify') renderGearVerify();
+  if (screenId === 'gear-unlock') renderGearUnlock();
 }
 
 // ============================================================
@@ -3407,6 +4450,16 @@ function restartDemo() {
   // Reset comparison overlay
   hideComparison();
 
+  // Reset gear state
+  gearState.currentStep = 1;
+  gearState.phoneComplete = false;
+  gearState.idVerified = false;
+  gearState.cardVerified = false;
+  gearState.selectedBundle = null;
+  gearState.selectedLocation = null;
+  gearState.isUnlocked = false;
+  if (gearState.countdownTimer) clearInterval(gearState.countdownTimer);
+
   // Reset leaderboard filter
   const lbFilters = document.querySelectorAll('.lb-filter-btn');
   lbFilters.forEach((btn, i) => btn.classList.toggle('active', i === 0));
@@ -3438,6 +4491,505 @@ function updateDots(screenId) {
   document.querySelectorAll('.demo-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === idx);
   });
+}
+
+// ============================================================
+// URBAN GEAR LIBRARY — DATA & LOGIC
+// ============================================================
+
+const GEAR_LOCATIONS = [
+  { id:'tybee', name:'Tybee Island', area:'Beach', terrain:'Oceanfront', icon:'\u{1F30A}', lockerCount:2, distance:'18 mi east', color:'#00B4D8', screen:'gear-tybee' },
+  { id:'forsyth', name:'Forsyth Park', area:'Historic District', terrain:'Urban Park', icon:'\u{1F332}', lockerCount:1, distance:'2 mi south', color:'#2D6A4F', screen:'gear-forsyth' },
+  { id:'daffin', name:'Daffin Park', area:'Midtown', terrain:'Community Park', icon:'\u{1F334}', lockerCount:1, distance:'3 mi east', color:'#2D6A4F', screen:'gear-daffin' }
+];
+
+const GEAR_BUNDLES = {
+  tybee: [
+    { id:'shoreline-shelter', name:'The Shoreline Shelter', gear:['Sunbuster Cabana','2x Beach Chairs','Blanket'], icons:['\u2602','\u{1FA91}','\u{1F9F6}'], proximity:'2 min walk', duration:'4 hrs', price:'$12' },
+    { id:'wave-rider', name:'The Wave Rider', gear:['Inflatable SUP','Life Vest'], icons:['\u{1F3C4}','\u{1F9BA}'], proximity:'1 min walk', duration:'3 hrs', price:'$15' },
+    { id:'sand-social', name:'The Sand Social', gear:['Spikeball Set','Blanket','Dry Bag'], icons:['\u{1F3D0}','\u{1F9F6}','\u{1F392}'], proximity:'3 min walk', duration:'4 hrs', price:'$10' }
+  ],
+  forsyth: [
+    { id:'fireside-hangout', name:'The Fireside Hangout', gear:['Solo Stove Mesa','2x Chairs','Blanket','Speaker'], icons:['\u{1F525}','\u{1FA91}','\u{1F9F6}','\u{1F50A}'], proximity:'2 min walk', duration:'4 hrs', price:'$12' },
+    { id:'lawn-game-legend', name:'The Lawn Game Legend', gear:['Ladder Toss','Puffer Blanket','Speaker'], icons:['\u{1F3AF}','\u{1F9F6}','\u{1F50A}'], proximity:'3 min walk', duration:'5 hrs', price:'$10' },
+    { id:'canopy-escape', name:'The Canopy Escape', gear:['Hammock + Straps','Speaker','Puffer Blanket'], icons:['\u{1F332}','\u{1F50A}','\u{1F9F6}'], proximity:'1 min walk', duration:'4 hrs', price:'$8' }
+  ],
+  daffin: [
+    { id:'fireside-hangout-d', name:'The Fireside Hangout', gear:['Solo Stove Mesa','2x Chairs','Blanket','Speaker'], icons:['\u{1F525}','\u{1FA91}','\u{1F9F6}','\u{1F50A}'], proximity:'3 min walk', duration:'4 hrs', price:'$12' },
+    { id:'lawn-game-legend-d', name:'The Lawn Game Legend', gear:['Ladder Toss','Puffer Blanket','Speaker'], icons:['\u{1F3AF}','\u{1F9F6}','\u{1F50A}'], proximity:'2 min walk', duration:'5 hrs', price:'$10' },
+    { id:'canopy-escape-d', name:'The Canopy Escape', gear:['Hammock + Straps','Speaker','Puffer Blanket'], icons:['\u{1F332}','\u{1F50A}','\u{1F9F6}'], proximity:'1 min walk', duration:'4 hrs', price:'$8' }
+  ]
+};
+
+const GEAR_LOCKERS = {
+  tybee: [
+    { name:'Tybee Pavilion', distance:'1 min', terrain:'Beach Access' },
+    { name:'South Beach', distance:'8 min', terrain:'Surf Zone' }
+  ],
+  forsyth: [
+    { name:'Forsyth Park - Main Entrance', distance:'Right here', terrain:'Historic District' }
+  ],
+  daffin: [
+    { name:'Daffin Park - Main Entrance', distance:'Right here', terrain:'Community Park' }
+  ]
+};
+
+let gearState = {
+  currentStep: 1,
+  phoneComplete: false,
+  idVerified: false,
+  cardVerified: false,
+  selectedBundle: null,
+  selectedLocation: null,
+  countdownTimer: null,
+  isUnlocked: false
+};
+
+function renderGearHub() {
+  const list = document.getElementById('gearHubList');
+  list.innerHTML = '';
+  GEAR_LOCATIONS.forEach(loc => {
+    const card = document.createElement('div');
+    card.className = 'gear-location-card';
+    card.onclick = () => go(loc.screen);
+    card.innerHTML = `
+      <div class="gear-loc-img">
+        ${loc.icon}
+        <span class="gear-loc-badge" style="background:${loc.color};">${loc.lockerCount} ${loc.lockerCount > 1 ? 'Lockers' : 'Locker'}</span>
+      </div>
+      <div class="gear-loc-info">
+        <span class="gear-loc-name">${loc.name}</span>
+        <span class="gear-loc-area">${loc.area}</span>
+        <div class="gear-loc-tags">
+          <span class="gear-loc-tag terrain">${loc.terrain}</span>
+          <span class="gear-loc-tag">&#128205; ${loc.distance}</span>
+        </div>
+      </div>
+      <div class="gear-loc-icon-wrap" style="background:${loc.color}15;">
+        <span style="color:${loc.color};">${loc.icon}</span>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+}
+
+function renderGearLocation(locId) {
+  const bundles = GEAR_BUNDLES[locId] || [];
+  const lockers = GEAR_LOCKERS[locId] || [];
+  const loc = GEAR_LOCATIONS.find(l => l.id === locId);
+  const color = loc ? loc.color : '#2D6A4F';
+
+  const gridId = locId === 'tybee' ? 'gearTybeeGrid' : locId === 'forsyth' ? 'gearForsythGrid' : 'gearDaffinGrid';
+  const mapId = locId === 'tybee' ? 'gearTybeeMap' : locId === 'forsyth' ? 'gearForsythMap' : 'gearDaffinMap';
+
+  const grid = document.getElementById(gridId);
+  grid.innerHTML = '';
+  bundles.forEach(bundle => {
+    const card = document.createElement('div');
+    card.className = 'gear-bundle-card';
+    card.onclick = () => {
+      gearState.selectedBundle = bundle;
+      gearState.selectedLocation = locId;
+      go('gear-verify');
+    };
+    card.innerHTML = `
+      <div class="gear-bundle-img" style="background:linear-gradient(135deg, ${color}40, ${color}20);">
+        <span style="z-index:1;position:relative;">${bundle.icons[0]}</span>
+        <span class="gear-bundle-proximity" style="background:${color};">${bundle.proximity}</span>
+        <span class="gear-bundle-price-tag">${bundle.price}</span>
+      </div>
+      <div class="gear-bundle-body">
+        <div class="gear-bundle-name">${bundle.name}</div>
+        ${bundle.gear.map((item, i) => `
+          <div class="gear-item-row">
+            <div class="gear-item-icon" style="background:${color}20;color:${color};">${bundle.icons[i] || '\u{1F4E6}'}</div>
+            <span class="gear-item-text">${item}</span>
+          </div>
+        `).join('')}
+        <div class="gear-bundle-duration">${bundle.duration}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Render map footer
+  const mapEl = document.getElementById(mapId);
+  const terrainLabel = loc ? loc.terrain : 'Park';
+  mapEl.innerHTML = `
+    <div class="gear-map-heading">
+      <div class="gear-map-heading-left">&#9992; SMART MAP</div>
+      <span class="gear-map-terrain">${terrainLabel}</span>
+    </div>
+    <div class="gear-map-visual" style="background:${color}15;">
+      <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.1;">
+        <pattern id="gm-${locId}" width="15" height="15" patternUnits="userSpaceOnUse">
+          <path d="M 15 0 L 0 0 0 15" fill="none" stroke="${color}" stroke-width="0.5"/>
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#gm-${locId})"/>
+      </svg>
+      ${lockers.map((l, i) => `
+        <div class="gear-map-pin" style="background:${color};top:50%;left:${20 + i * 55}%;transform:translate(-50%,-50%);">
+          &#128205;
+          <span style="position:absolute;inset:-4px;border-radius:50%;background:${color};animation:gear-pin-pulse 2s ease-in-out infinite ${i * 0.3}s;"></span>
+        </div>
+      `).join('')}
+      <div style="position:absolute;bottom:4px;right:8px;background:rgba(26,26,26,0.8);padding:2px 8px;border-radius:4px;font-size:9px;font-weight:600;color:var(--dark-text-secondary);">${terrainLabel}</div>
+    </div>
+    ${lockers.map(l => `
+      <div class="gear-locker-row">
+        <div class="gear-locker-row-left">
+          <span class="gear-locker-dot" style="background:${color};"></span>
+          ${l.name}
+        </div>
+        <span class="gear-locker-dist" style="background:${color};">${l.distance}</span>
+      </div>
+    `).join('')}
+  `;
+}
+
+// ============================================================
+// GEAR VERIFICATION
+// ============================================================
+
+function renderGearVerify() {
+  gearState.currentStep = 1;
+  gearState.phoneComplete = false;
+  gearState.idVerified = false;
+  gearState.cardVerified = false;
+
+  // Back button goes to the selected location
+  const backBtn = document.getElementById('gearVerifyBack');
+  backBtn.onclick = () => {
+    const locScreen = gearState.selectedLocation ? 'gear-' + gearState.selectedLocation : 'gear-hub';
+    go(locScreen, 'left');
+  };
+
+  updateGearVerifyUI();
+}
+
+function updateGearVerifyUI() {
+  const step = gearState.currentStep;
+  document.getElementById('gearVerifyStepLabel').textContent = `Step ${step} of 3`;
+
+  // Progress bars
+  ['gvBar1','gvBar2','gvBar3'].forEach((id, i) => {
+    const bar = document.getElementById(id);
+    bar.className = 'gear-verify-bar' + (i < step ? ' done' : '');
+  });
+
+  // Step indicators
+  const stepsData = [
+    { icon:'\u{1F4F1}', label:'Phone Number' },
+    { icon:'\u{1F4F7}', label:'Photo ID' },
+    { icon:'\u{1F4B3}', label:'Payment Hold' }
+  ];
+  const stepsEl = document.getElementById('gearVerifySteps');
+  stepsEl.innerHTML = '';
+  stepsData.forEach((s, i) => {
+    const stepNum = i + 1;
+    let circleClass = 'gear-verify-step-circle';
+    if ((stepNum === 1 && gearState.phoneComplete) || (stepNum === 2 && gearState.idVerified) || (stepNum === 3 && gearState.cardVerified)) {
+      circleClass += ' done';
+    } else if (stepNum === step) {
+      circleClass += ' active';
+    }
+    const div = document.createElement('div');
+    div.className = 'gear-verify-step';
+    const isDone = (stepNum === 1 && gearState.phoneComplete) || (stepNum === 2 && gearState.idVerified) || (stepNum === 3 && gearState.cardVerified);
+    div.innerHTML = `
+      <div class="${circleClass}">${isDone ? '\u2713' : s.icon}</div>
+      <span class="gear-verify-step-label">${s.label}</span>
+    `;
+    stepsEl.appendChild(div);
+  });
+
+  // Content area
+  const content = document.getElementById('gearVerifyContent');
+  const cta = document.getElementById('gearVerifyCta');
+
+  if (step === 1) {
+    content.innerHTML = `
+      <div class="gear-verify-card">
+        <div class="gear-verify-card-header">
+          <div class="gear-verify-card-icon">\u{1F4F1}</div>
+          <div>
+            <span class="gear-verify-card-title">Enter Phone Number</span>
+            <span class="gear-verify-card-sub">For rental confirmation</span>
+          </div>
+        </div>
+        <input type="tel" class="gear-phone-input" id="gearPhoneInput" placeholder="(555) 123-4567" maxlength="14">
+      </div>
+      <div class="gear-verify-info">
+        <span class="gear-verify-info-icon">\u{1F6E1}</span>
+        <span class="gear-verify-info-text">Your phone number is used only for rental notifications and will not be shared.</span>
+      </div>
+    `;
+    const input = document.getElementById('gearPhoneInput');
+    input.addEventListener('input', function() {
+      let v = this.value.replace(/\D/g, '');
+      if (v.length > 10) v = v.slice(0, 10);
+      if (v.length > 6) v = '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
+      else if (v.length > 3) v = '(' + v.slice(0,3) + ') ' + v.slice(3);
+      else if (v.length > 0) v = '(' + v;
+      this.value = v;
+      gearState.phoneComplete = v.length === 14;
+      cta.className = 'demo-btn primary' + (gearState.phoneComplete ? '' : ' disabled');
+    });
+    cta.textContent = 'Continue';
+    cta.className = 'demo-btn primary disabled';
+  } else if (step === 2) {
+    content.innerHTML = `
+      <div class="gear-verify-card">
+        <div class="gear-verify-card-header">
+          <div class="gear-verify-card-icon">\u{1F4F7}</div>
+          <div>
+            <span class="gear-verify-card-title">Scan Photo ID</span>
+            <span class="gear-verify-card-sub">Quick verification</span>
+          </div>
+        </div>
+        <div class="gear-scan-zone" id="gearIdZone">
+          <span class="scan-icon">\u{1F4F7}</span>
+          <button class="gear-scan-btn" onclick="gearSimulateIdScan()">Tap to Scan ID</button>
+        </div>
+      </div>
+      <div class="gear-verify-info">
+        <span class="gear-verify-info-icon">\u{1F6E1}</span>
+        <span class="gear-verify-info-text">We verify you\u2019re 18+ and protect against fraud. Your ID is encrypted and never stored.</span>
+      </div>
+    `;
+    cta.textContent = 'Continue';
+    cta.className = 'demo-btn primary disabled';
+  } else if (step === 3) {
+    const bundle = gearState.selectedBundle;
+    content.innerHTML = `
+      <div class="gear-verify-card">
+        <div class="gear-verify-card-header">
+          <div class="gear-verify-card-icon">\u{1F4B3}</div>
+          <div>
+            <span class="gear-verify-card-title">Payment Hold</span>
+            <span class="gear-verify-card-sub">Refundable deposit</span>
+          </div>
+        </div>
+        <div class="gear-scan-zone" id="gearCardZone">
+          <span class="scan-icon">\u{1F4B3}</span>
+          <button class="gear-scan-btn" onclick="gearSimulateCardVerify()">Authorize Hold</button>
+          <div class="gear-payment-rows">
+            <div class="gear-payment-row"><span class="label">Rental fee:</span><span class="value">${bundle ? bundle.price : '$12'}</span></div>
+            <div class="gear-payment-row"><span class="label">Security deposit:</span><span class="value">$50</span></div>
+            <hr class="gear-payment-divider">
+            <p class="gear-payment-note">$50 hold released when gear is returned</p>
+          </div>
+        </div>
+      </div>
+      <div class="gear-verify-info">
+        <span class="gear-verify-info-icon">\u{1F6E1}</span>
+        <span class="gear-verify-info-text">We place a temporary hold. You\u2019re only charged the rental fee. The hold is released when you return the gear.</span>
+      </div>
+    `;
+    cta.textContent = 'Unlock Locker';
+    cta.className = 'demo-btn primary disabled';
+  }
+}
+
+function gearSimulateIdScan() {
+  const zone = document.getElementById('gearIdZone');
+  zone.innerHTML = '<span class="scan-icon" style="font-size:24px;">\u231B</span><span style="font-size:12px;color:var(--dark-text-secondary);">Scanning...</span>';
+  setTimeout(() => {
+    zone.classList.add('verified');
+    zone.innerHTML = '<div style="text-align:center;"><div style="width:48px;height:48px;border-radius:50%;background:var(--dark-green-primary);display:inline-flex;align-items:center;justify-content:center;font-size:20px;color:white;margin-bottom:6px;">\u2713</div><div style="font-size:13px;font-weight:700;color:var(--dark-text-primary);">ID Verified!</div></div>';
+    gearState.idVerified = true;
+    document.getElementById('gearVerifyCta').className = 'demo-btn primary';
+    updateGearVerifyUI();
+  }, 1500);
+}
+
+function gearSimulateCardVerify() {
+  const zone = document.getElementById('gearCardZone');
+  zone.innerHTML = '<span class="scan-icon" style="font-size:24px;">\u231B</span><span style="font-size:12px;color:var(--dark-text-secondary);">Authorizing...</span>';
+  setTimeout(() => {
+    zone.classList.add('verified');
+    zone.innerHTML = '<div style="text-align:center;"><div style="width:48px;height:48px;border-radius:50%;background:var(--dark-green-primary);display:inline-flex;align-items:center;justify-content:center;font-size:20px;color:white;margin-bottom:6px;">\u2713</div><div style="font-size:13px;font-weight:700;color:var(--dark-text-primary);">Hold Authorized!</div><div style="font-size:11px;color:var(--dark-text-secondary);margin-top:4px;">Released upon return</div></div>';
+    gearState.cardVerified = true;
+    document.getElementById('gearVerifyCta').className = 'demo-btn primary';
+    updateGearVerifyUI();
+  }, 1500);
+}
+
+function gearVerifyNext() {
+  const cta = document.getElementById('gearVerifyCta');
+  if (cta.classList.contains('disabled')) return;
+
+  if (gearState.currentStep === 1 && gearState.phoneComplete) {
+    gearState.currentStep = 2;
+    updateGearVerifyUI();
+  } else if (gearState.currentStep === 2 && gearState.idVerified) {
+    gearState.currentStep = 3;
+    updateGearVerifyUI();
+  } else if (gearState.currentStep === 3 && gearState.cardVerified) {
+    go('gear-unlock');
+  }
+}
+
+// ============================================================
+// GEAR UNLOCK
+// ============================================================
+
+function renderGearUnlock() {
+  gearState.isUnlocked = false;
+  const bundle = gearState.selectedBundle;
+  const bName = bundle ? bundle.name : 'Your Bundle';
+  const bPrice = bundle ? bundle.price : '$12';
+  const bDuration = bundle ? bundle.duration : '4 hours';
+  const bGear = bundle ? bundle.gear : ['Chairs','Blanket','Speaker'];
+
+  document.getElementById('gearUnlockTitle').textContent = 'Ready to Unlock';
+  document.getElementById('gearUnlockSub').textContent = 'Slide to open your locker';
+
+  // Info card
+  document.getElementById('gearUnlockInfo').innerHTML = `
+    <div class="gear-unlock-info-top">
+      <div>
+        <div class="gear-unlock-bundle-name">${bName}</div>
+        <div class="gear-unlock-bundle-tag">${bundle ? '' : ''}</div>
+      </div>
+      <span class="gear-unlock-bundle-price">${bPrice}</span>
+    </div>
+    <div class="gear-unlock-detail-row">
+      <div class="gear-unlock-detail-icon">&#128205;</div>
+      <div>
+        <span class="gear-unlock-detail-label">Locker Location</span>
+        <span class="gear-unlock-detail-value">Union Square - Locker #12</span>
+      </div>
+    </div>
+    <div class="gear-unlock-detail-row">
+      <div class="gear-unlock-detail-icon">&#9200;</div>
+      <div>
+        <span class="gear-unlock-detail-label">Rental Duration</span>
+        <span class="gear-unlock-detail-value">${bDuration}</span>
+      </div>
+    </div>
+    <div class="gear-unlock-detail-row">
+      <div class="gear-unlock-detail-icon">&#128230;</div>
+      <div>
+        <span class="gear-unlock-detail-label">Items Included</span>
+        <span class="gear-unlock-detail-value">${bGear.length} pieces</span>
+      </div>
+    </div>
+    <div class="gear-unlock-items-section">
+      <span class="gear-unlock-items-label">Your Gear:</span>
+      <div class="gear-unlock-items-list">
+        ${bGear.map(item => `<span class="gear-unlock-item-chip">${item}</span>`).join('')}
+      </div>
+    </div>
+  `;
+
+  // Show pre-unlock elements, hide post-unlock
+  document.getElementById('gearCountdown').style.display = '';
+  document.getElementById('gearSliderSection').style.display = '';
+  document.getElementById('gearSuccessCard').style.display = 'none';
+  document.getElementById('gearUnlockActions').style.display = 'none';
+  document.getElementById('gearLockOverlay').style.display = '';
+  document.getElementById('gearUnlockInfo').style.display = '';
+
+  // Countdown
+  let countdown = 300;
+  document.getElementById('gearCountdownTime').textContent = '5:00';
+  if (gearState.countdownTimer) clearInterval(gearState.countdownTimer);
+  gearState.countdownTimer = setInterval(() => {
+    if (gearState.isUnlocked) return;
+    countdown--;
+    if (countdown < 0) countdown = 0;
+    const m = Math.floor(countdown / 60);
+    const s = countdown % 60;
+    document.getElementById('gearCountdownTime').textContent = m + ':' + String(s).padStart(2, '0');
+  }, 1000);
+
+  // Slider interaction
+  initGearSlider();
+}
+
+function initGearSlider() {
+  const thumb = document.getElementById('gearSliderThumb');
+  const track = document.getElementById('gearSliderTrack');
+  let isDragging = false;
+  let startX = 0;
+  let currentX = 0;
+  const maxDrag = 220;
+
+  function onStart(e) {
+    isDragging = true;
+    startX = (e.touches ? e.touches[0].clientX : e.clientX) - currentX;
+    thumb.style.transition = 'none';
+  }
+  function onMove(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    let dx = clientX - startX;
+    if (dx < 0) dx = 0;
+    if (dx > maxDrag) dx = maxDrag;
+    currentX = dx;
+    thumb.style.left = (6 + dx) + 'px';
+    const labelEl = document.getElementById('gearSliderLabel');
+    labelEl.style.opacity = 1 - (dx / maxDrag);
+    if (dx > maxDrag * 0.85) {
+      track.style.background = 'var(--brand-ochre)';
+    } else {
+      track.style.background = '';
+    }
+  }
+  function onEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    thumb.style.transition = 'left 0.3s ease';
+    if (currentX > maxDrag * 0.75) {
+      // Unlocked!
+      gearState.isUnlocked = true;
+      triggerGearUnlockSuccess();
+    } else {
+      currentX = 0;
+      thumb.style.left = '6px';
+      document.getElementById('gearSliderLabel').style.opacity = 1;
+      track.style.background = '';
+    }
+  }
+
+  // Clean up old listeners by cloning
+  const newThumb = thumb.cloneNode(true);
+  thumb.parentNode.replaceChild(newThumb, thumb);
+
+  newThumb.addEventListener('mousedown', onStart);
+  newThumb.addEventListener('touchstart', onStart, { passive: true });
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('touchmove', onMove, { passive: false });
+  document.addEventListener('mouseup', onEnd);
+  document.addEventListener('touchend', onEnd);
+}
+
+function triggerGearUnlockSuccess() {
+  const bundle = gearState.selectedBundle;
+  const bDuration = bundle ? bundle.duration : '4 hours';
+
+  document.getElementById('gearUnlockTitle').textContent = 'Locker Open!';
+  document.getElementById('gearUnlockSub').textContent = 'Grab your gear and go';
+
+  // Hide pre-unlock, show post-unlock
+  document.getElementById('gearCountdown').style.display = 'none';
+  document.getElementById('gearSliderSection').style.display = 'none';
+  document.getElementById('gearLockOverlay').style.display = 'none';
+
+  const successCard = document.getElementById('gearSuccessCard');
+  successCard.style.display = '';
+  successCard.innerHTML = `
+    <div class="gear-success-icon">&#128275;</div>
+    <div class="gear-success-title">Locker #12 is Open</div>
+    <div class="gear-success-text">Retrieve your gear and have an amazing adventure!</div>
+  `;
+
+  document.getElementById('gearUnlockActions').style.display = '';
+  document.getElementById('gearReturnNote').textContent = 'Remember to return your gear to any locker within ' + bDuration;
+
+  if (gearState.countdownTimer) clearInterval(gearState.countdownTimer);
 }
 
 // ============================================================
